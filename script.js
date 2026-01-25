@@ -60,26 +60,52 @@ function switchTab(tabName) {
 }
 
 // --- Countdown Logic ---
+// --- Countdown Logic ---
+let targetDate = localStorage.getItem('mbsinav_target_date') || '2026-06-15T10:00';
+
 function updateCountdown() {
-    // Target Date: June 15, 2026
-    const examDate = new Date('2026-06-15T10:00:00').getTime();
+    const examDate = new Date(targetDate).getTime();
     const now = new Date().getTime();
     const distance = examDate - now;
 
-    if (distance < 0) return;
+    const container = document.getElementById('countdown-display');
+    if (!container) return;
+
+    if (distance < 0) {
+        container.innerHTML = `<div style="text-align:center; width:100%; color:#ef4444; font-weight:800;">SINAV TARİHİ GEÇTİ</div>`;
+        return;
+    }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-    const container = document.getElementById('countdown-display');
-    if (container) {
-        container.innerHTML = `
-            <div class="time-box"><span class="time-val">${days}</span><span class="time-label">GÜN</span></div>
-            <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">SAAT</span></div>
-            <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">DK</span></div>
-        `;
-    }
+    container.innerHTML = `
+        <div class="time-box"><span class="time-val">${days}</span><span class="time-label">GÜN</span></div>
+        <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">SAAT</span></div>
+        <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">DK</span></div>
+    `;
+}
+
+// Exam Date Modal Logic
+function openDateModal() {
+    document.getElementById('date-modal').classList.remove('hidden');
+    // Pre-fill with current target
+    document.getElementById('exam-date-input').value = targetDate;
+}
+
+function closeDateModal() {
+    document.getElementById('date-modal').classList.add('hidden');
+}
+
+function saveExamDate() {
+    const inp = document.getElementById('exam-date-input').value;
+    if (!inp) { alert("Lütfen bir tarih seçin"); return; }
+
+    targetDate = inp;
+    localStorage.setItem('mbsinav_target_date', targetDate);
+    updateCountdown();
+    closeDateModal();
 }
 
 // --- Interactivity Features ---

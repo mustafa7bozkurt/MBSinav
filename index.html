@@ -36,14 +36,16 @@
             </div>
 
             <!-- Big Result Display (Countdown) -->
-            <div class="result-display">
+            <div class="result-display" onclick="openDateModal()" style="cursor:pointer;"
+                title="Tarihi değiştirmek için tıkla">
                 <span class="result-label">Sınava Kalan</span>
                 <div class="countdown-grid" id="countdown-display">
                     <!-- JS Injected -->
-                    <div class="time-box"><span class="time-val">120</span><span class="time-label">GÜN</span></div>
-                    <div class="time-box"><span class="time-val">14</span><span class="time-label">SAAT</span></div>
-                    <div class="time-box"><span class="time-val">30</span><span class="time-label">DK</span></div>
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">GÜN</span></div>
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">SAAT</span></div>
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">DK</span></div>
                 </div>
+                <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">(Değiştirmek için tıkla)</div>
             </div>
 
             <!-- Horizontal Selector (Quick Actions or Status) -->
@@ -226,6 +228,23 @@
         </section>
 
     </main>
+
+    <!-- Date Edit Modal -->
+    <div id="date-modal" class="modal hidden"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; display:flex; justify-content:center; align-items:center;">
+        <div class="modal-content"
+            style="background:#334155; padding:25px; border-radius:20px; width:80%; max-width:350px;">
+            <h3 style="color:white; margin-bottom:15px; text-align:center;">Sınav Tarihi Seç</h3>
+
+            <label style="color:#94a3b8; font-size:0.9rem; margin-bottom:5px; display:block;">Hedef Tarih</label>
+            <input type="datetime-local" id="exam-date-input" class="form-input" style="margin-bottom:20px;">
+
+            <div style="display:flex; gap:10px;">
+                <button class="secondary-btn" onclick="closeDateModal()">İptal</button>
+                <button class="primary-btn" onclick="saveExamDate()">Kaydet</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bottom Nav -->
     <nav id="bottom-nav">
