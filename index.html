@@ -322,10 +322,44 @@
             <label class="form-label">Not (Opsiyonel)</label>
             <input type="text" id="sch-note" class="form-input" placeholder="Konu, detay...">
 
-            <div style="display:flex; gap:10px; margin-top:20px;">
+            <label class="form-label" style="margin-top:15px;">Diğer Günlere Kopyala (Opsiyonel)</label>
+            <div id="day-checks" style="display:flex; justify-content:space-between; gap:5px; margin-bottom:15px;">
+                <div class="day-check" data-d="1">Pzt</div>
+                <div class="day-check" data-d="2">Sal</div>
+                <div class="day-check" data-d="3">Çrş</div>
+                <div class="day-check" data-d="4">Prş</div>
+                <div class="day-check" data-d="5">Cum</div>
+                <div class="day-check" data-d="6">Cmt</div>
+                <div class="day-check" data-d="0">Paz</div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:10px;">
                 <button class="secondary-btn" onclick="closeScheduleModal()">İptal</button>
                 <button class="primary-btn" onclick="saveScheduleItem()">Kaydet</button>
             </div>
+
+            <style>
+                .day-check {
+                    width: 35px;
+                    height: 35px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 0.7rem;
+                    cursor: pointer;
+                    color: #94a3b8;
+                    border: 1px solid transparent;
+                    transition: all 0.2s;
+                }
+
+                .day-check.active {
+                    background: var(--primary-color);
+                    color: white;
+                    border-color: var(--primary-color);
+                }
+            </style>
         </div>
     </div>
 

@@ -207,8 +207,8 @@ function renderSchedule(dayIdx) {
     // Get items for this day
     const dayItems = fullSchedule.filter(i => parseInt(i.day) === dayIdx);
 
-    // Loop from 07:00 to 24:00 (End of day)
-    for (let h = 7; h <= 23; h++) {
+    // Loop from 05:00 to 24:00 (End of day)
+    for (let h = 5; h <= 23; h++) {
         const hourStr = h.toString().padStart(2, '0') + ":00";
 
         // Find item for this hour (Simple match)
@@ -262,24 +262,51 @@ function openScheduleModal(prefillTime = '') {
 }
 function closeScheduleModal() { document.getElementById('schedule-modal').classList.add('hidden'); }
 
+
+// Initialize Modal Logic (Checkboxes)
+function initModalLogic() {
+    document.querySelectorAll('.day-check').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.target.classList.toggle('active');
+        });
+    });
+}
+
 function saveScheduleItem() {
     if (!db) return;
-    const day = document.getElementById('sch-day').value;
+    const mainDay = parseInt(document.getElementById('sch-day').value);
     const time = document.getElementById('sch-time').value;
     const subject = document.getElementById('sch-subject').value;
     const note = document.getElementById('sch-note').value;
 
     if (!time || !subject) { alert("Saat ve Ders zorunludur"); return; }
 
-    db.collection(SCHEDULE_COLLECTION).add({
-        day: parseInt(day),
-        time,
-        subject,
-        note,
-        timestamp: Date.now()
-    }).then(() => {
-        closeScheduleModal();
-    }).catch(e => alert("Hata: " + e.message));
+    const daysToAdd = [mainDay];
+
+    // Check extra days
+    document.querySelectorAll('.day-check.active').forEach(el => {
+        const d = parseInt(el.dataset.d);
+        if (!daysToAdd.includes(d)) daysToAdd.push(d);
+    });
+
+    // Batch Add
+    const batchPromises = daysToAdd.map(d => {
+        return db.collection(SCHEDULE_COLLECTION).add({
+            day: d,
+            time,
+            subject,
+            note,
+            timestamp: Date.now()
+        });
+    });
+
+    Promise.all(batchPromises)
+        .then(() => {
+            closeScheduleModal();
+            // Reset checks
+            document.querySelectorAll('.day-check').forEach(el => el.classList.remove('active'));
+        })
+        .catch(e => alert("Hata: " + e.message));
 }
 
 function deleteScheduleItem(id) {
@@ -407,4 +434,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderDaySelector();
+    initModalLogic();
 });
