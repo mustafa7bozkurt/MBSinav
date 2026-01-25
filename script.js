@@ -104,7 +104,27 @@ function switchTab(tabName) {
 }
 
 // --- Countdown Logic ---
-let targetDate = localStorage.getItem('mbsinav_target_date') || '2026-06-15T10:00';
+// --- SETTINGS (Date Sync) ---
+const SETTINGS_COLLECTION = "mbsinav_settings";
+let targetDate = '2026-06-15T10:00'; // Default fallback
+
+function loadSettings() {
+    if (!db) return;
+    db.collection(SETTINGS_COLLECTION).doc('global').onSnapshot(doc => {
+        if (doc.exists) {
+            const data = doc.data();
+            if (data.targetDate) {
+                targetDate = data.targetDate;
+                updateCountdown();
+            }
+        } else {
+            // Create default if not exists
+            db.collection(SETTINGS_COLLECTION).doc('global').set({
+                targetDate: targetDate
+            });
+        }
+    });
+}
 
 function updateCountdown() {
     const examDate = new Date(targetDate).getTime();
@@ -139,10 +159,24 @@ function closeDateModal() { document.getElementById('date-modal').classList.add(
 function saveExamDate() {
     const inp = document.getElementById('exam-date-input').value;
     if (!inp) { alert("Lütfen bir tarih seçin"); return; }
-    targetDate = inp;
-    localStorage.setItem('mbsinav_target_date', targetDate);
-    updateCountdown();
-    closeDateModal();
+
+    // Save to Firebase
+    if (db) {
+        db.collection(SETTINGS_COLLECTION).doc('global').update({
+            targetDate: inp
+        }).then(() => {
+            alert("Tarih güncellendi ve tüm cihazlarla eşleşti!");
+            closeDateModal();
+        }).catch(e => {
+            console.error(e);
+            alert("Kaydederken hata oluştu: " + e.message);
+        });
+    } else {
+        // Fallback for offline
+        targetDate = inp;
+        updateCountdown();
+        closeDateModal();
+    }
 }
 
 // --- SCHEDULE SYSTEM ---
@@ -474,9 +508,270 @@ function deleteGoal(id) {
     }
 }
 
-function filterSubjects(cat) {
-    // Simple mock filter for subjects tab
+// --- DYNAMIC SUBJECTS & TOPICS SYSTEM ---
+const SUBJECTS_COLLECTION = "mbsinav_subjects";
+const TOPICS_COLLECTION = "mbsinav_topics";
+
+let subjects = [];
+let topics = [];
+let currentFilter = 'all';
+let deleteSubjectPromptId = null;
+
+// Load Data
+function loadSubjectsAndTopics() {
+    if (!db) return;
+
+    // Load Subjects
+    db.collection(SUBJECTS_COLLECTION).orderBy('timestamp', 'asc').onSnapshot(snap => {
+        subjects = [];
+        snap.forEach(doc => subjects.push({ id: doc.id, ...doc.data() }));
+        // If empty (first time run?), maybe seed defaults?
+        // For now, let's assume user starts empty or we seed defaults manually if needed.
+        // Actually, let's seed defaults if absolutely empty to avoid blank screen shock.
+        if (subjects.length === 0 && !localStorage.getItem('mbsinav_seeded')) {
+            seedDefaultSubjects();
+        }
+        renderSubjectTabs();
+    });
+
+    // Load Topics
+    db.collection(TOPICS_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+        topics = [];
+        snap.forEach(doc => topics.push({ id: doc.id, ...doc.data() }));
+        renderTopics();
+    });
 }
+
+function seedDefaultSubjects() {
+    const defaults = [
+        { name: 'Matematik', icon: 'fas fa-infinity' },
+        { name: 'Türkçe', icon: 'fas fa-book' },
+        { name: 'Fen', icon: 'fas fa-flask' },
+        { name: 'Sosyal', icon: 'fas fa-globe-europe' }
+    ];
+    defaults.forEach(d => {
+        db.collection(SUBJECTS_COLLECTION).add({ ...d, timestamp: Date.now() });
+    });
+    localStorage.setItem('mbsinav_seeded', 'true');
+}
+
+// 1. SUBJECTS (TABS)
+function renderSubjectTabs() {
+    const container = document.getElementById('subject-tabs-container');
+    if (!container) return;
+
+    let html = '';
+
+    // "All" Tab (Fixed)
+    html += `
+        <div class="shape-btn subject-tab-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterSubjects('all', this)">
+            <i class="fas fa-layer-group"></i>
+            <span>Tümü</span>
+        </div>
+    `;
+
+    // Dynamic Tabs
+    subjects.forEach(sub => {
+        html += `
+            <div class="shape-btn subject-tab-btn ${currentFilter === sub.id ? 'active' : ''}" onclick="filterSubjects('${sub.id}', this, event)">
+                <i class="${sub.icon || 'fas fa-book'}"></i>
+                <span>${sub.name}</span>
+                ${generateSubjectDeletePrompt(sub.id)}
+            </div>
+        `;
+    });
+
+    // "Add" Button
+    html += `
+        <div class="shape-btn" onclick="addNewSubject()" style="background: rgba(255,255,255,0.05); border:1px dashed #64748b;">
+            <i class="fas fa-plus"></i>
+            <span>Ekle</span>
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function generateSubjectDeletePrompt(id) {
+    return `
+        <div id="del-prompt-${id}" class="delete-prompt hidden" onclick="confirmDeleteSubject('${id}', event)">
+            Sileyim mi? <span style="text-decoration:underline; font-weight:bold;">SİL</span>
+        </div>
+    `;
+}
+
+function addNewSubject() {
+    const name = prompt("Yeni dersin adı ne?");
+    if (!name) return;
+
+    db.collection(SUBJECTS_COLLECTION).add({
+        name: name,
+        icon: 'fas fa-bookmark', // Default icon
+        timestamp: Date.now()
+    });
+}
+
+function filterSubjects(cat, btnElement, event) {
+    currentFilter = cat;
+
+    // UI Update
+    // Re-rendering whole tabs to update 'active' class is easiest or just toggle
+    // Let's just update classes manually for smoothness
+    document.querySelectorAll('.subject-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    // Filter Topics
+    renderTopics();
+
+    // Delete Prompt Logic (Only for specific subjects, not 'all')
+    if (cat !== 'all' && event) {
+        // Show prompt logic similar to previous attempt
+        hideAllDeletePrompts();
+        const prompt = document.getElementById(`del-prompt-${cat}`);
+        if (prompt) {
+            prompt.classList.remove('hidden');
+            deleteSubjectPromptId = cat;
+            event.stopPropagation();
+        }
+    } else {
+        hideAllDeletePrompts();
+    }
+}
+
+function confirmDeleteSubject(id, event) {
+    event.stopPropagation();
+    if (!db) return;
+
+    // Delete Subject
+    db.collection(SUBJECTS_COLLECTION).doc(id).delete();
+
+    // Delete associated topics? Or keep them orphaned?
+    // Better to keep them or delete? For simplicity, let's keep them (or user can delete manually)
+    // But typically user expects cleanup. Let's leave them for now to avoid accidental mass data loss.
+
+    // Reset filter
+    filterSubjects('all');
+    hideAllDeletePrompts();
+}
+
+// 2. TOPICS (LIST)
+function renderTopics() {
+    const container = document.getElementById('subject-list');
+    if (!container) return;
+
+    // Filter
+    let displayTopics = topics;
+    if (currentFilter !== 'all') {
+        displayTopics = topics.filter(t => t.subjectId === currentFilter);
+    }
+
+    if (displayTopics.length === 0) {
+        if (currentFilter === 'all' && subjects.length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Hiç ders yok. "Ekle" butonuna basarak başla!</div>`;
+            return;
+        }
+        // Show "Add Topic" button even if empty
+    }
+
+    let html = '';
+
+    displayTopics.forEach(t => {
+        // Find subject color/icon if needed. For now standard look.
+        // Status color logic
+        let statusColor = '#64748b'; // Gray (Not started)
+        let statusText = 'Başlanmadı';
+        if (t.status === 'working') { statusColor = '#f97316'; statusText = 'Çalışılıyor'; }
+        else if (t.status === 'done') { statusColor = '#10b981'; statusText = 'Tamamlandı'; }
+
+        html += `
+            <div class="list-item-card" style="border-left-color: ${statusColor};">
+                <div class="item-info">
+                    <h3>${t.name}</h3>
+                    <span class="item-sub">${getSubjectName(t.subjectId)}</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <span class="item-badge" style="background:${statusColor}20; color:${statusColor}; font-size:0.7rem;">${statusText}</span>
+                    <button onclick="deleteTopic('${t.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    // Add "New Topic" Button at bottom
+    // Only show if a specific subject is selected (to know where to add)
+    // Or if 'all' is selected, prompt needs to ask for subject.
+    html += `
+        <div onclick="addNewTopic()" style="
+            margin-top: 15px; 
+            padding: 15px; 
+            border: 2px dashed #334155; 
+            border-radius: 15px; 
+            text-align: center; 
+            color: #94a3b8; 
+            cursor: pointer;
+            transition: all 0.2s;
+        " onmouseover="this.style.borderColor='#3b82f6'; this.style.color='#3b82f6'" 
+          onmouseout="this.style.borderColor='#334155'; this.style.color='#94a3b8'">
+            <i class="fas fa-plus-circle"></i> Yeni Konu Ekle
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function addNewTopic() {
+    let subjectId = currentFilter;
+
+    // If "All" is selected, we must ask user to choose a subject
+    if (subjectId === 'all') {
+        // For simplicity, let's just pick the first one or ask user to select a tab first.
+        // Or show a prompt with dropdown.
+        // Let's ask user to select a tab first for better UX than a complex prompt.
+        const subName = prompt("Hangi derse ekleyeceksin? (Dersin tam adını yaz):");
+        if (!subName) return;
+        const sub = subjects.find(s => s.name.toLowerCase() === subName.toLowerCase());
+        if (!sub) {
+            alert("Böyle bir ders bulunamadı. Önce dersi seçebilir ya da ders ekleyebilirsin.");
+            return;
+        }
+        subjectId = sub.id;
+    }
+
+    const name = prompt("Konu adı ne?");
+    if (!name) return;
+
+    db.collection(TOPICS_COLLECTION).add({
+        name: name,
+        subjectId: subjectId,
+        status: 'pending', // pending, working, done
+        timestamp: Date.now()
+    });
+}
+
+function deleteTopic(id) {
+    if (confirm("Bu konuyu silmek istiyor musun?")) {
+        db.collection(TOPICS_COLLECTION).doc(id).delete();
+    }
+}
+
+function getSubjectName(id) {
+    const s = subjects.find(sub => sub.id === id);
+    return s ? s.name : 'Genel';
+}
+
+function hideAllDeletePrompts() {
+    document.querySelectorAll('.delete-prompt').forEach(p => p.classList.add('hidden'));
+    deleteSubjectPromptId = null;
+}
+
+// Global Click for prompts
+document.addEventListener('click', (e) => {
+    if (deleteSubjectPromptId) {
+        hideAllDeletePrompts();
+    }
+});
 
 // --- CHART & EXAMS ---
 function switchExamSubTab(subTab) {
@@ -667,5 +962,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderDaySelector();
+
+    if (typeof firebase !== 'undefined') {
+        loadSettings();
+        loadSubjectsAndTopics();
+    }
+
     initModalLogic();
 });

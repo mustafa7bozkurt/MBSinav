@@ -141,27 +141,8 @@
         </div>
 
         <!-- Filter Shape Selector -->
-        <div class="shape-selector">
-            <div class="shape-btn active" onclick="filterSubjects('all')">
-                <i class="fas fa-layer-group"></i>
-                <span>Tümü</span>
-            </div>
-            <div class="shape-btn" onclick="filterSubjects('mat')">
-                <i class="fas fa-infinity"></i>
-                <span>Matematik</span>
-            </div>
-            <div class="shape-btn" onclick="filterSubjects('tr')">
-                <i class="fas fa-book"></i>
-                <span>Türkçe</span>
-            </div>
-            <div class="shape-btn" onclick="filterSubjects('fen')">
-                <i class="fas fa-flask"></i>
-                <span>Fen</span>
-            </div>
-            <div class="shape-btn" onclick="filterSubjects('sos')">
-                <i class="fas fa-globe-europe"></i>
-                <span>Sosyal</span>
-            </div>
+        <div class="shape-selector" id="subject-tabs-container">
+            <!-- JS Will Inject Tabs Here -->
         </div>
 
         <div class="form-section">
@@ -173,37 +154,8 @@
             </div>
 
             <div id="subject-list" class="list-container">
-                <div class="list-item-card" data-category="mat" style="border-left-color: #10b981;">
-                    <div class="item-info">
-                        <h3>Üslü Sayılar</h3>
-                        <span class="item-sub">%100 Tamamlandı</span>
-                    </div>
-                    <i class="fas fa-check-circle" style="color:#10b981; font-size:1.5rem;"></i>
-                </div>
-
-                <div class="list-item-card" data-category="mat" style="border-left-color: #f97316;">
-                    <div class="item-info">
-                        <h3>Logaritma</h3>
-                        <span class="item-sub">%45 İlerleme</span>
-                    </div>
-                    <span class="item-badge badge-orange">Çalışılıyor</span>
-                </div>
-
-                <div class="list-item-card" data-category="mat" style="border-left-color: #64748b;">
-                    <div class="item-info">
-                        <h3>İntegral</h3>
-                        <span class="item-sub">Henüz başlanmadı</span>
-                    </div>
-                    <span class="item-badge" style="background:rgba(255,255,255,0.1)">Sıra Bekliyor</span>
-                </div>
-
-                <div class="list-item-card" data-category="tr" style="border-left-color: #f97316;">
-                    <div class="item-info">
-                        <h3>Paragraf</h3>
-                        <span class="item-sub">%80 İlerleme</span>
-                    </div>
-                    <span class="item-badge badge-orange">Çalışılıyor</span>
-                </div>
+                <!-- JS Will Inject Topics Here -->
+                <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
             </div>
         </div>
     </section>
