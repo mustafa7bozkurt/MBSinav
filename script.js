@@ -1,5 +1,5 @@
 
-const APP_VERSION = "1.1.0"; // Bump this manually to force update UI
+const APP_VERSION = "1.1.1"; // Bump this manually to force update UI
 
 function forceUpdate() {
     if ('serviceWorker' in navigator) {

@@ -4,10 +4,25 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the current directory
-app.use(express.static(path.join(__dirname, '/')));
+// Serve static files from the current directory with custom cache headers
+// Serve static files from the current directory with custom cache headers
+app.use(express.static(path.join(__dirname, '/'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.html') || path.endsWith('sw.js')) {
+            // Never cache index.html or service worker
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader('Pragma', 'no-cache');
+            res.setHeader('Expires', '0');
+        } else {
+            // Cache other assets for a short time (1 day)
+            res.setHeader('Cache-Control', 'public, max-age=86400');
+        }
+    }
+}));
 
 // Handle all routes by serving index.html (SPA fallback)
 app.get('*', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
