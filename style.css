@@ -540,7 +540,88 @@ main {
     color: white;
 }
 
-.empty-slot i {
-    margin-right: 8px;
-    color: var(--primary-color);
+
+/* SUB NAVBAR */
+.sub-nav-container {
+    display: flex;
+    background: var(--card-bg);
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.sub-nav-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sub-nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* CHART STYLES (SVG) */
+.chart-wrapper {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+#net-chart {
+    overflow: visible;
+}
+
+/* Axis lines */
+.chart-axis {
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+/* The Data Line */
+.chart-line {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Area under the line */
+.chart-area {
+    fill: rgba(59, 130, 246, 0.1);
+    stroke: none;
+}
+
+/* Data Points */
+.chart-dot {
+    fill: var(--bg-color);
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    r: 4;
+    /* radius */
+    cursor: pointer;
+    transition: r 0.2s;
+}
+
+.chart-dot:hover {
+    r: 6;
+    fill: white;
+}
+
+.chart-label {
+    fill: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-anchor: middle;
 }

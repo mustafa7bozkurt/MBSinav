@@ -1,7 +1,7 @@
 
 
 
-const APP_VERSION = "8.0.0"; // Timeline Update
+const APP_VERSION = "8.1.0"; // Exam Graph Update
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -88,6 +88,8 @@ function switchTab(tabName) {
             if (d === 0) checkSundayReminder();
             // Default to today
             selectScheduleDay(d);
+        } else if (tabName === 'exam') {
+            loadExams();
         }
     }
 
@@ -382,35 +384,172 @@ function updateDashboardSchedule() {
 }
 
 // --- CALC & INTERACTIVITY ---
-function handleQuickMenu(action) {
-    document.querySelectorAll('.shape-selector .shape-btn').forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+// --- CHART & EXAMS ---
+function switchExamSubTab(subTab) {
+    // Buttons
+    document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(subTab === 'netlerim' ? 'netlerim' : 'hesapla')) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 
-    if (action === 'netler') switchTab('exam');
-    else if (action === 'durum') switchTab('home');
-    else if (action === 'hedefler' || action === 'notlar') alert("Yakında...");
+    // Views
+    if (subTab === 'netlerim') {
+        document.getElementById('sub-view-netlerim').classList.remove('hidden');
+        document.getElementById('sub-view-hesapla').classList.add('hidden');
+        loadExams(); // Refresh chart
+    } else {
+        document.getElementById('sub-view-netlerim').classList.add('hidden');
+        document.getElementById('sub-view-hesapla').classList.remove('hidden');
+    }
 }
 
-function filterSubjects(cat) {
-    // Simple mock filter for subjects tab
-    // ... (Keep existing if needed or rely on manual updates)
+function loadExams() {
+    if (!db) return;
+    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(10).get().then(snap => {
+        const data = [];
+        snap.forEach(doc => {
+            const d = doc.data();
+            data.push({
+                net: d.net,
+                date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+                timestamp: d.timestamp
+            });
+        });
+        // Sort for chart: Oldest first
+        data.sort((a, b) => a.timestamp - b.timestamp);
+
+        renderNetChart(data);
+        renderHistoryList(data);
+    });
+}
+
+function renderNetChart(data) {
+    const svg = document.getElementById('net-chart');
+    const labelsDiv = document.getElementById('chart-labels');
+    if (!svg || data.length < 2) {
+        if (svg) svg.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#64748b" font-size="12">Grafik için en az 2 veri lazım</text>`;
+        return;
+    }
+
+    // Config
+    const width = 350;
+    const height = 200;
+    const padding = 20;
+
+    // Scales
+    const nets = data.map(d => d.net);
+    const minNet = Math.min(...nets) - 5;
+    const maxNet = Math.max(...nets) + 5;
+
+    const getY = (net) => height - padding - ((net - minNet) / (maxNet - minNet)) * (height - 2 * padding);
+    const getX = (i) => padding + (i / (data.length - 1)) * (width - 2 * padding);
+
+    // Build Path
+    let pathD = `M ${getX(0)} ${getY(data[0].net)}`;
+    let areaD = `M ${getX(0)} ${height} L ${getX(0)} ${getY(data[0].net)}`;
+
+    data.forEach((d, i) => {
+        pathD += ` L ${getX(i)} ${getY(d.net)}`;
+        areaD += ` L ${getX(i)} ${getY(d.net)}`;
+    });
+
+    areaD += ` L ${getX(data.length - 1)} ${height} Z`;
+
+    // Draw SVG
+    let html = `
+        <!-- Area -->
+        <path d="${areaD}" class="chart-area" />
+        <!-- Line -->
+        <path d="${pathD}" class="chart-line" />
+    `;
+
+    // Dots & Labels
+    let labelsHtml = '';
+    data.forEach((d, i) => {
+        html += `<circle cx="${getX(i)}" cy="${getY(d.net)}" class="chart-dot"><title>${d.net} Net - ${d.date}</title></circle>`;
+        html += `<text x="${getX(i)}" y="${getY(d.net) - 10}" class="chart-label">${d.net}</text>`;
+
+        // Axis Labels (First and Last only to prevent crowd)
+        if (i === 0 || i === data.length - 1) {
+            labelsHtml += `<span>${d.date}</span>`;
+        }
+    });
+
+    svg.innerHTML = html;
+    labelsDiv.innerHTML = labelsHtml;
+}
+
+function renderHistoryList(data) {
+    // Reverse for list: Newest first
+    const listData = [...data].reverse();
+    const container = document.getElementById('net-history-list');
+    if (!container) return;
+
+    let html = '';
+    listData.forEach(item => {
+        html += `
+             <div class="list-item-card" style="border-left-color: #f97316; height:auto; padding:10px;">
+                <div class="item-info">
+                    <h3>${item.net} Net</h3>
+                    <span class="item-sub">${item.date}</span>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+function saveQuickNet() {
+    const val = parseFloat(document.getElementById('quick-net-input').value);
+    if (!val) return;
+
+    db.collection(EXAM_COLLECTION).add({
+        net: val,
+        type: 'quick',
+        timestamp: Date.now()
+    }).then(() => {
+        document.getElementById('quick-net-input').value = '';
+        loadExams();
+        alert("Net kaydedildi!");
+    });
 }
 
 function calculateNet() {
-    const inps = document.querySelectorAll('#tab-exam input');
+    const inps = document.querySelectorAll('#sub-view-hesapla input');
     let totalNet = 0;
-    for (let i = 0; i < inps.length; i += 2) {
-        const correct = parseFloat(inps[i].value) || 0;
-        const wrong = parseFloat(inps[i + 1].value) || 0;
-        totalNet += correct - (wrong / 4);
-    }
-    const resDisplay = document.querySelector('#tab-exam .result-value');
+    // Specific IDs mapping
+    const trD = parseFloat(document.getElementById('calc-tr-d').value) || 0;
+    const trY = parseFloat(document.getElementById('calc-tr-y').value) || 0;
+    const matD = parseFloat(document.getElementById('calc-mat-d').value) || 0;
+    const matY = parseFloat(document.getElementById('calc-mat-y').value) || 0;
+    const fenD = parseFloat(document.getElementById('calc-fen-d').value) || 0;
+    const sosD = parseFloat(document.getElementById('calc-sos-d').value) || 0;
+
+    // Simple logic: we need 'calc-tr-d' etc. 
+    // Just sum loops if we used class-based, but here we have specific IDs now.
+    // Let's rely on manual calculation for accuracy or keep it simple.
+
+    // Actually the user kept the old structure logic but IDs changed.
+    // Let's implement robustly.
+    totalNet += trD - (trY / 4);
+    totalNet += matD - (matY / 4);
+    totalNet += fenD - 0; // Assuming 0 wrong if not present, but user didn't ask for full inputs there
+    // Wait, the HTML has specific inputs for Fen/Sos but only D?
+    // Let's re-read HTML.
+    // Ah, Fen(D), Sos(D) are there. No wrong inputs for them in previous step?
+    // Checking previous step... Yes, only D for Fen/Sos in the HTML snapshot.
+    totalNet += sosD;
+
+    const resDisplay = document.querySelector('.result-value');
     if (resDisplay) resDisplay.innerText = totalNet.toFixed(2);
 
     if (db) {
         db.collection(EXAM_COLLECTION).add({
             net: totalNet,
-            date: new Date().toISOString(),
+            detail: { trD, trY, matD, matY, fenD, sosD },
             timestamp: Date.now()
         }).then(() => alert("Net kaydedildi: " + totalNet.toFixed(2)));
     }
