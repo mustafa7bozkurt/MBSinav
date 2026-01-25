@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
+
+:root {
+    /* Focus Mode Theme (Dark) */
+    --bg-color: #1e293b;
+    /* Dark Slate Main BG */
+    --text-color: #f8fafc;
+    /* White Text */
+    --text-muted: #94a3b8;
+    /* Gray Text */
+
+    --card-bg: #334155;
+    /* Component BG */
+    --input-bg: #1e293b;
+    /* Input BG */
+    --border-color: #475569;
+    /* Border Color */
+
+    /* Accent Colors (Mapped from Pastel to Neon/Dark Mode friendly) */
+    --primary-color: #3b82f6;
+    /* Blue */
+    --primary-glow: rgba(59, 130, 246, 0.4);
+
+    --accent-teal: #2dd4bf;
+    /* Teal */
+    --accent-orange: #f97316;
+    /* Orange */
+    --accent-purple: #a855f7;
+    /* Purple */
+    --accent-pink: #ec4899;
+    /* Pink */
+    --accent-green: #10b981;
+    /* Green */
+
+    --nav-height: 80px;
+    --safe-area-top: env(safe-area-inset-top, 20px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+/* Header (Aluminyum Style) */
+.app-header {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+.logo-area h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.logo-area small {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    display: block;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    padding: 10px 20px;
+    padding-bottom: calc(var(--nav-height) + 20px);
+}
+
+.mode-section {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.mode-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Page Titles */
+.page-title {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.page-title h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Models From Alum App (Adapted for Dark Mode) --- */
+
+/* 1. Result Display Model (Big Cards) */
+.result-display {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 30px 20px;
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.result-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.result-value {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.result-unit {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* 2. Shape Selector Model (Horizontal Scroll) */
+.shape-selector {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 10px;
+    /* Space for scrollbar if any, usually hidden */
+    margin-bottom: 20px;
+    scrollbar-width: none;
+}
+
+.shape-selector::-webkit-scrollbar {
+    display: none;
+}
+
+.shape-btn {
+    flex: 0 0 auto;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    border-radius: 16px;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-muted);
+}
+
+.shape-btn i {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+}
+
+.shape-btn.active {
+    border-color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    /* Low opacity primary */
+    color: white;
+}
+
+.shape-btn.active i {
+    color: var(--primary-color);
+}
+
+/* 3. Form Section Model */
+.form-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h4 {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* 4. Lists / Order Card Model */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list-item-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    position: relative;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info h3 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.item-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.item-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.badge-green {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+.badge-orange {
+    background: rgba(249, 115, 22, 0.2);
+    color: #fb923c;
+}
+
+.badge-blue {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+/* 5. Buttons */
+.primary-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    transition: transform 0.2s;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* 6. Bottom Nav (Alum Style) */
+#bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(30, 41, 59, 0.95);
+    /* Darker blur */
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    padding-bottom: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-item i {
+    font-size: 1.6rem;
+    transition: transform 0.3s;
+}
+
+.nav-item span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item.active i {
+    transform: translateY(-4px);
+    color: var(--primary-color);
+}
+
+/* Specific Countdown Grid (Custom for this app but using Model) */
+.countdown-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.time-box {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 5px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.time-val {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: white;
+}
+
+.time-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
