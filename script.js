@@ -1,7 +1,7 @@
 
 
 
-const APP_VERSION = "8.1.0"; // Exam Graph Update
+const APP_VERSION = "8.2.0"; // Goals Feature Update
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -384,6 +384,100 @@ function updateDashboardSchedule() {
 }
 
 // --- CALC & INTERACTIVITY ---
+// --- GOALS & INTERACTIVITY ---
+const GOAL_COLLECTION = "mbsinav_goals";
+
+function handleQuickMenu(action) {
+    // Toggles active button
+    document.querySelectorAll('.shape-selector .shape-btn').forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    // Menu Logic
+    if (action === 'durum') {
+        document.getElementById('home-view-durum').classList.remove('hidden');
+        document.getElementById('home-view-hedefler').classList.add('hidden');
+    }
+    else if (action === 'hedefler') {
+        document.getElementById('home-view-durum').classList.add('hidden');
+        document.getElementById('home-view-hedefler').classList.remove('hidden');
+        loadGoals();
+    }
+    else if (action === 'netler') {
+        switchTab('exam');
+    }
+    else if (action === 'notlar') {
+        alert("Yakında...");
+    }
+}
+
+function addGoal() {
+    const input = document.getElementById('goal-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    if (db) {
+        db.collection(GOAL_COLLECTION).add({
+            text: text,
+            completed: false,
+            timestamp: Date.now()
+        }).then(() => {
+            input.value = ''; // Clear
+            // Listener will update UI
+        });
+    }
+}
+
+function loadGoals() {
+    if (!db) return;
+    // Real-time listener for goals
+    db.collection(GOAL_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+        const container = document.getElementById('goal-list');
+        if (!container) return;
+
+        if (snap.empty) {
+            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Henüz hedef eklemedin. Hadi başla! 🚀</div>`;
+            return;
+        }
+
+        let html = '';
+        snap.forEach(doc => {
+            const data = doc.data();
+            const isDone = data.completed;
+            html += `
+                <div class="list-item-card" style="border-left-color: ${isDone ? '#10b981' : '#f97316'}; opacity: ${isDone ? '0.6' : '1'};">
+                    <div class="item-info">
+                        <h3 style="text-decoration: ${isDone ? 'line-through' : 'none'}">${data.text}</h3>
+                        <span class="item-sub">${new Date(data.timestamp).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button onclick="toggleGoal('${doc.id}', ${!isDone})" style="background:none; border:none; cursor:pointer; color:${isDone ? '#10b981' : '#cbd5e1'}; font-size:1.2rem;">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                        <button onclick="deleteGoal('${doc.id}')" style="background:none; border:none; cursor:pointer; color:#ef4444; font-size:1rem;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    });
+}
+
+function toggleGoal(id, newState) {
+    db.collection(GOAL_COLLECTION).doc(id).update({ completed: newState });
+}
+
+function deleteGoal(id) {
+    if (confirm("Hedefi silmek istiyor musun?")) {
+        db.collection(GOAL_COLLECTION).doc(id).delete();
+    }
+}
+
+function filterSubjects(cat) {
+    // Simple mock filter for subjects tab
+}
+
 // --- CHART & EXAMS ---
 function switchExamSubTab(subTab) {
     // Buttons

@@ -69,39 +69,47 @@
         </div>
 
         <!-- Form Section (Today's Plan Preview) -->
-        <div class="form-section">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                <h4>Bugünün Programı</h4>
-                <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;" onclick="switchTab('program')">Tümü
-                    ></span>
-            </div>
+        <!-- VIEW 1: DURUM (Schedule Preview) -->
+        <div id="home-view-durum">
+            <div class="form-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                    <h4>Bugünün Programı</h4>
+                    <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;" onclick="switchTab('program')">Tümü
+                        ></span>
+                </div>
 
-            <div class="list-container">
-                <div class="list-item-card" style="border-left-color: #3b82f6;">
-                    <div class="item-info">
-                        <h3>Matematik - Türev</h3>
-                        <span class="item-sub">14:00 - 15:30</span>
-                    </div>
-                    <span class="item-badge badge-blue">Bekliyor</span>
+                <div class="list-container">
+                    <!-- JS Injected items will go here. Ideally script.js targets .list-container inside #home-view-durum -->
+                    <div style="text-align:center; padding:10px; color:#64748b;">Yükleniyor...</div>
                 </div>
-                <div class="list-item-card" style="border-left-color: #10b981;">
-                    <div class="item-info">
-                        <h3>Paragraf Çözümü</h3>
-                        <span class="item-sub">10:00 - 10:45</span>
-                    </div>
-                    <span class="item-badge badge-green">Tamam</span>
-                </div>
+            </div>
+            <!-- Version & Update Control -->
+            <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
+                <p style="font-size:0.8rem; color:#64748b; margin-bottom:5px;">Sürüm: <span
+                        id="app-version-display">--</span></p>
+                <button onclick="forceUpdate()" class="secondary-btn"
+                    style="font-size:0.8rem; padding:5px 10px; background:rgba(255,255,255,0.05);">
+                    <i class="fas fa-sync-alt"></i> Güncellemeyi Zorla
+                </button>
             </div>
         </div>
 
-        <!-- Version & Update Control -->
-        <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
-            <p style="font-size:0.8rem; color:#64748b; margin-bottom:5px;">Sürüm: <span
-                    id="app-version-display">--</span></p>
-            <button onclick="forceUpdate()" class="secondary-btn"
-                style="font-size:0.8rem; padding:5px 10px; background:rgba(255,255,255,0.05);">
-                <i class="fas fa-sync-alt"></i> Güncellemeyi Zorla
-            </button>
+        <!-- VIEW 2: HEDEFLER (Goals) -->
+        <div id="home-view-hedefler" class="hidden">
+            <div class="form-section">
+                <h4>Yeni Hedef Ekle</h4>
+                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
+                    <input type="text" id="goal-input" class="form-input" placeholder="Hedefin ne?">
+                    <button class="primary-btn" style="padding:10px 20px;" onclick="addGoal()">Ekle</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Hedeflerim</h4>
+                <div id="goal-list" class="list-container">
+                    <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+                </div>
+            </div>
         </div>
     </section>
 
