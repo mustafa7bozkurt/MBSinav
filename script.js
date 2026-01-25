@@ -1,5 +1,9 @@
 
-const APP_VERSION = "1.1.2"; // Bump this manually to force update UI
+
+const APP_VERSION = "6.0.0"; // Force Update Version
+
+// Force clear old tab state on load to ensure Home Page
+localStorage.removeItem('mbsinav_current_tab');
 
 function forceUpdate() {
     if ('serviceWorker' in navigator) {
