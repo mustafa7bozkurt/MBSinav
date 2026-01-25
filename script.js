@@ -326,8 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    const lastTab = localStorage.getItem('mbsinav_current_tab');
-    if (lastTab) switchTab(lastTab); else switchTab('home');
+    switchTab('home');
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').catch(console.log);
