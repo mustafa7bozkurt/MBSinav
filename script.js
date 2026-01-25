@@ -1,4 +1,23 @@
 
+const APP_VERSION = "1.1.0"; // Bump this manually to force update UI
+
+function forceUpdate() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+                registration.unregister();
+            }
+            window.location.reload(true);
+        });
+        // Also clear cache storage
+        caches.keys().then(names => {
+            for (let name of names) caches.delete(name);
+        });
+    } else {
+        window.location.reload(true);
+    }
+}
+
 // --- FIREBASE CONFIG (Copied from AluminyumHesap) ---
 const firebaseConfig = {
     apiKey: "AIzaSyA-iba_G88bOloy08of9LtV3WbGLIYj7sw",
@@ -323,6 +342,7 @@ function calculateNet() {
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('app-version-display').innerText = APP_VERSION;
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
