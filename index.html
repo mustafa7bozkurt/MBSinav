@@ -169,7 +169,46 @@
             </div>
         </section>
 
-        <!-- SECTION 3: NET HESAP (Calculator Model) -->
+        <!-- SECTION 3: PROGRAM (Schedule) -->
+        <section id="tab-program" class="mode-section">
+            <!-- Sunday Reminder Banner -->
+            <div id="sunday-banner"
+                style="background:#f59e0b; color:black; padding:15px; border-radius:15px; margin-bottom:20px; display:none;">
+                <h4 style="margin-bottom:5px;">Yeni Hafta Başlıyor!</h4>
+                <p style="font-size:0.9rem; margin-bottom:10px;">Geçen haftanın programını bu haftaya kopyalamak ister
+                    misin?</p>
+                <div style="display:flex; gap:10px;">
+                    <button class="secondary-btn" style="background:rgba(255,255,255,0.2); color:black; border:none;"
+                        onclick="hideSundayBanner()">Hayır</button>
+                    <button class="primary-btn" style="background:black; color:white; padding:8px;"
+                        onclick="copyLastWeek()">Evet, Kopyala</button>
+                </div>
+            </div>
+
+            <div class="page-title" style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>Haftalık Program</h2>
+                <button onclick="openScheduleModal()"
+                    style="background:var(--primary-color); color:white; border:none; width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer;">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Day Selector -->
+            <div class="shape-selector" id="day-selector">
+                <!-- JS will generate days (Pzt, Sal, Çrş...) -->
+            </div>
+
+            <!-- Schedule List -->
+            <div class="form-section">
+                <h4 id="schedule-day-title" style="color:#94a3b8;">Pazartesi</h4>
+                <div id="schedule-list" class="list-container">
+                    <!-- JS Injected Items -->
+                    <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: NET HESAP (Calculator Model) -->
         <section id="tab-exam" class="mode-section">
             <div class="page-title">
                 <h2>Net Hesapla</h2>
@@ -242,6 +281,40 @@
             <div style="display:flex; gap:10px;">
                 <button class="secondary-btn" onclick="closeDateModal()">İptal</button>
                 <button class="primary-btn" onclick="saveExamDate()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Edit Modal -->
+    <div id="schedule-modal" class="modal hidden"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; display:flex; justify-content:center; align-items:center;">
+        <div class="modal-content"
+            style="background:#334155; padding:25px; border-radius:20px; width:80%; max-width:350px;">
+            <h3 style="color:white; margin-bottom:15px; text-align:center;">Program Ekle</h3>
+
+            <label class="form-label">Gün</label>
+            <select id="sch-day" class="form-input">
+                <option value="1">Pazartesi</option>
+                <option value="2">Salı</option>
+                <option value="3">Çarşamba</option>
+                <option value="4">Perşembe</option>
+                <option value="5">Cuma</option>
+                <option value="6">Cumartesi</option>
+                <option value="0">Pazar</option>
+            </select>
+
+            <label class="form-label">Saat</label>
+            <input type="time" id="sch-time" class="form-input">
+
+            <label class="form-label">Ders / Etkinlik</label>
+            <input type="text" id="sch-subject" class="form-input" placeholder="Örn: Matematik">
+
+            <label class="form-label">Not (Opsiyonel)</label>
+            <input type="text" id="sch-note" class="form-input" placeholder="Konu, detay...">
+
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <button class="secondary-btn" onclick="closeScheduleModal()">İptal</button>
+                <button class="primary-btn" onclick="saveScheduleItem()">Kaydet</button>
             </div>
         </div>
     </div>
