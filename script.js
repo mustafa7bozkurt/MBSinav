@@ -1,5 +1,5 @@
 
-const APP_VERSION = "1.1.1"; // Bump this manually to force update UI
+const APP_VERSION = "1.1.2"; // Bump this manually to force update UI
 
 function forceUpdate() {
     if ('serviceWorker' in navigator) {
@@ -349,7 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
     switchTab('home');
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(console.log);
+        // CACHE BUSTING: Add version query param to force browser to see it as a new file
+        navigator.serviceWorker.register('./sw.js?v=' + APP_VERSION).catch(console.log);
     }
 
     if (typeof firebase !== 'undefined') {
