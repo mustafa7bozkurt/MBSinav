@@ -1,4 +1,27 @@
 
+// --- FIREBASE CONFIG (Copied from AluminyumHesap) ---
+const firebaseConfig = {
+    apiKey: "AIzaSyA-iba_G88bOloy08of9LtV3WbGLIYj7sw",
+    authDomain: "aluminyumapp.firebaseapp.com",
+    projectId: "aluminyumapp",
+    storageBucket: "aluminyumapp.firebasestorage.app",
+    messagingSenderId: "595544210446",
+    appId: "1:595544210446:web:120a178403556b3e06905f",
+    measurementId: "G-K44PGWGPG1"
+};
+
+// Initialize
+let db;
+try {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    console.log("Firebase initialized");
+} catch (e) {
+    console.log("Firebase init error (might be offline):", e);
+}
+
+const EXAM_COLLECTION = "mbsinav_exams";
+
 // --- Navigation Logic ---
 function switchTab(tabName) {
     // Hide all sections
@@ -73,6 +96,8 @@ function handleQuickMenu(action) {
         alert("Hedefler modülü yakında eklenecek!"); // Placeholder
     } else if (action === 'notlar') {
         alert("Not defteri açılıyor..."); // Placeholder
+    } else if (action === 'durum') {
+        switchTab('home');
     }
 }
 
@@ -94,15 +119,16 @@ function filterSubjects(category) {
     });
 }
 
-// 3. Calculator
+// 3. Calculator with Firebase Save
 function calculateNet() {
     // Get all inputs
     const inps = document.querySelectorAll('#tab-exam input');
     let totalNet = 0;
 
-    // Simple logic: (Correct - Wrong/4)
-    // We assume pairs of (Correct, Wrong) inputs in order
-    // This is a naive implementation for demo, robust one needs IDs
+    // Naive input gathering (Correct, Wrong pairs)
+    // Order: TR-D, TR-Y, MAT-D, MAT-Y, FEN-D, FEN-Y, SOC-D, SOC-Y
+    // We should probably rely on manual input order if IDs are not present, 
+    // but better to just sum what we find for now or assumes standard order.
 
     for (let i = 0; i < inps.length; i += 2) {
         const correct = parseFloat(inps[i].value) || 0;
@@ -112,27 +138,46 @@ function calculateNet() {
 
     const resDisplay = document.querySelector('#tab-exam .result-value');
     if (resDisplay) {
-        // Animate count up
-        let start = 0;
-        const duration = 1000;
-        const startTime = performance.now();
-
-        function update(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Ease out quart
-            const ease = 1 - Math.pow(1 - progress, 4);
-
-            const currentVal = start + (totalNet - start) * ease;
-            resDisplay.innerText = currentVal.toFixed(2);
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            }
-        }
-        requestAnimationFrame(update);
+        resDisplay.innerText = totalNet.toFixed(2);
     }
+
+    // Update Home Screen Stat as well
+    const homeNet = document.querySelector('.result-value');
+    // Note: Home screen might have same class, but ID targeting is safer. 
+    // For now, let's just save to DB.
+
+    saveExamResult(totalNet);
+}
+
+function saveExamResult(net) {
+    if (!db) return;
+
+    db.collection(EXAM_COLLECTION).add({
+        net: net,
+        date: new Date().toISOString(),
+        timestamp: Date.now()
+    }).then(() => {
+        console.log("Net saved!");
+        alert("Netiniz kaydedildi: " + net.toFixed(2));
+    }).catch(err => {
+        console.error("Save error", err);
+        alert("Kaydetme hatası (İnternet bağlantını kontrol et)");
+    });
+}
+
+// Load latest net on startup
+function loadStats() {
+    if (!db) return;
+
+    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(1).get().then(snap => {
+        if (!snap.empty) {
+            const data = snap.docs[0].data();
+            const val = data.net;
+            // Update UI
+            const displays = document.querySelectorAll('.result-value');
+            displays.forEach(d => d.innerText = val.toFixed(2));
+        }
+    });
 }
 
 // --- Initialization ---
@@ -153,5 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.serviceWorker.register('./sw.js')
             .then(reg => console.log('Service Worker Registered'))
             .catch(err => console.log('Service Worker Error:', err));
+    }
+
+    // Load Data
+    if (typeof firebase !== 'undefined') {
+        loadStats();
     }
 });
