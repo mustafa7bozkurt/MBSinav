@@ -98,8 +98,9 @@
         <div id="home-view-hedefler" class="hidden">
             <div class="form-section">
                 <h4>Yeni Hedef Ekle</h4>
-                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
+                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
                     <input type="text" id="goal-input" class="form-input" placeholder="Hedefin ne?">
+                    <input type="date" id="goal-date" class="form-input" style="padding:10px;">
                     <button class="primary-btn" style="padding:10px 20px;" onclick="addGoal()">Ekle</button>
                 </div>
             </div>
@@ -107,6 +108,25 @@
             <div class="form-section">
                 <h4>Hedeflerim</h4>
                 <div id="goal-list" class="list-container">
+                    <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: NOTLAR (Notes) -->
+        <div id="home-view-notlar" class="hidden">
+            <div class="form-section">
+                <h4>Yeni Not Ekle</h4>
+                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
+                    <input type="text" id="note-input" class="form-input" placeholder="Notun ne?">
+                    <input type="date" id="note-date" class="form-input" style="padding:10px;">
+                    <button class="primary-btn" style="padding:10px 20px;" onclick="addNote()">Ekle</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Notlarım</h4>
+                <div id="note-list" class="list-container">
                     <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
                 </div>
             </div>

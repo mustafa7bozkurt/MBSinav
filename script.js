@@ -1,7 +1,7 @@
 
 
 
-const APP_VERSION = "8.2.0"; // Goals Feature Update
+const APP_VERSION = "8.3.0"; // Notes & Date Update
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
