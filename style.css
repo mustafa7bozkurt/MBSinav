@@ -48,7 +48,9 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    /* Mobile Viewport Fix */
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -63,8 +65,11 @@ body {
     align-items: center;
     background: transparent;
     z-index: 10;
+    flex-shrink: 0;
+    /* Prevent header from shrinking */
 }
 
+/* ... (Logo styles skipped for brevity if unchanged) ... */
 .logo-area {
     display: flex;
     align-items: center;
@@ -95,8 +100,12 @@ main {
     flex: 1;
     position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
+    /* Native-like scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
     padding: 10px 20px;
-    padding-bottom: calc(var(--nav-height) + 20px);
+    padding-bottom: calc(var(--nav-height) + 40px);
+    /* Extra padding for bottom */
 }
 
 .mode-section {
