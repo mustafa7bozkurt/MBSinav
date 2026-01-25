@@ -1,6 +1,7 @@
 
 
-const APP_VERSION = "7.0.0"; // Nuclear Version
+
+const APP_VERSION = "8.0.0"; // Timeline Update
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -190,6 +191,7 @@ function selectScheduleDay(d) {
     renderSchedule(d);
 }
 
+
 function renderSchedule(dayIdx) {
     const title = document.getElementById('schedule-day-title');
     if (title) title.innerText = dayNames[dayIdx];
@@ -198,35 +200,65 @@ function renderSchedule(dayIdx) {
     if (!container) return;
     container.innerHTML = '';
 
-    const dayItems = fullSchedule.filter(i => parseInt(i.day) === dayIdx).sort((a, b) => a.time.localeCompare(b.time));
+    // Create a timeline container
+    const timelineContainer = document.createElement('div');
+    timelineContainer.className = 'timeline-container';
 
-    if (dayItems.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Bu gün için plan yok.</div>`;
-        return;
+    // Get items for this day
+    const dayItems = fullSchedule.filter(i => parseInt(i.day) === dayIdx);
+
+    // Loop from 07:00 to 24:00 (End of day)
+    for (let h = 7; h <= 23; h++) {
+        const hourStr = h.toString().padStart(2, '0') + ":00";
+
+        // Find item for this hour (Simple match)
+        // Note: Real apps might need range checks, but here we stick to simple "Start Time" match
+        const item = dayItems.find(i => i.time.startsWith(h.toString().padStart(2, '0'))); // Matches 07:xx
+
+        const row = document.createElement('div');
+        row.className = 'timeline-row';
+
+        let contentHtml = '';
+        if (item) {
+            contentHtml = `
+                <div class="list-item-card" style="border-left-color: #3b82f6; margin-bottom:0;">
+                    <div class="item-info">
+                        <h3>${item.subject}</h3>
+                        <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
+                    </div>
+                    <button onclick="deleteScheduleItem('${item.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+        } else {
+            contentHtml = `
+                <div class="empty-slot" onclick="openScheduleModal('${hourStr}')">
+                    <i class="fas fa-plus"></i> Ekle
+                </div>
+            `;
+        }
+
+        row.innerHTML = `
+            <div class="time-col">${hourStr}</div>
+            <div class="content-col">
+                ${contentHtml}
+            </div>
+        `;
+        timelineContainer.appendChild(row);
     }
 
-    dayItems.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'list-item-card';
-        // Random color border based on subject hash? or just static blue
-        div.style.borderLeftColor = '#3b82f6';
-
-        div.innerHTML = `
-            <div class="item-info">
-                <h3>${item.subject}</h3>
-                <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
-            </div>
-            <button onclick="deleteScheduleItem('${item.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
-        `;
-        container.appendChild(div);
-    });
+    container.appendChild(timelineContainer);
 }
 
 // Modal Logic
-function openScheduleModal() {
+function openScheduleModal(prefillTime = '') {
     document.getElementById('schedule-modal').classList.remove('hidden');
     // Pre-select current view day
     document.getElementById('sch-day').value = currentScheduleDay;
+    if (prefillTime) {
+        document.getElementById('sch-time').value = prefillTime;
+    } else {
+        document.getElementById('sch-time').value = '';
+    }
 }
 function closeScheduleModal() { document.getElementById('schedule-modal').classList.add('hidden'); }
 
