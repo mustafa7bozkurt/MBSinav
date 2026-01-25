@@ -27,254 +27,259 @@
             <i class="far fa-bell" style="font-size: 1.4rem; color: #94a3b8;"></i>
         </div>
     </header>
+    </header>
 
-    <main>
-        <!-- SECTION 1: ANA SAYFA (Dashboard) -->
-        <section id="tab-home" class="mode-section active">
-            <div class="page-title">
-                <h2>Genel Bakış</h2>
+    <!-- NUCLEAR VERSION MARKER -->
+    <div
+        style="background-color: #ef4444; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999;">
+        V7 - GÜNCEL (CACHE TEMİZLENDİ)
+    </div>
+    <!-- SECTION 1: ANA SAYFA (Dashboard) -->
+    <section id="tab-home" class="mode-section active">
+        <div class="page-title">
+            <h2>Genel Bakış</h2>
+        </div>
+
+        <!-- Big Result Display (Countdown) -->
+        <div class="result-display" onclick="openDateModal()" style="cursor:pointer;"
+            title="Tarihi değiştirmek için tıkla">
+            <span class="result-label">Sınava Kalan</span>
+            <div class="countdown-grid" id="countdown-display">
+                <!-- JS Injected -->
+                <div class="time-box"><span class="time-val">--</span><span class="time-label">GÜN</span></div>
+                <div class="time-box"><span class="time-val">--</span><span class="time-label">SAAT</span></div>
+                <div class="time-box"><span class="time-val">--</span><span class="time-label">DK</span></div>
+            </div>
+            <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">(Değiştirmek için tıkla)</div>
+        </div>
+
+        <!-- Horizontal Selector (Quick Actions or Status) -->
+        <div class="shape-selector">
+            <div class="shape-btn active" onclick="handleQuickMenu('durum')">
+                <i class="fas fa-chart-pie"></i>
+                <span>Durum</span>
+            </div>
+            <div class="shape-btn" onclick="handleQuickMenu('hedefler')">
+                <i class="fas fa-bullseye"></i>
+                <span>Hedefler</span>
+            </div>
+            <div class="shape-btn" onclick="handleQuickMenu('netler')">
+                <i class="fas fa-chart-line"></i>
+                <span>Netler</span>
+            </div>
+            <div class="shape-btn" onclick="handleQuickMenu('notlar')">
+                <i class="fas fa-sticky-note"></i>
+                <span>Notlar</span>
+            </div>
+        </div>
+
+        <!-- Form Section (Today's Plan Preview) -->
+        <div class="form-section">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h4>Bugünün Programı</h4>
+                <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;" onclick="switchTab('program')">Tümü
+                    ></span>
             </div>
 
-            <!-- Big Result Display (Countdown) -->
-            <div class="result-display" onclick="openDateModal()" style="cursor:pointer;"
-                title="Tarihi değiştirmek için tıkla">
-                <span class="result-label">Sınava Kalan</span>
-                <div class="countdown-grid" id="countdown-display">
-                    <!-- JS Injected -->
-                    <div class="time-box"><span class="time-val">--</span><span class="time-label">GÜN</span></div>
-                    <div class="time-box"><span class="time-val">--</span><span class="time-label">SAAT</span></div>
-                    <div class="time-box"><span class="time-val">--</span><span class="time-label">DK</span></div>
-                </div>
-                <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">(Değiştirmek için tıkla)</div>
-            </div>
-
-            <!-- Horizontal Selector (Quick Actions or Status) -->
-            <div class="shape-selector">
-                <div class="shape-btn active" onclick="handleQuickMenu('durum')">
-                    <i class="fas fa-chart-pie"></i>
-                    <span>Durum</span>
-                </div>
-                <div class="shape-btn" onclick="handleQuickMenu('hedefler')">
-                    <i class="fas fa-bullseye"></i>
-                    <span>Hedefler</span>
-                </div>
-                <div class="shape-btn" onclick="handleQuickMenu('netler')">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Netler</span>
-                </div>
-                <div class="shape-btn" onclick="handleQuickMenu('notlar')">
-                    <i class="fas fa-sticky-note"></i>
-                    <span>Notlar</span>
-                </div>
-            </div>
-
-            <!-- Form Section (Today's Plan Preview) -->
-            <div class="form-section">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                    <h4>Bugünün Programı</h4>
-                    <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;" onclick="switchTab('program')">Tümü
-                        ></span>
-                </div>
-
-                <div class="list-container">
-                    <div class="list-item-card" style="border-left-color: #3b82f6;">
-                        <div class="item-info">
-                            <h3>Matematik - Türev</h3>
-                            <span class="item-sub">14:00 - 15:30</span>
-                        </div>
-                        <span class="item-badge badge-blue">Bekliyor</span>
+            <div class="list-container">
+                <div class="list-item-card" style="border-left-color: #3b82f6;">
+                    <div class="item-info">
+                        <h3>Matematik - Türev</h3>
+                        <span class="item-sub">14:00 - 15:30</span>
                     </div>
-                    <div class="list-item-card" style="border-left-color: #10b981;">
-                        <div class="item-info">
-                            <h3>Paragraf Çözümü</h3>
-                            <span class="item-sub">10:00 - 10:45</span>
-                        </div>
-                        <span class="item-badge badge-green">Tamam</span>
+                    <span class="item-badge badge-blue">Bekliyor</span>
+                </div>
+                <div class="list-item-card" style="border-left-color: #10b981;">
+                    <div class="item-info">
+                        <h3>Paragraf Çözümü</h3>
+                        <span class="item-sub">10:00 - 10:45</span>
                     </div>
+                    <span class="item-badge badge-green">Tamam</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Version & Update Control -->
+        <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:5px;">Sürüm: <span
+                    id="app-version-display">--</span></p>
+            <button onclick="forceUpdate()" class="secondary-btn"
+                style="font-size:0.8rem; padding:5px 10px; background:rgba(255,255,255,0.05);">
+                <i class="fas fa-sync-alt"></i> Güncellemeyi Zorla
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: KONULAR (Subjects) -->
+    <section id="tab-subjects" class="mode-section">
+        <div class="page-title">
+            <h2>Konu Takibi</h2>
+        </div>
+
+        <!-- Filter Shape Selector -->
+        <div class="shape-selector">
+            <div class="shape-btn active" onclick="filterSubjects('all')">
+                <i class="fas fa-layer-group"></i>
+                <span>Tümü</span>
+            </div>
+            <div class="shape-btn" onclick="filterSubjects('mat')">
+                <i class="fas fa-infinity"></i>
+                <span>Matematik</span>
+            </div>
+            <div class="shape-btn" onclick="filterSubjects('tr')">
+                <i class="fas fa-book"></i>
+                <span>Türkçe</span>
+            </div>
+            <div class="shape-btn" onclick="filterSubjects('fen')">
+                <i class="fas fa-flask"></i>
+                <span>Fen</span>
+            </div>
+            <div class="shape-btn" onclick="filterSubjects('sos')">
+                <i class="fas fa-globe-europe"></i>
+                <span>Sosyal</span>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <!-- Search Input -->
+            <div style="margin-bottom:20px;">
+                <div class="input-grid" style="grid-template-columns: 1fr;">
+                    <input type="text" class="form-input" placeholder="Konu ara...">
                 </div>
             </div>
 
-            <!-- Version & Update Control -->
-            <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
-                <p style="font-size:0.8rem; color:#64748b; margin-bottom:5px;">Sürüm: <span
-                        id="app-version-display">--</span></p>
-                <button onclick="forceUpdate()" class="secondary-btn"
-                    style="font-size:0.8rem; padding:5px 10px; background:rgba(255,255,255,0.05);">
-                    <i class="fas fa-sync-alt"></i> Güncellemeyi Zorla
-                </button>
-            </div>
-        </section>
+            <div id="subject-list" class="list-container">
+                <div class="list-item-card" data-category="mat" style="border-left-color: #10b981;">
+                    <div class="item-info">
+                        <h3>Üslü Sayılar</h3>
+                        <span class="item-sub">%100 Tamamlandı</span>
+                    </div>
+                    <i class="fas fa-check-circle" style="color:#10b981; font-size:1.5rem;"></i>
+                </div>
 
-        <!-- SECTION 2: KONULAR (Subjects) -->
-        <section id="tab-subjects" class="mode-section">
-            <div class="page-title">
-                <h2>Konu Takibi</h2>
-            </div>
+                <div class="list-item-card" data-category="mat" style="border-left-color: #f97316;">
+                    <div class="item-info">
+                        <h3>Logaritma</h3>
+                        <span class="item-sub">%45 İlerleme</span>
+                    </div>
+                    <span class="item-badge badge-orange">Çalışılıyor</span>
+                </div>
 
-            <!-- Filter Shape Selector -->
-            <div class="shape-selector">
-                <div class="shape-btn active" onclick="filterSubjects('all')">
-                    <i class="fas fa-layer-group"></i>
-                    <span>Tümü</span>
+                <div class="list-item-card" data-category="mat" style="border-left-color: #64748b;">
+                    <div class="item-info">
+                        <h3>İntegral</h3>
+                        <span class="item-sub">Henüz başlanmadı</span>
+                    </div>
+                    <span class="item-badge" style="background:rgba(255,255,255,0.1)">Sıra Bekliyor</span>
                 </div>
-                <div class="shape-btn" onclick="filterSubjects('mat')">
-                    <i class="fas fa-infinity"></i>
-                    <span>Matematik</span>
-                </div>
-                <div class="shape-btn" onclick="filterSubjects('tr')">
-                    <i class="fas fa-book"></i>
-                    <span>Türkçe</span>
-                </div>
-                <div class="shape-btn" onclick="filterSubjects('fen')">
-                    <i class="fas fa-flask"></i>
-                    <span>Fen</span>
-                </div>
-                <div class="shape-btn" onclick="filterSubjects('sos')">
-                    <i class="fas fa-globe-europe"></i>
-                    <span>Sosyal</span>
+
+                <div class="list-item-card" data-category="tr" style="border-left-color: #f97316;">
+                    <div class="item-info">
+                        <h3>Paragraf</h3>
+                        <span class="item-sub">%80 İlerleme</span>
+                    </div>
+                    <span class="item-badge badge-orange">Çalışılıyor</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="form-section">
-                <!-- Search Input -->
-                <div style="margin-bottom:20px;">
-                    <div class="input-grid" style="grid-template-columns: 1fr;">
-                        <input type="text" class="form-input" placeholder="Konu ara...">
-                    </div>
+    <!-- SECTION 3: PROGRAM (Schedule) -->
+    <section id="tab-program" class="mode-section">
+        <!-- Sunday Reminder Banner -->
+        <div id="sunday-banner"
+            style="background:#f59e0b; color:black; padding:15px; border-radius:15px; margin-bottom:20px; display:none;">
+            <h4 style="margin-bottom:5px;">Yeni Hafta Başlıyor!</h4>
+            <p style="font-size:0.9rem; margin-bottom:10px;">Geçen haftanın programını bu haftaya kopyalamak ister
+                misin?</p>
+            <div style="display:flex; gap:10px;">
+                <button class="secondary-btn" style="background:rgba(255,255,255,0.2); color:black; border:none;"
+                    onclick="hideSundayBanner()">Hayır</button>
+                <button class="primary-btn" style="background:black; color:white; padding:8px;"
+                    onclick="copyLastWeek()">Evet, Kopyala</button>
+            </div>
+        </div>
+
+        <div class="page-title" style="display:flex; justify-content:space-between; align-items:center;">
+            <h2>Haftalık Program</h2>
+            <button onclick="openScheduleModal()" class="secondary-btn"
+                style="background:#3b82f6; color:white; border:none; padding:8px 16px; border-radius:8px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-pen"></i> Programı Düzenle
+            </button>
+        </div>
+
+        <!-- Day Selector -->
+        <div class="shape-selector" id="day-selector">
+            <!-- JS will generate days (Pzt, Sal, Çrş...) -->
+        </div>
+
+        <!-- Schedule List -->
+        <div class="form-section">
+            <h4 id="schedule-day-title" style="color:#94a3b8;">Pazartesi</h4>
+            <div id="schedule-list" class="list-container">
+                <!-- JS Injected Items -->
+                <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: NET HESAP (Calculator Model) -->
+    <section id="tab-exam" class="mode-section">
+        <div class="page-title">
+            <h2>Net Hesapla</h2>
+        </div>
+
+        <!-- Result Display Model -->
+        <div class="result-display">
+            <span class="result-label">Toplam Net</span>
+            <div class="result-value">72.50</div>
+            <span class="result-unit">NET</span>
+        </div>
+
+        <div class="form-section">
+            <h4>Deneme Sonuçları</h4>
+
+            <!-- Input Grid for TYT/AYT -->
+            <div class="input-grid" style="margin-bottom:15px;">
+                <div>
+                    <label class="form-label">Türkçe (D)</label>
+                    <input type="number" class="form-input" value="32">
                 </div>
-
-                <div id="subject-list" class="list-container">
-                    <div class="list-item-card" data-category="mat" style="border-left-color: #10b981;">
-                        <div class="item-info">
-                            <h3>Üslü Sayılar</h3>
-                            <span class="item-sub">%100 Tamamlandı</span>
-                        </div>
-                        <i class="fas fa-check-circle" style="color:#10b981; font-size:1.5rem;"></i>
-                    </div>
-
-                    <div class="list-item-card" data-category="mat" style="border-left-color: #f97316;">
-                        <div class="item-info">
-                            <h3>Logaritma</h3>
-                            <span class="item-sub">%45 İlerleme</span>
-                        </div>
-                        <span class="item-badge badge-orange">Çalışılıyor</span>
-                    </div>
-
-                    <div class="list-item-card" data-category="mat" style="border-left-color: #64748b;">
-                        <div class="item-info">
-                            <h3>İntegral</h3>
-                            <span class="item-sub">Henüz başlanmadı</span>
-                        </div>
-                        <span class="item-badge" style="background:rgba(255,255,255,0.1)">Sıra Bekliyor</span>
-                    </div>
-
-                    <div class="list-item-card" data-category="tr" style="border-left-color: #f97316;">
-                        <div class="item-info">
-                            <h3>Paragraf</h3>
-                            <span class="item-sub">%80 İlerleme</span>
-                        </div>
-                        <span class="item-badge badge-orange">Çalışılıyor</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: PROGRAM (Schedule) -->
-        <section id="tab-program" class="mode-section">
-            <!-- Sunday Reminder Banner -->
-            <div id="sunday-banner"
-                style="background:#f59e0b; color:black; padding:15px; border-radius:15px; margin-bottom:20px; display:none;">
-                <h4 style="margin-bottom:5px;">Yeni Hafta Başlıyor!</h4>
-                <p style="font-size:0.9rem; margin-bottom:10px;">Geçen haftanın programını bu haftaya kopyalamak ister
-                    misin?</p>
-                <div style="display:flex; gap:10px;">
-                    <button class="secondary-btn" style="background:rgba(255,255,255,0.2); color:black; border:none;"
-                        onclick="hideSundayBanner()">Hayır</button>
-                    <button class="primary-btn" style="background:black; color:white; padding:8px;"
-                        onclick="copyLastWeek()">Evet, Kopyala</button>
-                </div>
-            </div>
-
-            <div class="page-title" style="display:flex; justify-content:space-between; align-items:center;">
-                <h2>Haftalık Program</h2>
-                <button onclick="openScheduleModal()" class="secondary-btn"
-                    style="background:#3b82f6; color:white; border:none; padding:8px 16px; border-radius:8px; font-size:0.9rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">
-                    <i class="fas fa-pen"></i> Programı Düzenle
-                </button>
-            </div>
-
-            <!-- Day Selector -->
-            <div class="shape-selector" id="day-selector">
-                <!-- JS will generate days (Pzt, Sal, Çrş...) -->
-            </div>
-
-            <!-- Schedule List -->
-            <div class="form-section">
-                <h4 id="schedule-day-title" style="color:#94a3b8;">Pazartesi</h4>
-                <div id="schedule-list" class="list-container">
-                    <!-- JS Injected Items -->
-                    <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+                <div>
+                    <label class="form-label">Türkçe (Y)</label>
+                    <input type="number" class="form-input" value="8">
                 </div>
             </div>
-        </section>
 
-        <!-- SECTION 4: NET HESAP (Calculator Model) -->
-        <section id="tab-exam" class="mode-section">
-            <div class="page-title">
-                <h2>Net Hesapla</h2>
+            <div class="input-grid" style="margin-bottom:15px;">
+                <div>
+                    <label class="form-label">Matematik (D)</label>
+                    <input type="number" class="form-input" value="25">
+                </div>
+                <div>
+                    <label class="form-label">Matematik (Y)</label>
+                    <input type="number" class="form-input" value="2">
+                </div>
             </div>
 
-            <!-- Result Display Model -->
-            <div class="result-display">
-                <span class="result-label">Toplam Net</span>
-                <div class="result-value">72.50</div>
-                <span class="result-unit">NET</span>
+            <div class="divider"></div>
+
+            <div class="input-grid" style="margin-bottom:15px;">
+                <div>
+                    <label class="form-label">Fen (D)</label>
+                    <input type="number" class="form-input" value="15">
+                </div>
+                <div>
+                    <label class="form-label">Sosyal (D)</label>
+                    <input type="number" class="form-input" value="12">
+                </div>
             </div>
 
-            <div class="form-section">
-                <h4>Deneme Sonuçları</h4>
-
-                <!-- Input Grid for TYT/AYT -->
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Türkçe (D)</label>
-                        <input type="number" class="form-input" value="32">
-                    </div>
-                    <div>
-                        <label class="form-label">Türkçe (Y)</label>
-                        <input type="number" class="form-input" value="8">
-                    </div>
-                </div>
-
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Matematik (D)</label>
-                        <input type="number" class="form-input" value="25">
-                    </div>
-                    <div>
-                        <label class="form-label">Matematik (Y)</label>
-                        <input type="number" class="form-input" value="2">
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Fen (D)</label>
-                        <input type="number" class="form-input" value="15">
-                    </div>
-                    <div>
-                        <label class="form-label">Sosyal (D)</label>
-                        <input type="number" class="form-input" value="12">
-                    </div>
-                </div>
-
-                <button class="primary-btn mt-20" onclick="calculateNet()">
-                    <i class="fas fa-calculator"></i> Hesapla ve Kaydet
-                </button>
-            </div>
-        </section>
+            <button class="primary-btn mt-20" onclick="calculateNet()">
+                <i class="fas fa-calculator"></i> Hesapla ve Kaydet
+            </button>
+        </div>
+    </section>
 
     </main>
 

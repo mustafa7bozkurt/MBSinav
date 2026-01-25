@@ -1,6 +1,19 @@
 
 
-const APP_VERSION = "6.0.0"; // Force Update Version
+const APP_VERSION = "7.0.0"; // Nuclear Version
+
+// KILL ALL SERVICE WORKERS IMMEDIATELY
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+            console.log("Unregistering SW:", registration);
+            registration.unregister();
+        }
+    });
+    caches.keys().then(names => {
+        for (let name of names) caches.delete(name);
+    });
+}
 
 // Force clear old tab state on load to ensure Home Page
 localStorage.removeItem('mbsinav_current_tab');
