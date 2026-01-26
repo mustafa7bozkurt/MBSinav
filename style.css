@@ -231,6 +231,21 @@ main {
     color: var(--primary-color);
 }
 
+.small-tab {
+    padding: 10px;
+    min-width: 80px;
+    gap: 5px;
+    border-radius: 12px;
+}
+
+.small-tab i {
+    font-size: 1.2rem;
+}
+
+.small-tab span {
+    font-size: 0.75rem;
+}
+
 /* 3. Form Section Model */
 .form-section {
     background: var(--card-bg);

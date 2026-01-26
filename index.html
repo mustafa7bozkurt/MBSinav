@@ -30,61 +30,72 @@
     </header>
 
     <!-- SECTION 1: ANA SAYFA (Dashboard) -->
+    <!-- SECTION 1: ANA SAYFA (Dashboard) -->
     <section id="tab-home" class="mode-section active">
-        <div class="page-title">
-            <h2>Genel Bakış</h2>
-        </div>
-
-        <!-- Big Result Display (Countdown) -->
-        <div class="result-display" onclick="openDateModal()" style="cursor:pointer;"
-            title="Tarihi değiştirmek için tıkla">
-            <span class="result-label">Sınava Kalan</span>
-            <div class="countdown-grid" id="countdown-display">
-                <!-- JS Injected -->
-                <div class="time-box"><span class="time-val">--</span><span class="time-label">GÜN</span></div>
-                <div class="time-box"><span class="time-val">--</span><span class="time-label">SAAT</span></div>
-                <div class="time-box"><span class="time-val">--</span><span class="time-label">DK</span></div>
+        <!-- New Top Menu for Home -->
+        <div class="shape-selector"
+            style="margin-bottom:15px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:5px;">
+            <div class="shape-btn small-tab active" onclick="switchHomeSubTab('genel')">
+                <i class="fas fa-home"></i>
+                <span>Genel Bakış</span>
             </div>
-            <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">(Değiştirmek için tıkla)</div>
-        </div>
-
-        <!-- Horizontal Selector (Quick Actions or Status) -->
-        <div class="shape-selector">
-            <div class="shape-btn active" onclick="handleQuickMenu('durum')">
+            <div class="shape-btn small-tab" onclick="switchHomeSubTab('durum')">
                 <i class="fas fa-chart-pie"></i>
                 <span>Durum</span>
             </div>
-            <div class="shape-btn" onclick="handleQuickMenu('hedefler')">
+            <div class="shape-btn small-tab" onclick="switchHomeSubTab('hedefler')">
                 <i class="fas fa-bullseye"></i>
                 <span>Hedefler</span>
             </div>
-            <div class="shape-btn" onclick="handleQuickMenu('netler')">
+            <div class="shape-btn small-tab" onclick="switchTab('exam')">
                 <i class="fas fa-chart-line"></i>
                 <span>Netler</span>
             </div>
-            <div class="shape-btn" onclick="handleQuickMenu('notlar')">
+            <div class="shape-btn small-tab" onclick="switchHomeSubTab('notlar')">
                 <i class="fas fa-sticky-note"></i>
                 <span>Notlar</span>
             </div>
         </div>
 
-
-        <!-- Form Section (Today's Plan Preview) -->
-        <!-- VIEW 1: DURUM (Schedule Preview) -->
-        <div id="home-view-durum">
-            <div class="form-section">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                    <h4>Bugünün Programı</h4>
-                    <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;" onclick="switchTab('program')">Tümü
-                        ></span>
+        <!-- VIEW 1: GENEL BAKIŞ (Overview) - NEW -->
+        <div id="home-view-genel">
+            <!-- 1. Countdown -->
+            <div class="result-display" onclick="openDateModal()"
+                style="cursor:pointer; margin-bottom:15px; padding:20px;" title="Tarihi değiştirmek için tıkla">
+                <span class="result-label">Sınava Kalan</span>
+                <div class="countdown-grid" id="countdown-display">
+                    <!-- JS Injected -->
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">GÜN</span></div>
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">SAAT</span></div>
+                    <div class="time-box"><span class="time-val">--</span><span class="time-label">DK</span></div>
                 </div>
+            </div>
 
-                <div class="list-container">
-                    <!-- JS Injected items will go here. Ideally script.js targets .list-container inside #home-view-durum -->
+            <!-- 2. Today's Plan Preview -->
+            <div class="form-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h4>Bugünün Programı</h4>
+                    <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;"
+                        onclick="switchHomeSubTab('durum')">Detay ></span>
+                </div>
+                <div class="list-container" id="dashboard-schedule-list">
                     <div style="text-align:center; padding:10px; color:#64748b;">Yükleniyor...</div>
                 </div>
             </div>
-            <!-- Version & Update Control -->
+
+            <!-- 3. Today's Goals Preview -->
+            <div class="form-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h4>Bugünün Hedefleri</h4>
+                    <span style="font-size:0.8rem; color:#3b82f6; cursor:pointer;"
+                        onclick="switchHomeSubTab('hedefler')">Tümü ></span>
+                </div>
+                <div class="list-container" id="dashboard-goals-list">
+                    <div style="text-align:center; padding:10px; color:#64748b;">Yükleniyor...</div>
+                </div>
+            </div>
+
+            <!-- Version -->
             <div style="text-align:center; margin-top:20px; margin-bottom:10px;">
                 <p style="font-size:0.8rem; color:#64748b; margin-bottom:5px;">Sürüm: <span
                         id="app-version-display">--</span></p>
@@ -95,13 +106,24 @@
             </div>
         </div>
 
-        <!-- VIEW 2: HEDEFLER (Goals) -->
+        <!-- VIEW 2: DURUM (Full Schedule) -->
+        <div id="home-view-durum" class="hidden">
+            <!-- Reuse existing logic but simplified usage -->
+            <div class="form-section">
+                <h4 style="margin-bottom:15px;">Günlük Akış</h4>
+                <div class="list-container" id="durum-schedule-list">
+                    <!-- JS Injected exact copy of schedule list logic -->
+                    <div style="text-align:center; padding:10px; color:#64748b;">Yükleniyor...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: HEDEFLER (Goals) -->
         <div id="home-view-hedefler" class="hidden">
             <div class="form-section">
                 <h4>Yeni Hedef Ekle</h4>
-                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
+                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
                     <input type="text" id="goal-input" class="form-input" placeholder="Hedefin ne?">
-                    <input type="date" id="goal-date" class="form-input" style="padding:10px;">
                     <button class="primary-btn" style="padding:10px 20px;" onclick="addGoal()">Ekle</button>
                 </div>
             </div>
@@ -114,21 +136,19 @@
             </div>
         </div>
 
-        <!-- VIEW 3: NOTLAR (Notes) -->
+        <!-- VIEW 4: NOTLAR (Notes) -->
         <div id="home-view-notlar" class="hidden">
             <div class="form-section">
                 <h4>Yeni Not Ekle</h4>
-                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
+                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
                     <input type="text" id="note-input" class="form-input" placeholder="Notun ne?">
-                    <input type="date" id="note-date" class="form-input" style="padding:10px;">
                     <button class="primary-btn" style="padding:10px 20px;" onclick="addNote()">Ekle</button>
                 </div>
             </div>
-
             <div class="form-section">
                 <h4>Notlarım</h4>
                 <div id="note-list" class="list-container">
-                    <div style="text-align:center; padding:20px; color:#64748b;">Yükleniyor...</div>
+                    <div style="text-align:center; padding:20px; color:#64748b;">Henüz not yok...</div>
                 </div>
             </div>
         </div>

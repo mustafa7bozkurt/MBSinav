@@ -118,12 +118,12 @@ function loadSettings() {
                 updateCountdown();
             }
         } else {
-            // Create default if not exists
-            db.collection(SETTINGS_COLLECTION).doc('global').set({
-                targetDate: targetDate
-            });
+            // Create default
+            updateCountdown();
         }
     });
+    // Also init home view
+    switchHomeSubTab('genel');
 }
 
 function updateCountdown() {
@@ -389,7 +389,8 @@ function updateDashboardSchedule() {
     // Let's find a way to target it.
     // We can add an ID to that list in HTML update later, or use querySelector.
     // Selector: #tab-home .list-container
-    const container = document.querySelector('#tab-home .list-container');
+    // Updated Selector for Genel Bakış list
+    const container = document.getElementById('dashboard-schedule-list');
     if (!container) return;
 
     const d = new Date().getDay();
@@ -421,28 +422,99 @@ function updateDashboardSchedule() {
 // --- GOALS & INTERACTIVITY ---
 const GOAL_COLLECTION = "mbsinav_goals";
 
-function handleQuickMenu(action) {
-    // Toggles active button
-    document.querySelectorAll('.shape-selector .shape-btn').forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+// --- HOME SUB-TABS ---
+function switchHomeSubTab(tabName) {
+    // 1. Update Buttons
+    const buttons = document.querySelectorAll('#tab-home .shape-selector .shape-btn');
+    buttons.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(`'${tabName}'`)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 
-    // Menu Logic
-    if (action === 'durum') {
-        document.getElementById('home-view-durum').classList.remove('hidden');
-        document.getElementById('home-view-hedefler').classList.add('hidden');
+    // 2. Hide All Views
+    document.getElementById('home-view-genel').classList.add('hidden');
+    document.getElementById('home-view-durum').classList.add('hidden');
+    document.getElementById('home-view-hedefler').classList.add('hidden');
+    document.getElementById('home-view-notlar').classList.add('hidden');
+
+    // 3. Show Target View
+    const target = document.getElementById(`home-view-${tabName}`);
+    if (target) {
+        target.classList.remove('hidden');
     }
-    else if (action === 'hedefler') {
-        document.getElementById('home-view-durum').classList.add('hidden');
-        document.getElementById('home-view-hedefler').classList.remove('hidden');
+
+    // 4. Specific Loads
+    if (tabName === 'genel') {
+        updateDashboardSchedule();
+        renderDashboardGoals();
+    } else if (tabName === 'durum') {
+        renderDurumSchedule(); // New function for list view in Durum tab
+    } else if (tabName === 'hedefler') {
         loadGoals();
-    }
-    else if (action === 'netler') {
-        switchTab('exam');
-    }
-    else if (action === 'notlar') {
-        alert("Yakında...");
+    } else if (tabName === 'notlar') {
+        loadNotes(); // Assuming loadNotes exists or needs creation
     }
 }
+
+
+// Render Today's Goals for Dashboard
+function renderDashboardGoals() {
+    if (!db) return;
+    // Just show top 3 goals
+    db.collection(GOAL_COLLECTION).where('completed', '==', false).limit(3).get().then(snap => {
+        const container = document.getElementById('dashboard-goals-list');
+        if (!container) return;
+
+        if (snap.empty) {
+            container.innerHTML = `<div style="text-align:center; padding:10px; color:#64748b;">Bugün için hedefin yok.</div>`;
+            return;
+        }
+
+        let html = '';
+        snap.forEach(doc => {
+            const data = doc.data();
+            html += `
+                <div class="list-item-card" style="border-left-color: #f97316; padding:10px;">
+                    <span style="font-size:0.9rem;">${data.text}</span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    });
+}
+
+function renderDurumSchedule() {
+    // Shows same as dashboard but allows see all essentially (reusing updateDashboardSchedule logic but targeting different container?)
+    // Actually updateDashboardSchedule filters by Today. 'Durum' tab usually implies Status of Today.
+    // So let's reuse logic but target #durum-schedule-list
+    const container = document.getElementById('durum-schedule-list');
+    if (!container) return;
+
+    const d = new Date().getDay();
+    const todayItems = fullSchedule.filter(i => parseInt(i.day) === d).sort((a, b) => a.time.localeCompare(b.time));
+
+    if (todayItems.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:10px; color:#64748b;">Bugün boşsun! 🥳</div>`;
+        return;
+    }
+
+    let html = '';
+    todayItems.forEach(item => {
+        html += `
+             <div class="list-item-card" style="border-left-color: #3b82f6;">
+                <div class="item-info">
+                    <h3>${item.subject}</h3>
+                    <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
 
 function addGoal() {
     const input = document.getElementById('goal-input');
@@ -455,8 +527,9 @@ function addGoal() {
             completed: false,
             timestamp: Date.now()
         }).then(() => {
-            input.value = ''; // Clear
-            // Listener will update UI
+            input.value = '';
+            loadGoals(); // Refresh list if on Goals tab
+            renderDashboardGoals(); // Refresh dashboard if needed
         });
     }
 }
@@ -508,7 +581,60 @@ function deleteGoal(id) {
     }
 }
 
-// --- DYNAMIC SUBJECTS & TOPICS SYSTEM ---
+// --- NOTES SYSTEM ---
+const NOTES_COLLECTION = "mbsinav_notes";
+
+function addNote() {
+    const input = document.getElementById('note-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    if (db) {
+        db.collection(NOTES_COLLECTION).add({
+            text: text,
+            timestamp: Date.now()
+        }).then(() => {
+            input.value = '';
+        });
+    }
+}
+
+function loadNotes() {
+    if (!db) return;
+    db.collection(NOTES_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+        const container = document.getElementById('note-list');
+        if (!container) return;
+
+        if (snap.empty) {
+            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Henüz not yok.</div>`;
+            return;
+        }
+
+        let html = '';
+        snap.forEach(doc => {
+            const data = doc.data();
+            html += `
+                <div class="list-item-card" style="border-left-color: #a855f7;">
+                    <div class="item-info">
+                        <h3>${data.text}</h3>
+                        <span class="item-sub">${new Date(data.timestamp).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                    <button onclick="deleteNote('${doc.id}')" style="background:none; border:none; cursor:pointer; color:#ef4444;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    });
+}
+
+function deleteNote(id) {
+    if (confirm("Notu silmek istiyor musun?")) {
+        db.collection(NOTES_COLLECTION).doc(id).delete();
+    }
+}
+
 const SUBJECTS_COLLECTION = "mbsinav_subjects";
 const TOPICS_COLLECTION = "mbsinav_topics";
 
