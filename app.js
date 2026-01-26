@@ -1,7 +1,5 @@
-
-
-
-const APP_VERSION = "9.0.0"; // RENAMED TO app.js
+// --- CONFIGURATION ---
+const APP_VERSION = "9.1.0"; // Updated for Social Content Expansion
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -1476,15 +1474,29 @@ async function loadStories() {
     const container = document.getElementById('story-list');
     try {
         const res = await fetch('stories.json?v=' + APP_VERSION);
-        const stories = await res.json();
+        let stories = await res.json();
+
+        // Filter out requested removal if it exists (just in case)
+        stories = stories.filter(s => !s.name.includes("Atatürk"));
 
         let html = '';
-        stories.forEach(s => {
+        stories.forEach((s, index) => {
+            // Shorten story for preview
+            const isLong = s.story.length > 100;
+            const preview = isLong ? s.story.substring(0, 100) + '...' : s.story;
+
             html += `
-                 <div class="list-item-card" style="border-left-color: #fb923c; display:block;">
-                    <h3 style="color:#fb923c;">${s.name}</h3>
+                 <div class="list-item-card" id="story-${index}" style="border-left-color: #fb923c; display:block; cursor:pointer;" onclick="toggleStory(${index})">
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3 style="color:#fb923c;">${s.name}</h3>
+                        <i class="fas fa-chevron-down" id="icon-${index}" style="color:#cbd5e1; transition:transform 0.3s;"></i>
+                    </div>
                     <span class="item-sub" style="display:block; margin-bottom:10px;">${s.title}</span>
-                    <p style="font-size:0.9rem; color:#cbd5e1; line-height:1.4;">
+                    
+                    <p class="story-preview" id="preview-${index}" style="font-size:0.9rem; color:#cbd5e1; line-height:1.4;">
+                        "${preview}"
+                    </p>
+                    <p class="story-full hidden" id="full-${index}" style="font-size:0.9rem; color:#fff; line-height:1.6; margin-top:10px;">
                         "${s.story}"
                     </p>
                 </div>
@@ -1492,6 +1504,22 @@ async function loadStories() {
         });
         container.innerHTML = html;
     } catch (e) { console.error(e); }
+}
+
+function toggleStory(index) {
+    const preview = document.getElementById(`preview-${index}`);
+    const full = document.getElementById(`full-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
+
+    if (full.classList.contains('hidden')) {
+        full.classList.remove('hidden');
+        preview.classList.add('hidden');
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        full.classList.add('hidden');
+        preview.classList.remove('hidden');
+        icon.style.transform = 'rotate(0deg)';
+    }
 }
 
 // 5. THIS OR THAT

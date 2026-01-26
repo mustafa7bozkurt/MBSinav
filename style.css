@@ -298,6 +298,12 @@ main {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-height: 60vh;
+    /* Limit height */
+    overflow-y: auto;
+    /* Enable scrolling */
+    padding-right: 5px;
+    /* Space for scrollbar */
 }
 
 .list-item-card {

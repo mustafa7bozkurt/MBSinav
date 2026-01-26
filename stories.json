@@ -1,52 +1,552 @@
 [
-    {
-        "name": "Naim Süleymanoğlu",
-        "title": "Cep Herkülü",
-        "story": "Kendi ağırlığının 3 katından fazlasını kaldırarak tarihe geçen, olimpiyat şampiyonu milli haltercimiz. Boyu küçük ama yüreği ve başarısı dünyalar kadardı."
-    },
-    {
-        "name": "Aziz Sancar",
-        "title": "Nobel Ödüllü Bilim İnsanı",
-        "story": "Mardin'in Savur ilçesinden çıkıp, DNA onarımı alanındaki çalışmalarıyla Nobel Kimya Ödülü'nü kazanan gururumuz. 'Çoğu insan zekaya inanır, ben inanmam, bizi birbirimizden ayıran emektir, ben çalışmaya inanırım' demiştir."
-    },
-    {
-        "name": "Mustafa Kemal Atatürk",
-        "title": "Türkiye Cumhuriyeti'nin Kurucusu",
-        "story": "Yokluk içindeki bir milletten modern bir cumhuriyet inşa etti. İmkansız denileni başardı. 'Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!' diyerek tüm gençliğe ilham oldu."
-    },
-    {
-        "name": "J.K. Rowling",
-        "title": "Harry Potter'ın Yazarı",
-        "story": "İşsiz, depresyonda ve bekar bir anneyken tren yolculuğunda kurguladığı Harry Potter serisiyle dünyanın en çok okunan yazarlarından biri oldu. 12 yayınevi tarafından reddedildi ama asla pes etmedi."
-    },
-    {
-        "name": "Oprah Winfrey",
-        "title": "Medya Kraliçesi",
-        "story": "Yoksulluk ve travmalarla dolu bir çocukluktan gelip, dünyanın en etkili kadınlarından biri oldu. Kendi talk show'uyla milyonlara ilham verdi."
-    },
-    {
-        "name": "Elon Musk",
-        "title": "Teknoloji Vizyoneri",
-        "story": "PayPal'dan kazandığı tüm parayı uzay ve elektrikli araç hayallerine yatırdı. İflasın eşiğine geldi ama vazgeçmedi. Şimdi Mars'a gitmeyi hedefliyor."
-    },
-    {
-        "name": "Jack Ma",
-        "title": "Alibaba'nın Kurucusu",
-        "story": "KFC iş başvurusunda 24 kişiden reddedilen tek kişiydi. Üniversite sınavında defalarca başarısız oldu. Ama sonunda dünyanın en büyük e-ticaret sitelerinden birini kurdu."
-    },
-    {
-        "name": "Walt Disney",
-        "title": "Hayalperest",
-        "story": "'Hayal gücün yok' denilerek gazetedeki işinden kovuldu. Yarattığı Mickey Mouse karakteri ve kurduğu Disney imparatorluğu ile çocukların hayal dünyasını değiştirdi."
-    },
-    {
-        "name": "Michael Jordan",
-        "title": "Efsane Basketbolcu",
-        "story": "Lise basketbol takımına alınmadı. 'Kariyerimde 9000'den fazla şut kaçırdım, 300'e yakın maç kaybettim, ama bu sayede başardım' dedi."
-    },
-    {
-        "name": "Stephen Hawking",
-        "title": "Fizikçi",
-        "story": "ALS hastalığı nedeniyle hareket edememesine ve konuşamamasına rağmen, zihniyle evrenin sırlarını çözdü ve bilim dünyasına ışık tuttu."
-    }
+  {
+    "name": "Aziz Sancar",
+    "title": "Nobel Ödülü",
+    "story": "Mardin'den çıkıp Nobel'e uzanan bir bilim yolculuğu. DNA onarımı üzerine yaptığı çalışmalarla tarihe geçti."
+  },
+  {
+    "name": "Elon Musk",
+    "title": "Girişimci",
+    "story": "Mars'a gitmeyi kafasına koydu, herkes güldü ama o roketleri geri indirmeyi başardı."
+  },
+  {
+    "name": "Mete Gazoz",
+    "title": "Okçuluk Şampiyonu",
+    "story": "Olimpiyatlarda altın madalya kazanarak Türk okçuluğunu dünyaya duyurdu."
+  },
+  {
+    "name": "Naim Süleymanoğlu",
+    "title": "Halterci",
+    "story": "Cep Herkülü lakabıyla tanınan, kendi ağırlığının üç katını kaldıran efsane."
+  },
+  {
+    "name": "Barış Manço",
+    "title": "Sanatçı",
+    "story": "7'den 77'ye herkesin sevgilisi oldu, şarkılarıyla ve programlarıyla kültür elçisi oldu."
+  },
+  {
+    "name": "Sabiha Gökçen",
+    "title": "Pilot",
+    "story": "Dünyanın ilk kadın savaş pilotu. Gökyüzündeki cesaretiyle kadınlara ilham oldu."
+  },
+  {
+    "name": "Fatih Sultan Mehmet",
+    "title": "Padişah",
+    "story": "21 yaşında İstanbul'u fethederek bir çağı kapatıp yeni bir çağ açtı."
+  },
+  {
+    "name": "Mimar Sinan",
+    "title": "Mimar",
+    "story": "Yaptığı camiler ve eserler yüzyıllardır ayakta. Ustalık eseri Selimiye ile tarihe geçti."
+  },
+  {
+    "name": "Aşık Veysel",
+    "title": "Halk Ozanı",
+    "story": "Gözleri görmese de gönül gözüyle gördüklerini sazıyla, sözüyle tüm dünyaya anlattı."
+  },
+  {
+    "name": "Haluk Levent",
+    "title": "Sanatçı & Yardımsever",
+    "story": "AHBAP platformuyla binlerce insana yardım eli uzattı, sanatçılığının yanında insanlığıyla devleşti."
+  },
+  {
+    "name": "Başarı Örneği #11",
+    "title": "Cesur Yazar",
+    "story": "Bu kişi, karşılaştığı 19 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #12",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #13",
+    "title": "Azimli Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #14",
+    "title": "Yaratıcı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 22 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #15",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 52 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #16",
+    "title": "Azimli Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 30 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #17",
+    "title": "Sabırlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 58 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #18",
+    "title": "Azimli Girişimci",
+    "story": "Bu kişi, karşılaştığı 44 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #19",
+    "title": "Cesur Girişimci",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #20",
+    "title": "Kararlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #21",
+    "title": "Yaratıcı Sporcu",
+    "story": "Bu kişi, karşılaştığı 26 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #22",
+    "title": "Yaratıcı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 26 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #23",
+    "title": "Kararlı Lider",
+    "story": "Bu kişi, karşılaştığı 27 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #24",
+    "title": "Azimli Girişimci",
+    "story": "Bu kişi, karşılaştığı 58 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #25",
+    "title": "Sabırlı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 51 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #26",
+    "title": "Cesur Lider",
+    "story": "Bu kişi, karşılaştığı 30 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #27",
+    "title": "Cesur Lider",
+    "story": "Bu kişi, karşılaştığı 46 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #28",
+    "title": "Sabırlı Sanatçı",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #29",
+    "title": "Yenilikçi Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 42 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #30",
+    "title": "Cesur Lider",
+    "story": "Bu kişi, karşılaştığı 10 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #31",
+    "title": "Azimli Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #32",
+    "title": "Kararlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 42 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #33",
+    "title": "Azimli Yazar",
+    "story": "Bu kişi, karşılaştığı 24 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #34",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 25 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #35",
+    "title": "Azimli Yazar",
+    "story": "Bu kişi, karşılaştığı 28 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #36",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #37",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 27 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #38",
+    "title": "Azimli Sporcu",
+    "story": "Bu kişi, karşılaştığı 16 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #39",
+    "title": "Yaratıcı Sporcu",
+    "story": "Bu kişi, karşılaştığı 53 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #40",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 11 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #41",
+    "title": "Cesur Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 19 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #42",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 45 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #43",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 26 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #44",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 22 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #45",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #46",
+    "title": "Cesur Sporcu",
+    "story": "Bu kişi, karşılaştığı 32 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #47",
+    "title": "Yaratıcı Sanatçı",
+    "story": "Bu kişi, karşılaştığı 37 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #48",
+    "title": "Sabırlı Yazar",
+    "story": "Bu kişi, karşılaştığı 13 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #49",
+    "title": "Azimli Sanatçı",
+    "story": "Bu kişi, karşılaştığı 38 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #50",
+    "title": "Azimli Sanatçı",
+    "story": "Bu kişi, karşılaştığı 51 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #51",
+    "title": "Kararlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #52",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 25 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #53",
+    "title": "Kararlı Sanatçı",
+    "story": "Bu kişi, karşılaştığı 28 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #54",
+    "title": "Azimli Sanatçı",
+    "story": "Bu kişi, karşılaştığı 59 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #55",
+    "title": "Kararlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 14 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #56",
+    "title": "Sabırlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 10 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #57",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 59 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #58",
+    "title": "Yenilikçi Yazar",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #59",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 38 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #60",
+    "title": "Yaratıcı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 24 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #61",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 14 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #62",
+    "title": "Cesur Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #63",
+    "title": "Yaratıcı Sanatçı",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #64",
+    "title": "Sabırlı Sanatçı",
+    "story": "Bu kişi, karşılaştığı 36 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #65",
+    "title": "Cesur Girişimci",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #66",
+    "title": "Azimli Sanatçı",
+    "story": "Bu kişi, karşılaştığı 20 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #67",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 54 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #68",
+    "title": "Azimli Sporcu",
+    "story": "Bu kişi, karşılaştığı 13 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #69",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 26 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #70",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 14 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #71",
+    "title": "Cesur Girişimci",
+    "story": "Bu kişi, karşılaştığı 42 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #72",
+    "title": "Sabırlı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #73",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 45 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #74",
+    "title": "Azimli Girişimci",
+    "story": "Bu kişi, karşılaştığı 38 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #75",
+    "title": "Kararlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 16 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #76",
+    "title": "Cesur Sporcu",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #77",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 44 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #78",
+    "title": "Cesur Sanatçı",
+    "story": "Bu kişi, karşılaştığı 12 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #79",
+    "title": "Kararlı Yazar",
+    "story": "Bu kişi, karşılaştığı 20 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #80",
+    "title": "Sabırlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 52 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #81",
+    "title": "Kararlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 35 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #82",
+    "title": "Cesur Yazar",
+    "story": "Bu kişi, karşılaştığı 41 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #83",
+    "title": "Yaratıcı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 22 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #84",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 25 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #85",
+    "title": "Sabırlı Lider",
+    "story": "Bu kişi, karşılaştığı 41 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #86",
+    "title": "Yaratıcı Yazar",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #87",
+    "title": "Sabırlı Yazar",
+    "story": "Bu kişi, karşılaştığı 36 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #88",
+    "title": "Yaratıcı Girişimci",
+    "story": "Bu kişi, karşılaştığı 13 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #89",
+    "title": "Yaratıcı Lider",
+    "story": "Bu kişi, karşılaştığı 40 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #90",
+    "title": "Azimli Yazar",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #91",
+    "title": "Sabırlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 17 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #92",
+    "title": "Sabırlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 32 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #93",
+    "title": "Yaratıcı Girişimci",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #94",
+    "title": "Yaratıcı Bilim İnsanı",
+    "story": "Bu kişi, karşılaştığı 49 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #95",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 15 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #96",
+    "title": "Kararlı Girişimci",
+    "story": "Bu kişi, karşılaştığı 20 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #97",
+    "title": "Azimli Girişimci",
+    "story": "Bu kişi, karşılaştığı 11 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #98",
+    "title": "Azimli Sporcu",
+    "story": "Bu kişi, karşılaştığı 51 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #99",
+    "title": "Kararlı Yazar",
+    "story": "Bu kişi, karşılaştığı 18 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #100",
+    "title": "Kararlı Yazar",
+    "story": "Bu kişi, karşılaştığı 15 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #101",
+    "title": "Yenilikçi Sanatçı",
+    "story": "Bu kişi, karşılaştığı 28 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #102",
+    "title": "Azimli Yazar",
+    "story": "Bu kişi, karşılaştığı 11 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #103",
+    "title": "Yenilikçi Sanatçı",
+    "story": "Bu kişi, karşılaştığı 16 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #104",
+    "title": "Yenilikçi Sporcu",
+    "story": "Bu kişi, karşılaştığı 45 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #105",
+    "title": "Kararlı Sporcu",
+    "story": "Bu kişi, karşılaştığı 17 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #106",
+    "title": "Kararlı Lider",
+    "story": "Bu kişi, karşılaştığı 55 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #107",
+    "title": "Azimli Sporcu",
+    "story": "Bu kişi, karşılaştığı 23 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #108",
+    "title": "Yenilikçi Sanatçı",
+    "story": "Bu kişi, karşılaştığı 10 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #109",
+    "title": "Yenilikçi Lider",
+    "story": "Bu kişi, karşılaştığı 43 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  },
+  {
+    "name": "Başarı Örneği #110",
+    "title": "Yaratıcı Lider",
+    "story": "Bu kişi, karşılaştığı 12 farklı engelle rağmen asla pes etmedi. \"Başarı tesadüf değildir\" diyerek çalışmaya devam etti ve sonunda alanında zirveye ulaştı. Her düşüşte daha güçlü kalktı."
+  }
 ]

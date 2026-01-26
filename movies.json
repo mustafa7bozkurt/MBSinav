@@ -1,194 +1,4950 @@
 [
-    {
-        "title": "Esaretin Bedeli (The Shawshank Redemption)",
-        "year": 1994,
-        "imdb": 9.3,
-        "genre": "Drama",
-        "cast": [
-            "Tim Robbins",
-            "Morgan Freeman"
-        ],
-        "awards": "Oscar Adayı",
-        "description": "Suçsuz yere hapse giren bir bankacının umut dolu hikayesi."
-    },
-    {
-        "title": "Baba (The Godfather)",
-        "year": 1972,
-        "imdb": 9.2,
-        "genre": "Suç, Drama",
-        "cast": [
-            "Marlon Brando",
-            "Al Pacino"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Bir mafya ailesinin yükselişi ve düşüşü."
-    },
-    {
-        "title": "Kara Şövalye (The Dark Knight)",
-        "year": 2008,
-        "imdb": 9.0,
-        "genre": "Aksiyon, Suç",
-        "cast": [
-            "Christian Bale",
-            "Heath Ledger"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Batman, Joker'in yarattığı kaosla yüzleşiyor."
-    },
-    {
-        "title": "Yüzüklerin Efendisi: Kralın Dönüşü",
-        "year": 2003,
-        "imdb": 9.0,
-        "genre": "Fantastik, Macera",
-        "cast": [
-            "Elijah Wood",
-            "Viggo Mortensen"
-        ],
-        "awards": "11 Oscar Ödülü",
-        "description": "Orta Dünya'nın kaderi belirleniyor."
-    },
-    {
-        "title": "Schindler'in Listesi",
-        "year": 1993,
-        "imdb": 9.0,
-        "genre": "Biyografi, Drama",
-        "cast": [
-            "Liam Neeson",
-            "Ralph Fiennes"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "II. Dünya Savaşı sırasında Yahudileri kurtaran bir adamın hikayesi."
-    },
-    {
-        "title": "Başlangıç (Inception)",
-        "year": 2010,
-        "imdb": 8.8,
-        "genre": "Bilim Kurgu, Aksiyon",
-        "cast": [
-            "Leonardo DiCaprio",
-            "Joseph Gordon-Levitt"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Rüyaların içine girip fikir çalma sanatı."
-    },
-    {
-        "title": "Dövüş Kulübü (Fight Club)",
-        "year": 1999,
-        "imdb": 8.8,
-        "genre": "Drama",
-        "cast": [
-            "Brad Pitt",
-            "Edward Norton"
-        ],
-        "awards": "Oscar Adayı",
-        "description": "Uykusuz bir ofis çalışanı ve sabun yapımcısının yeraltı örgütü."
-    },
-    {
-        "title": "Forrest Gump",
-        "year": 1994,
-        "imdb": 8.8,
-        "genre": "Drama, Romantik",
-        "cast": [
-            "Tom Hanks",
-            "Robin Wright"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Düşük IQ'lu ama koca yürekli bir adamın inanılmaz hayatı."
-    },
-    {
-        "title": "Yıldızlararası (Interstellar)",
-        "year": 2014,
-        "imdb": 8.7,
-        "genre": "Bilim Kurgu, Drama",
-        "cast": [
-            "Matthew McConaughey",
-            "Anne Hathaway"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "İnsanlığı kurtarmak için solucan deliğinden geçen bir grup astronot."
-    },
-    {
-        "title": "Yeşil Yol (The Green Mile)",
-        "year": 1999,
-        "imdb": 8.6,
-        "genre": "Suç, Drama, Fantastik",
-        "cast": [
-            "Tom Hanks",
-            "Michael Clarke Duncan"
-        ],
-        "awards": "Oscar Adayı",
-        "description": "Mucizevi güçlere sahip bir idam mahkumunun hikayesi."
-    },
-    {
-        "title": "Parazit (Parasite)",
-        "year": 2019,
-        "imdb": 8.5,
-        "genre": "Gerilim, Komedi",
-        "cast": [
-            "Song Kang-ho",
-            "Lee Sun-kyun"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Fakir bir ailenin zengin bir ailenin hayatına sızması."
-    },
-    {
-        "title": "Can Dostum (Good Will Hunting)",
-        "year": 1997,
-        "imdb": 8.3,
-        "genre": "Drama, Romantik",
-        "cast": [
-            "Robin Williams",
-            "Matt Damon"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Matematik dehası bir hademenin hayatı."
-    },
-    {
-        "title": "Akıl Oyunları (A Beautiful Mind)",
-        "year": 2001,
-        "imdb": 8.2,
-        "genre": "Biyografi, Drama",
-        "cast": [
-            "Russell Crowe",
-            "Ed Harris"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Nobel ödüllü matematikçi John Nash'in şizofreniyle mücadelesi."
-    },
-    {
-        "title": "Whiplash",
-        "year": 2014,
-        "imdb": 8.5,
-        "genre": "Drama, Müzik",
-        "cast": [
-            "Miles Teller",
-            "J.K. Simmons"
-        ],
-        "awards": "Oscar Ödüllü",
-        "description": "Hırslı bir davulcu ve acımasız hocasının psikolojik savaşı."
-    },
-    {
-        "title": "Esrarengiz Kasaba (Gravity Falls)",
-        "year": 2012,
-        "imdb": 8.9,
-        "genre": "Macera, Gizem (Dizi)",
-        "cast": [
-            "Jason Ritter",
-            "Kristen Schaal"
-        ],
-        "awards": "Annie Ödüllü",
-        "description": "İkiz kardeşlerin gizemli bir kasabadaki yaz tatili."
-    },
-    {
-        "title": "Breaking Bad",
-        "year": 2008,
-        "imdb": 9.5,
-        "genre": "Suç, Drama (Dizi)",
-        "cast": [
-            "Bryan Cranston",
-            "Aaron Paul"
-        ],
-        "awards": "Emmy Ödüllü",
-        "description": "Kanser olan bir kimya öğretmeninin uyuşturucu baronuna dönüşümü."
-    }
+  {
+    "title": "Esaretin Bedeli",
+    "year": 1994,
+    "imdb": 9.3,
+    "genre": "Drama",
+    "cast": [
+      "Tim Robbins"
+    ],
+    "description": "Umut dolu bir hapishane hikayesi."
+  },
+  {
+    "title": "Baba",
+    "year": 1972,
+    "imdb": 9.2,
+    "genre": "Suç",
+    "cast": [
+      "Marlon Brando"
+    ],
+    "description": "Mafya babasının destansı öyküsü."
+  },
+  {
+    "title": "İlk Kaçış",
+    "year": 1996,
+    "imdb": 5.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Öğrenci",
+    "year": 1992,
+    "imdb": 6.9,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen İntikam",
+    "year": 1994,
+    "imdb": 5.9,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Asker",
+    "year": 2016,
+    "imdb": 4.5,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet asker kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Prenses",
+    "year": 1995,
+    "imdb": 8.1,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık prenses kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Hırsız",
+    "year": 1994,
+    "imdb": 6.9,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Tuzak",
+    "year": 1983,
+    "imdb": 4.1,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül tuzak kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Prens",
+    "year": 2009,
+    "imdb": 4.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz prens kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Öğrenci",
+    "year": 1990,
+    "imdb": 5.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı İntikam",
+    "year": 1981,
+    "imdb": 5.5,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Kaçış",
+    "year": 2000,
+    "imdb": 8.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Tuzak",
+    "year": 2016,
+    "imdb": 5,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Ejderha",
+    "year": 2019,
+    "imdb": 8.5,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Şehir",
+    "year": 2006,
+    "imdb": 6,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli şehir kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Kabus",
+    "year": 2008,
+    "imdb": 6.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz kabus kavramı derinlemesine işleniyor. İzleyiciyi 2008 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Öğrenci",
+    "year": 2010,
+    "imdb": 7.6,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Doktor",
+    "year": 1986,
+    "imdb": 8.3,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son doktor kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Katil",
+    "year": 1989,
+    "imdb": 4.9,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk katil kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Dünya",
+    "year": 2019,
+    "imdb": 4.2,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz dünya kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Hırsız",
+    "year": 1996,
+    "imdb": 7.2,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Kral",
+    "year": 2003,
+    "imdb": 5.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık kral kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Robot",
+    "year": 1980,
+    "imdb": 6.3,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı robot kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Adalet",
+    "year": 1994,
+    "imdb": 8.3,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman adalet kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Kadın",
+    "year": 1995,
+    "imdb": 4.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem kadın kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Prens",
+    "year": 1984,
+    "imdb": 4.7,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet prens kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Dünya",
+    "year": 2010,
+    "imdb": 4.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi dünya kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Yıldız",
+    "year": 2014,
+    "imdb": 7,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Asker",
+    "year": 2006,
+    "imdb": 6.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay asker kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Yıldız",
+    "year": 2022,
+    "imdb": 7.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Katil",
+    "year": 1993,
+    "imdb": 6.9,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık katil kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Adalet",
+    "year": 1996,
+    "imdb": 7.9,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın adalet kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Şehir",
+    "year": 2000,
+    "imdb": 5,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah şehir kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Kabus",
+    "year": 1996,
+    "imdb": 4.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş kabus kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Yıldız",
+    "year": 2024,
+    "imdb": 8.3,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Kadın",
+    "year": 2016,
+    "imdb": 6.3,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın kadın kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Prens",
+    "year": 2024,
+    "imdb": 7.1,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah prens kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Kraliçe",
+    "year": 2005,
+    "imdb": 8.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2005 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Doktor",
+    "year": 1998,
+    "imdb": 4.5,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz doktor kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Hırsız",
+    "year": 1985,
+    "imdb": 4.9,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Kaçış",
+    "year": 2020,
+    "imdb": 5.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Kaçış",
+    "year": 1985,
+    "imdb": 4.4,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kraliçe",
+    "year": 2022,
+    "imdb": 7.9,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Katil",
+    "year": 2012,
+    "imdb": 6.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk katil kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Ejderha",
+    "year": 1984,
+    "imdb": 8.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Prens",
+    "year": 2012,
+    "imdb": 6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış prens kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Dedektif",
+    "year": 2020,
+    "imdb": 6.3,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Şehir",
+    "year": 2007,
+    "imdb": 5.7,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk şehir kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Adalet",
+    "year": 1996,
+    "imdb": 5.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi adalet kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Katil",
+    "year": 2018,
+    "imdb": 8.5,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş katil kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Hırsız",
+    "year": 2018,
+    "imdb": 4.4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Kadın",
+    "year": 2022,
+    "imdb": 6.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi kadın kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Kral",
+    "year": 2016,
+    "imdb": 6.9,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman kral kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Kaçış",
+    "year": 2023,
+    "imdb": 4.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Adam",
+    "year": 2002,
+    "imdb": 6,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah adam kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Adalet",
+    "year": 2006,
+    "imdb": 4.2,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli adalet kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Prens",
+    "year": 2003,
+    "imdb": 6.1,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay prens kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Asker",
+    "year": 1984,
+    "imdb": 4.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay asker kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman İntikam",
+    "year": 2000,
+    "imdb": 8.9,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Katil",
+    "year": 2001,
+    "imdb": 8.4,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli katil kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Prens",
+    "year": 2018,
+    "imdb": 4.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman prens kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Kadın",
+    "year": 2022,
+    "imdb": 7.5,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz kadın kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Gündüz",
+    "year": 2006,
+    "imdb": 7.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Prenses",
+    "year": 2011,
+    "imdb": 7.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli prenses kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Tuzak",
+    "year": 2021,
+    "imdb": 4.2,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Asker",
+    "year": 2002,
+    "imdb": 8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış asker kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Polis",
+    "year": 1992,
+    "imdb": 4.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli polis kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Prenses",
+    "year": 1992,
+    "imdb": 7.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah prenses kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Uzaylı",
+    "year": 1992,
+    "imdb": 5.1,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Gündüz",
+    "year": 2000,
+    "imdb": 4.7,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Ejderha",
+    "year": 1986,
+    "imdb": 5.4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Yıldız",
+    "year": 2016,
+    "imdb": 7.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Polis",
+    "year": 1981,
+    "imdb": 6.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen polis kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Gece",
+    "year": 1982,
+    "imdb": 8.1,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık gece kavramı derinlemesine işleniyor. İzleyiciyi 1982 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Dedektif",
+    "year": 2009,
+    "imdb": 5.8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Gündüz",
+    "year": 2024,
+    "imdb": 5.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Doktor",
+    "year": 1987,
+    "imdb": 8.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk doktor kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Öğrenci",
+    "year": 2021,
+    "imdb": 4.5,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Prens",
+    "year": 1986,
+    "imdb": 4.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah prens kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Prenses",
+    "year": 1992,
+    "imdb": 6.6,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük prenses kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Doktor",
+    "year": 1984,
+    "imdb": 6.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük doktor kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Kraliçe",
+    "year": 2023,
+    "imdb": 5.2,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Gündüz",
+    "year": 1982,
+    "imdb": 5.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş gündüz kavramı derinlemesine işleniyor. İzleyiciyi 1982 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Rüya",
+    "year": 2016,
+    "imdb": 6.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı rüya kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Gece",
+    "year": 1999,
+    "imdb": 9,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet gece kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Kaçış",
+    "year": 2010,
+    "imdb": 8.7,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Gece",
+    "year": 1984,
+    "imdb": 4.5,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir gece kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Uzaylı",
+    "year": 1993,
+    "imdb": 5.5,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Kadın",
+    "year": 2024,
+    "imdb": 5.3,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış kadın kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Uzaylı",
+    "year": 2004,
+    "imdb": 6.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Hırsız",
+    "year": 1981,
+    "imdb": 4.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Tuzak",
+    "year": 2010,
+    "imdb": 6.6,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Polis",
+    "year": 2013,
+    "imdb": 7,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş polis kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Gece",
+    "year": 1992,
+    "imdb": 5.3,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol gece kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Şehir",
+    "year": 1992,
+    "imdb": 7.5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış şehir kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Kral",
+    "year": 2021,
+    "imdb": 6.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış kral kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Tuzak",
+    "year": 2015,
+    "imdb": 9,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Öğretmen",
+    "year": 2018,
+    "imdb": 4.1,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Şehir",
+    "year": 2020,
+    "imdb": 8.8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen şehir kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Dedektif",
+    "year": 2013,
+    "imdb": 6.3,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Öğretmen",
+    "year": 2018,
+    "imdb": 5.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Kraliçe",
+    "year": 2015,
+    "imdb": 5.9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Doktor",
+    "year": 2004,
+    "imdb": 6.8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah doktor kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Adam",
+    "year": 1994,
+    "imdb": 4.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı adam kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Kabus",
+    "year": 2001,
+    "imdb": 6.1,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz kabus kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Adam",
+    "year": 1992,
+    "imdb": 7.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın adam kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Dünya",
+    "year": 1998,
+    "imdb": 7.4,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah dünya kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Doktor",
+    "year": 1988,
+    "imdb": 6.4,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik doktor kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Robot",
+    "year": 2007,
+    "imdb": 7.9,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş robot kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Çocuk",
+    "year": 2017,
+    "imdb": 6.6,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Katil",
+    "year": 1985,
+    "imdb": 4.4,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik katil kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Kral",
+    "year": 2020,
+    "imdb": 4.1,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet kral kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Kabus",
+    "year": 2021,
+    "imdb": 8.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış kabus kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Katil",
+    "year": 2016,
+    "imdb": 6.5,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman katil kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Rüya",
+    "year": 2006,
+    "imdb": 4.4,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz rüya kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Kadın",
+    "year": 2007,
+    "imdb": 4.7,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi kadın kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Doktor",
+    "year": 2023,
+    "imdb": 8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük doktor kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Gece",
+    "year": 2020,
+    "imdb": 4.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk gece kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Gündüz",
+    "year": 2023,
+    "imdb": 5.5,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Öğretmen",
+    "year": 1998,
+    "imdb": 5.1,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Şehir",
+    "year": 2010,
+    "imdb": 8.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan şehir kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Ejderha",
+    "year": 2021,
+    "imdb": 8.6,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Öğrenci",
+    "year": 2004,
+    "imdb": 7.1,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş İntikam",
+    "year": 1999,
+    "imdb": 4.5,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Çocuk",
+    "year": 1993,
+    "imdb": 4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli çocuk kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Kabus",
+    "year": 2015,
+    "imdb": 5.4,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış kabus kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Savaşçı",
+    "year": 2002,
+    "imdb": 7.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Öğretmen",
+    "year": 1995,
+    "imdb": 7.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Şehir",
+    "year": 2019,
+    "imdb": 7.7,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük şehir kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Rüya",
+    "year": 2001,
+    "imdb": 4.4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir rüya kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Öğrenci",
+    "year": 2009,
+    "imdb": 8,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Katil",
+    "year": 1993,
+    "imdb": 8.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül katil kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Robot",
+    "year": 2013,
+    "imdb": 4.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık robot kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Hırsız",
+    "year": 2003,
+    "imdb": 5.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Prens",
+    "year": 2020,
+    "imdb": 8.5,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son prens kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Gündüz",
+    "year": 2018,
+    "imdb": 5.9,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Uzaylı",
+    "year": 2014,
+    "imdb": 5.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Tuzak",
+    "year": 2006,
+    "imdb": 4.6,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Öğrenci",
+    "year": 1985,
+    "imdb": 8.5,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Prenses",
+    "year": 1989,
+    "imdb": 7.8,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk prenses kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Kadın",
+    "year": 2010,
+    "imdb": 8.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın kadın kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi İntikam",
+    "year": 2021,
+    "imdb": 8.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Kadın",
+    "year": 1993,
+    "imdb": 7.1,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli kadın kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Adalet",
+    "year": 1981,
+    "imdb": 4.9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş adalet kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Rüya",
+    "year": 1998,
+    "imdb": 4.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz rüya kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Kraliçe",
+    "year": 2006,
+    "imdb": 5.6,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Uzaylı",
+    "year": 2014,
+    "imdb": 5.2,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Polis",
+    "year": 1986,
+    "imdb": 5,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem polis kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Savaşçı",
+    "year": 2018,
+    "imdb": 5.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Kraliçe",
+    "year": 2017,
+    "imdb": 6.2,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Rüya",
+    "year": 1995,
+    "imdb": 4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş rüya kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Uzaylı",
+    "year": 1993,
+    "imdb": 7.9,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Katil",
+    "year": 1994,
+    "imdb": 6.2,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz katil kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Polis",
+    "year": 1997,
+    "imdb": 4.4,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son polis kavramı derinlemesine işleniyor. İzleyiciyi 1997 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Katil",
+    "year": 1986,
+    "imdb": 8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan katil kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Gece",
+    "year": 2007,
+    "imdb": 8.5,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı gece kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Prens",
+    "year": 1981,
+    "imdb": 5.1,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet prens kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Robot",
+    "year": 1996,
+    "imdb": 7.5,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet robot kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Hırsız",
+    "year": 1985,
+    "imdb": 8.3,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Şehir",
+    "year": 1982,
+    "imdb": 5.1,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan şehir kavramı derinlemesine işleniyor. İzleyiciyi 1982 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Kadın",
+    "year": 2003,
+    "imdb": 5.8,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli kadın kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Dünya",
+    "year": 2001,
+    "imdb": 6.7,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah dünya kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Robot",
+    "year": 2022,
+    "imdb": 7.9,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı robot kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Polis",
+    "year": 2015,
+    "imdb": 7.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol polis kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Kral",
+    "year": 1984,
+    "imdb": 8.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet kral kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Ejderha",
+    "year": 1984,
+    "imdb": 4.8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Asker",
+    "year": 2017,
+    "imdb": 6.8,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli asker kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Robot",
+    "year": 1995,
+    "imdb": 4.5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman robot kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Ejderha",
+    "year": 1980,
+    "imdb": 4.4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Prens",
+    "year": 1995,
+    "imdb": 4.5,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük prens kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Öğretmen",
+    "year": 2000,
+    "imdb": 5.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Rüya",
+    "year": 2015,
+    "imdb": 4.4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem rüya kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Çocuk",
+    "year": 1980,
+    "imdb": 5.9,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış çocuk kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Tuzak",
+    "year": 2012,
+    "imdb": 6,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay İntikam",
+    "year": 2000,
+    "imdb": 7.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Kabus",
+    "year": 2001,
+    "imdb": 7,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret kabus kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Tuzak",
+    "year": 2010,
+    "imdb": 6.7,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Tuzak",
+    "year": 1980,
+    "imdb": 6.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın tuzak kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Doktor",
+    "year": 1994,
+    "imdb": 4.4,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen doktor kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Hırsız",
+    "year": 1991,
+    "imdb": 6.3,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Prens",
+    "year": 2022,
+    "imdb": 6.2,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük prens kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Dedektif",
+    "year": 1998,
+    "imdb": 8.3,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Öğretmen",
+    "year": 2001,
+    "imdb": 4.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Kabus",
+    "year": 2018,
+    "imdb": 7.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük kabus kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Polis",
+    "year": 2003,
+    "imdb": 8.1,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol polis kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Doktor",
+    "year": 2020,
+    "imdb": 6.5,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın doktor kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Kraliçe",
+    "year": 2022,
+    "imdb": 7.1,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Rüya",
+    "year": 1996,
+    "imdb": 8.4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz rüya kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Kaçış",
+    "year": 2019,
+    "imdb": 8.2,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Ejderha",
+    "year": 2020,
+    "imdb": 4.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Kadın",
+    "year": 2018,
+    "imdb": 8.6,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan kadın kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Doktor",
+    "year": 1980,
+    "imdb": 8.4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş doktor kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Polis",
+    "year": 1997,
+    "imdb": 6.6,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay polis kavramı derinlemesine işleniyor. İzleyiciyi 1997 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Gündüz",
+    "year": 2017,
+    "imdb": 5.8,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Gece",
+    "year": 2003,
+    "imdb": 8.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol gece kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Savaşçı",
+    "year": 2003,
+    "imdb": 6.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Ejderha",
+    "year": 1998,
+    "imdb": 6.3,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Yıldız",
+    "year": 1995,
+    "imdb": 5,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül yıldız kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kral",
+    "year": 1987,
+    "imdb": 7.6,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kral kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Asker",
+    "year": 2013,
+    "imdb": 6.8,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son asker kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Gündüz",
+    "year": 2003,
+    "imdb": 6.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Prens",
+    "year": 1987,
+    "imdb": 8.8,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş prens kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Tuzak",
+    "year": 2002,
+    "imdb": 5.7,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Adalet",
+    "year": 2023,
+    "imdb": 4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay adalet kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Ejderha",
+    "year": 1981,
+    "imdb": 4.8,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın İntikam",
+    "year": 2016,
+    "imdb": 8.3,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Doktor",
+    "year": 1994,
+    "imdb": 6.3,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli doktor kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Gündüz",
+    "year": 2000,
+    "imdb": 7.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Dedektif",
+    "year": 1995,
+    "imdb": 7.7,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Şehir",
+    "year": 1984,
+    "imdb": 4.2,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol şehir kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Doktor",
+    "year": 1990,
+    "imdb": 7.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz doktor kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Ejderha",
+    "year": 2024,
+    "imdb": 8.5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Gündüz",
+    "year": 2019,
+    "imdb": 8.2,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Dünya",
+    "year": 1987,
+    "imdb": 8.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen dünya kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kadın",
+    "year": 2019,
+    "imdb": 4.2,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kadın kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Dünya",
+    "year": 1999,
+    "imdb": 5,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen dünya kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Ejderha",
+    "year": 2002,
+    "imdb": 5.5,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Dünya",
+    "year": 2005,
+    "imdb": 7.8,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış dünya kavramı derinlemesine işleniyor. İzleyiciyi 2005 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Kadın",
+    "year": 1996,
+    "imdb": 6.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen kadın kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Hırsız",
+    "year": 2016,
+    "imdb": 4.9,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Adalet",
+    "year": 1990,
+    "imdb": 8.9,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen adalet kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Çocuk",
+    "year": 1983,
+    "imdb": 5,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret çocuk kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Adam",
+    "year": 1991,
+    "imdb": 7.9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş adam kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Dedektif",
+    "year": 1994,
+    "imdb": 7.9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Adalet",
+    "year": 1984,
+    "imdb": 4.2,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı adalet kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Tuzak",
+    "year": 1990,
+    "imdb": 7.3,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Kral",
+    "year": 2024,
+    "imdb": 9,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli kral kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Asker",
+    "year": 1994,
+    "imdb": 4.6,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli asker kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Kral",
+    "year": 2018,
+    "imdb": 5.9,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan kral kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Prens",
+    "year": 2001,
+    "imdb": 5.4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül prens kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Gece",
+    "year": 2007,
+    "imdb": 8.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık gece kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Ejderha",
+    "year": 2013,
+    "imdb": 5.2,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Dedektif",
+    "year": 2023,
+    "imdb": 5.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Robot",
+    "year": 2002,
+    "imdb": 5.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk robot kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Öğrenci",
+    "year": 2011,
+    "imdb": 5.4,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Adam",
+    "year": 2007,
+    "imdb": 6.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük adam kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Prenses",
+    "year": 1982,
+    "imdb": 9,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın prenses kavramı derinlemesine işleniyor. İzleyiciyi 1982 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Asker",
+    "year": 1983,
+    "imdb": 8.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay asker kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Rüya",
+    "year": 2022,
+    "imdb": 6.4,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen rüya kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Uzaylı",
+    "year": 2003,
+    "imdb": 6.7,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kabus",
+    "year": 2007,
+    "imdb": 5.8,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kabus kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Kaçış",
+    "year": 1985,
+    "imdb": 6,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Öğretmen",
+    "year": 2017,
+    "imdb": 5.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Hırsız",
+    "year": 2015,
+    "imdb": 8.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Öğrenci",
+    "year": 2007,
+    "imdb": 6.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Kral",
+    "year": 2003,
+    "imdb": 7.6,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen kral kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Doktor",
+    "year": 1981,
+    "imdb": 5.4,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi doktor kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Kral",
+    "year": 1983,
+    "imdb": 6.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah kral kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Yıldız",
+    "year": 2022,
+    "imdb": 4.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kabus",
+    "year": 2007,
+    "imdb": 5.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kabus kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Gece",
+    "year": 2023,
+    "imdb": 8.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli gece kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Öğretmen",
+    "year": 2004,
+    "imdb": 6.3,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Kral",
+    "year": 2020,
+    "imdb": 4.7,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir kral kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Çocuk",
+    "year": 2006,
+    "imdb": 8.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Tuzak",
+    "year": 1985,
+    "imdb": 5,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol tuzak kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Kadın",
+    "year": 2022,
+    "imdb": 8.3,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli kadın kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Prenses",
+    "year": 2023,
+    "imdb": 5.7,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli prenses kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Şehir",
+    "year": 2005,
+    "imdb": 6.6,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük şehir kavramı derinlemesine işleniyor. İzleyiciyi 2005 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Adalet",
+    "year": 1996,
+    "imdb": 7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz adalet kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Prens",
+    "year": 2011,
+    "imdb": 8.5,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi prens kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Kabus",
+    "year": 1993,
+    "imdb": 7.8,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son kabus kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Hırsız",
+    "year": 2024,
+    "imdb": 7,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Yıldız",
+    "year": 1999,
+    "imdb": 5.9,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk yıldız kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet İntikam",
+    "year": 2013,
+    "imdb": 8.7,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Çocuk",
+    "year": 2006,
+    "imdb": 7.4,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Tuzak",
+    "year": 2011,
+    "imdb": 8.8,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Polis",
+    "year": 2006,
+    "imdb": 4.1,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol polis kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Polis",
+    "year": 1983,
+    "imdb": 4.4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış polis kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Kral",
+    "year": 2015,
+    "imdb": 7.2,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah kral kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Dedektif",
+    "year": 1985,
+    "imdb": 5.9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Kaçış",
+    "year": 1986,
+    "imdb": 8.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1986 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Robot",
+    "year": 2021,
+    "imdb": 6.4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz robot kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Prenses",
+    "year": 1987,
+    "imdb": 5.5,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman prenses kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Polis",
+    "year": 2023,
+    "imdb": 7.4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir polis kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Ejderha",
+    "year": 2013,
+    "imdb": 7.5,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Rüya",
+    "year": 1987,
+    "imdb": 5.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem rüya kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Katil",
+    "year": 1994,
+    "imdb": 7.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli katil kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Asker",
+    "year": 2010,
+    "imdb": 6,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş asker kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Savaşçı",
+    "year": 2013,
+    "imdb": 8.4,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Rüya",
+    "year": 2007,
+    "imdb": 6.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir rüya kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Rüya",
+    "year": 2019,
+    "imdb": 8.6,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen rüya kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Dünya",
+    "year": 2022,
+    "imdb": 5.6,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli dünya kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Öğrenci",
+    "year": 1989,
+    "imdb": 7.5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Savaşçı",
+    "year": 2008,
+    "imdb": 5.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2008 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Çocuk",
+    "year": 2003,
+    "imdb": 7.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Prenses",
+    "year": 1991,
+    "imdb": 8.8,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol prenses kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Adam",
+    "year": 1994,
+    "imdb": 8.2,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın adam kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Öğretmen",
+    "year": 2022,
+    "imdb": 7.8,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Kaçış",
+    "year": 1999,
+    "imdb": 8.6,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Uzaylı",
+    "year": 1996,
+    "imdb": 7.4,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Robot",
+    "year": 1989,
+    "imdb": 8.3,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük robot kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Kaçış",
+    "year": 2004,
+    "imdb": 6.5,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Şehir",
+    "year": 1993,
+    "imdb": 5.1,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş şehir kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Adalet",
+    "year": 2019,
+    "imdb": 5.1,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz adalet kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Robot",
+    "year": 2009,
+    "imdb": 4.8,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın robot kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli İntikam",
+    "year": 1984,
+    "imdb": 4.6,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Kadın",
+    "year": 1981,
+    "imdb": 5.1,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış kadın kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Rüya",
+    "year": 2018,
+    "imdb": 8.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık rüya kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Gece",
+    "year": 1982,
+    "imdb": 5.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış gece kavramı derinlemesine işleniyor. İzleyiciyi 1982 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol İntikam",
+    "year": 2018,
+    "imdb": 4.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2018 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Katil",
+    "year": 2010,
+    "imdb": 6.7,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem katil kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Doktor",
+    "year": 2010,
+    "imdb": 8,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın doktor kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Prens",
+    "year": 2005,
+    "imdb": 5.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli prens kavramı derinlemesine işleniyor. İzleyiciyi 2005 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Prenses",
+    "year": 1996,
+    "imdb": 7.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen prenses kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük İntikam",
+    "year": 1994,
+    "imdb": 4.7,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Şehir",
+    "year": 1988,
+    "imdb": 4.7,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem şehir kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Katil",
+    "year": 2009,
+    "imdb": 8.1,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık katil kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Uzaylı",
+    "year": 2001,
+    "imdb": 5.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük İntikam",
+    "year": 2002,
+    "imdb": 8.3,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Ejderha",
+    "year": 1981,
+    "imdb": 5.4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Hırsız",
+    "year": 2022,
+    "imdb": 4.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Kral",
+    "year": 1990,
+    "imdb": 7.1,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman kral kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Prens",
+    "year": 1993,
+    "imdb": 6.7,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın prens kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Şehir",
+    "year": 1999,
+    "imdb": 7.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik şehir kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Asker",
+    "year": 2015,
+    "imdb": 7.3,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz asker kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Kraliçe",
+    "year": 1997,
+    "imdb": 6.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 1997 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Kaçış",
+    "year": 1999,
+    "imdb": 5.3,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Rüya",
+    "year": 1996,
+    "imdb": 7.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son rüya kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Yıldız",
+    "year": 2014,
+    "imdb": 5,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Kral",
+    "year": 2022,
+    "imdb": 5.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir kral kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk İntikam",
+    "year": 1994,
+    "imdb": 8.2,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk i̇ntikam kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Gece",
+    "year": 2012,
+    "imdb": 6.9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi gece kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Prenses",
+    "year": 2024,
+    "imdb": 4.8,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik prenses kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Robot",
+    "year": 1981,
+    "imdb": 4.6,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz robot kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Kraliçe",
+    "year": 1993,
+    "imdb": 8.7,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Şehir",
+    "year": 2024,
+    "imdb": 7,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet şehir kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Uzaylı",
+    "year": 2003,
+    "imdb": 4.4,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Prens",
+    "year": 2007,
+    "imdb": 7.6,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın prens kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Adalet",
+    "year": 1984,
+    "imdb": 4.9,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş adalet kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Tuzak",
+    "year": 2006,
+    "imdb": 5.8,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem tuzak kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Çocuk",
+    "year": 2003,
+    "imdb": 8.5,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2003 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Prens",
+    "year": 1980,
+    "imdb": 4.4,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli prens kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Tuzak",
+    "year": 1998,
+    "imdb": 6.3,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk tuzak kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Şehir",
+    "year": 2009,
+    "imdb": 4.7,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik şehir kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Prenses",
+    "year": 2005,
+    "imdb": 8,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz prenses kavramı derinlemesine işleniyor. İzleyiciyi 2005 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Prens",
+    "year": 1999,
+    "imdb": 4.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk prens kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Çocuk",
+    "year": 2008,
+    "imdb": 6,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2008 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Gece",
+    "year": 2011,
+    "imdb": 7.9,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı gece kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Öğrenci",
+    "year": 1996,
+    "imdb": 5.5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Asker",
+    "year": 2014,
+    "imdb": 5.6,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz asker kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Öğrenci",
+    "year": 2019,
+    "imdb": 5.1,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Asker",
+    "year": 2013,
+    "imdb": 8.9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz asker kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Uzaylı",
+    "year": 1983,
+    "imdb": 5,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Dedektif",
+    "year": 2000,
+    "imdb": 6.3,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Dünya",
+    "year": 1987,
+    "imdb": 6.5,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah dünya kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Gece",
+    "year": 1991,
+    "imdb": 6.9,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son gece kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Gece",
+    "year": 2011,
+    "imdb": 9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın gece kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Gece",
+    "year": 1996,
+    "imdb": 4.2,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük gece kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Kraliçe",
+    "year": 2021,
+    "imdb": 8.2,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Kaçış",
+    "year": 2009,
+    "imdb": 4,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Prens",
+    "year": 2002,
+    "imdb": 5.2,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük prens kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Doktor",
+    "year": 1999,
+    "imdb": 6,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli doktor kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Uzaylı",
+    "year": 2016,
+    "imdb": 6.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem uzaylı kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Doktor",
+    "year": 1983,
+    "imdb": 8.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük doktor kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Kadın",
+    "year": 2015,
+    "imdb": 7.7,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın kadın kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Adam",
+    "year": 1999,
+    "imdb": 4.5,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan adam kavramı derinlemesine işleniyor. İzleyiciyi 1999 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Yıldız",
+    "year": 1983,
+    "imdb": 8.3,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş yıldız kavramı derinlemesine işleniyor. İzleyiciyi 1983 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Gece",
+    "year": 1988,
+    "imdb": 7.8,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol gece kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Çocuk",
+    "year": 1989,
+    "imdb": 7.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın çocuk kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Asker",
+    "year": 2011,
+    "imdb": 4.6,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli asker kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Gündüz",
+    "year": 1987,
+    "imdb": 7.2,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül gündüz kavramı derinlemesine işleniyor. İzleyiciyi 1987 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Gece",
+    "year": 2001,
+    "imdb": 6.2,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış gece kavramı derinlemesine işleniyor. İzleyiciyi 2001 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Çocuk",
+    "year": 2015,
+    "imdb": 5.7,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Doktor",
+    "year": 2010,
+    "imdb": 5.2,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi doktor kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Doktor",
+    "year": 1984,
+    "imdb": 7.2,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan doktor kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Yıldız",
+    "year": 2002,
+    "imdb": 8.1,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Prens",
+    "year": 2020,
+    "imdb": 5.6,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol prens kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Kaçış",
+    "year": 1992,
+    "imdb": 7.9,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Robot",
+    "year": 2021,
+    "imdb": 8.3,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük robot kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Rüya",
+    "year": 2009,
+    "imdb": 8,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir rüya kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Adam",
+    "year": 1990,
+    "imdb": 6.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük adam kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Doktor",
+    "year": 1985,
+    "imdb": 9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk doktor kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Gece",
+    "year": 1991,
+    "imdb": 7.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül gece kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Rüya",
+    "year": 1988,
+    "imdb": 4.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan rüya kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Şehir",
+    "year": 2007,
+    "imdb": 8,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın şehir kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Prens",
+    "year": 2023,
+    "imdb": 8.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik prens kavramı derinlemesine işleniyor. İzleyiciyi 2023 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Kral",
+    "year": 2014,
+    "imdb": 4.8,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz kral kavramı derinlemesine işleniyor. İzleyiciyi 2014 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Ejderha",
+    "year": 2011,
+    "imdb": 6.5,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Katil",
+    "year": 1981,
+    "imdb": 5.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet katil kavramı derinlemesine işleniyor. İzleyiciyi 1981 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Kaçış",
+    "year": 2000,
+    "imdb": 6.1,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi kaçış kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Mavi Çocuk",
+    "year": 2000,
+    "imdb": 6.1,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde mavi çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Gündüz",
+    "year": 2013,
+    "imdb": 4,
+    "genre": "Bilim Kurgu",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Kadın",
+    "year": 1996,
+    "imdb": 5.2,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son kadın kavramı derinlemesine işleniyor. İzleyiciyi 1996 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Asker",
+    "year": 2000,
+    "imdb": 7.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük asker kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Hırsız",
+    "year": 1985,
+    "imdb": 4.9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık hırsız kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Doktor",
+    "year": 1990,
+    "imdb": 8.8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen doktor kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Kral",
+    "year": 1993,
+    "imdb": 4.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli kral kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Kral",
+    "year": 1989,
+    "imdb": 7.7,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet kral kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Dedektif",
+    "year": 2015,
+    "imdb": 6.8,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Kraliçe",
+    "year": 2006,
+    "imdb": 8,
+    "genre": "Aksiyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2006 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kaybolan Dedektif",
+    "year": 1998,
+    "imdb": 6.2,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kaybolan dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1998 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Gündüz",
+    "year": 2020,
+    "imdb": 6.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Yıldız",
+    "year": 1993,
+    "imdb": 8.3,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı yıldız kavramı derinlemesine işleniyor. İzleyiciyi 1993 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Kadın",
+    "year": 2002,
+    "imdb": 7.2,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay kadın kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Gündüz",
+    "year": 2004,
+    "imdb": 5.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2004 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Kaçış",
+    "year": 1984,
+    "imdb": 5.1,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay kaçış kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Ejderha",
+    "year": 1980,
+    "imdb": 6.8,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol ejderha kavramı derinlemesine işleniyor. İzleyiciyi 1980 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yükselen Kraliçe",
+    "year": 1984,
+    "imdb": 6.2,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yükselen kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Adam",
+    "year": 2016,
+    "imdb": 7.7,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret adam kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Adalet",
+    "year": 2011,
+    "imdb": 5.1,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret adalet kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Gece",
+    "year": 1989,
+    "imdb": 5.4,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay gece kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Adalet",
+    "year": 1989,
+    "imdb": 8.9,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı adalet kavramı derinlemesine işleniyor. İzleyiciyi 1989 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Asker",
+    "year": 1988,
+    "imdb": 8.1,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman asker kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Kral",
+    "year": 2008,
+    "imdb": 6,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz kral kavramı derinlemesine işleniyor. İzleyiciyi 2008 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Kabus",
+    "year": 2024,
+    "imdb": 5.8,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli kabus kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Karanlık Hırsız",
+    "year": 2022,
+    "imdb": 8.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde karanlık hırsız kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Çocuk",
+    "year": 2008,
+    "imdb": 5,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli çocuk kavramı derinlemesine işleniyor. İzleyiciyi 2008 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Yıldız",
+    "year": 1995,
+    "imdb": 7.9,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz yıldız kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çelik Savaşçı",
+    "year": 2020,
+    "imdb": 6.2,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çelik savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Şehir",
+    "year": 1991,
+    "imdb": 7.9,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz şehir kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Dedektif",
+    "year": 2007,
+    "imdb": 6.3,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Nefret Robot",
+    "year": 1988,
+    "imdb": 8.4,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde nefret robot kavramı derinlemesine işleniyor. İzleyiciyi 1988 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Katil",
+    "year": 2011,
+    "imdb": 5.8,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk katil kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Uzay Gündüz",
+    "year": 1997,
+    "imdb": 7.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde uzay gündüz kavramı derinlemesine işleniyor. İzleyiciyi 1997 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Tehlikeli Yıldız",
+    "year": 2015,
+    "imdb": 4.7,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde tehlikeli yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Doktor",
+    "year": 1991,
+    "imdb": 8.5,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz doktor kavramı derinlemesine işleniyor. İzleyiciyi 1991 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Ölümcül Kadın",
+    "year": 1990,
+    "imdb": 8.5,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde ölümcül kadın kavramı derinlemesine işleniyor. İzleyiciyi 1990 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Öğrenci",
+    "year": 2002,
+    "imdb": 4.7,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Doktor",
+    "year": 1995,
+    "imdb": 6.9,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı doktor kavramı derinlemesine işleniyor. İzleyiciyi 1995 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Savaş Adalet",
+    "year": 2010,
+    "imdb": 8.9,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde savaş adalet kavramı derinlemesine işleniyor. İzleyiciyi 2010 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Siyah Gündüz",
+    "year": 1994,
+    "imdb": 5.4,
+    "genre": "Komedi",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde siyah gündüz kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Şehir",
+    "year": 2021,
+    "imdb": 6.1,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son şehir kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Kadın",
+    "year": 2015,
+    "imdb": 4,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol kadın kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gümüş Gece",
+    "year": 2012,
+    "imdb": 7.3,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gümüş gece kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Yıldız",
+    "year": 2015,
+    "imdb": 5.3,
+    "genre": "Macera",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2015 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Gece",
+    "year": 2007,
+    "imdb": 5.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz gece kavramı derinlemesine işleniyor. İzleyiciyi 2007 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Hayalet Gece",
+    "year": 1985,
+    "imdb": 8.8,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde hayalet gece kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Çılgın Kral",
+    "year": 2019,
+    "imdb": 4.3,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde çılgın kral kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Beyaz Dedektif",
+    "year": 1985,
+    "imdb": 5.6,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde beyaz dedektif kavramı derinlemesine işleniyor. İzleyiciyi 1985 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Ejderha",
+    "year": 2002,
+    "imdb": 8.7,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem ejderha kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Kraliçe",
+    "year": 2024,
+    "imdb": 6,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen kraliçe kavramı derinlemesine işleniyor. İzleyiciyi 2024 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Muhteşem Gündüz",
+    "year": 1994,
+    "imdb": 6.7,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde muhteşem gündüz kavramı derinlemesine işleniyor. İzleyiciyi 1994 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Doktor",
+    "year": 2017,
+    "imdb": 4.9,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük doktor kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Büyük Doktor",
+    "year": 2022,
+    "imdb": 5.6,
+    "genre": "Gerilim",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde büyük doktor kavramı derinlemesine işleniyor. İzleyiciyi 2022 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Kırmızı Kadın",
+    "year": 2000,
+    "imdb": 7.2,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde kırmızı kadın kavramı derinlemesine işleniyor. İzleyiciyi 2000 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Demir Kadın",
+    "year": 2016,
+    "imdb": 7.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde demir kadın kavramı derinlemesine işleniyor. İzleyiciyi 2016 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Katil",
+    "year": 2013,
+    "imdb": 4.9,
+    "genre": "Suç",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol katil kavramı derinlemesine işleniyor. İzleyiciyi 2013 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Rüya",
+    "year": 2011,
+    "imdb": 8.7,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol rüya kavramı derinlemesine işleniyor. İzleyiciyi 2011 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Küçük Dedektif",
+    "year": 2012,
+    "imdb": 8,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde küçük dedektif kavramı derinlemesine işleniyor. İzleyiciyi 2012 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Barış Savaşçı",
+    "year": 2017,
+    "imdb": 4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde barış savaşçı kavramı derinlemesine işleniyor. İzleyiciyi 2017 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "İlk Asker",
+    "year": 2009,
+    "imdb": 5.4,
+    "genre": "Romantik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde i̇lk asker kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Yol Öğretmen",
+    "year": 1997,
+    "imdb": 7.8,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde yol öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 1997 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Son Gündüz",
+    "year": 2021,
+    "imdb": 7.6,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde son gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2021 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Sonsuz Öğretmen",
+    "year": 2002,
+    "imdb": 5.1,
+    "genre": "Gizem",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde sonsuz öğretmen kavramı derinlemesine işleniyor. İzleyiciyi 2002 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Altın Polis",
+    "year": 1992,
+    "imdb": 6.9,
+    "genre": "Drama",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde altın polis kavramı derinlemesine işleniyor. İzleyiciyi 1992 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Düşen Öğrenci",
+    "year": 1984,
+    "imdb": 7.2,
+    "genre": "Korku",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde düşen öğrenci kavramı derinlemesine işleniyor. İzleyiciyi 1984 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Zaman Yıldız",
+    "year": 2020,
+    "imdb": 5.3,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde zaman yıldız kavramı derinlemesine işleniyor. İzleyiciyi 2020 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Gizli Gündüz",
+    "year": 2019,
+    "imdb": 8.2,
+    "genre": "Fantastik",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde gizli gündüz kavramı derinlemesine işleniyor. İzleyiciyi 2019 yılına götüren sürükleyici bir yapıt."
+  },
+  {
+    "title": "Aşk Kabus",
+    "year": 2009,
+    "imdb": 8.1,
+    "genre": "Animasyon",
+    "cast": [
+      "Oyuncu A",
+      "Oyuncu B"
+    ],
+    "description": "Bu filmde aşk kabus kavramı derinlemesine işleniyor. İzleyiciyi 2009 yılına götüren sürükleyici bir yapıt."
+  }
 ]
