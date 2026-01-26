@@ -1,16 +1,12 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.1.0"; // Updated for Social Content Expansion
+const APP_VERSION = "9.2.0"; // Force Update v2
 
-// KILL ALL SERVICE WORKERS IMMEDIATELY
+// KILL ALL SERVICE WORKERS IMMEDIATELY (Safety Mode)
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(function (registrations) {
         for (let registration of registrations) {
-            console.log("Unregistering SW:", registration);
             registration.unregister();
         }
-    });
-    caches.keys().then(names => {
-        for (let name of names) caches.delete(name);
     });
 }
 
@@ -98,7 +94,7 @@ function switchTab(tabName) {
     });
 
     // Show target section
-    const targetSection = document.getElementById(`tab-${tabName}`);
+    const targetSection = document.getElementById(`tab - ${tabName} `);
     if (targetSection) {
         targetSection.classList.remove('hidden');
         targetSection.classList.add('active');
@@ -157,7 +153,7 @@ function updateCountdown() {
     if (!container) return;
 
     if (distance < 0) {
-        container.innerHTML = `<div style="text-align:center; width:100%; color:#ef4444; font-weight:800;">SINAV TARİHİ GEÇTİ</div>`;
+        container.innerHTML = `< div style = "text-align:center; width:100%; color:#ef4444; font-weight:800;" > SINAV TARİHİ GEÇTİ</div > `;
         return;
     }
 
@@ -166,10 +162,10 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
     container.innerHTML = `
-        <div class="time-box"><span class="time-val">${days}</span><span class="time-label">GÜN</span></div>
+    < div class="time-box" ><span class="time-val">${days}</span><span class="time-label">GÜN</span></div >
         <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">SAAT</span></div>
         <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">DK</span></div>
-    `;
+`;
 }
 
 // Exam Date Modal
@@ -234,11 +230,11 @@ function renderDaySelector() {
         // Short Names
         const short = dayNames[d].substring(0, 3);
         html += `
-            <div class="shape-btn ${d === currentScheduleDay ? 'active' : ''}" onclick="selectScheduleDay(${d})">
+    < div class="shape-btn ${d === currentScheduleDay ? 'active' : ''}" onclick = "selectScheduleDay(${d})" >
                 <span style="font-weight:700; font-size:1.1rem;">${short}</span>
                 <span style="font-size:0.6rem;">Gün</span>
-            </div>
-        `;
+            </div >
+    `;
     });
     container.innerHTML = html;
 }
@@ -279,28 +275,28 @@ function renderSchedule(dayIdx) {
         let contentHtml = '';
         if (item) {
             contentHtml = `
-                <div class="list-item-card" style="border-left-color: #3b82f6; margin-bottom:0;">
+    < div class="list-item-card" style = "border-left-color: #3b82f6; margin-bottom:0;" >
                     <div class="item-info">
                         <h3>${item.subject}</h3>
                         <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
                     </div>
                     <button onclick="deleteScheduleItem('${item.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
-                </div>
-            `;
+                </div >
+    `;
         } else {
             contentHtml = `
-                <div class="empty-slot" onclick="openScheduleModal('${hourStr}')">
-                    <i class="fas fa-plus"></i> Ekle
-                </div>
-            `;
+    < div class="empty-slot" onclick = "openScheduleModal('${hourStr}')" >
+        <i class="fas fa-plus"></i> Ekle
+                </div >
+    `;
         }
 
         row.innerHTML = `
-            <div class="time-col">${hourStr}</div>
-            <div class="content-col">
-                ${contentHtml}
-            </div>
-        `;
+    < div class="time-col" > ${hourStr}</div >
+        <div class="content-col">
+            ${contentHtml}
+        </div>
+`;
         timelineContainer.appendChild(row);
     }
 
@@ -323,10 +319,10 @@ function openScheduleModal(prefillTime = '') {
     if (datalist) {
         let options = '';
         subjects.forEach(s => {
-            options += `<option value="${s.name}">`;
+            options += `< option value = "${s.name}" > `;
         });
         topics.forEach(t => {
-            options += `<option value="${t.name}">`; // Just topic name for simplicity, or Subject - Topic
+            options += `< option value = "${t.name}" > `; // Just topic name for simplicity, or Subject - Topic
         });
         datalist.innerHTML = options;
     }
@@ -432,7 +428,7 @@ function updateDashboardSchedule() {
     const todayItems = fullSchedule.filter(i => parseInt(i.day) === d).sort((a, b) => a.time.localeCompare(b.time));
 
     if (todayItems.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:10px; color:#64748b;">Bugün boşsun! 🥳</div>`;
+        container.innerHTML = `< div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div > `;
         return;
     }
 
@@ -440,14 +436,14 @@ function updateDashboardSchedule() {
     // Show top 3
     todayItems.slice(0, 3).forEach(item => {
         html += `
-             <div class="list-item-card" style="border-left-color: #3b82f6;">
+    < div class="list-item-card" style = "border-left-color: #3b82f6;" >
                 <div class="item-info">
                     <h3>${item.subject}</h3>
                     <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
                 </div>
                 <span class="item-badge badge-blue">Program</span>
-            </div>
-        `;
+            </div >
+    `;
     });
     // Add "See All" link behavior?
     container.innerHTML = html;
@@ -476,7 +472,7 @@ function switchHomeSubTab(tabName) {
     document.getElementById('home-view-notlar').classList.add('hidden');
 
     // 3. Show Target View
-    const target = document.getElementById(`home-view-${tabName}`);
+    const target = document.getElementById(`home - view - ${tabName} `);
     if (target) {
         target.classList.remove('hidden');
     }
@@ -506,7 +502,7 @@ function renderDashboardGoals() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style="text-align:center; padding:10px; color:#64748b;">Bugün için hedefin yok.</div>`;
+            container.innerHTML = `< div style = "text-align:center; padding:10px; color:#64748b;" > Bugün için hedefin yok.</div > `;
             return;
         }
 
@@ -514,10 +510,10 @@ function renderDashboardGoals() {
         snap.forEach(doc => {
             const data = doc.data();
             html += `
-                <div class="list-item-card" style="border-left-color: #f97316; padding:10px;">
-                    <span style="font-size:0.9rem;">${data.text}</span>
-                </div>
-            `;
+    < div class="list-item-card" style = "border-left-color: #f97316; padding:10px;" >
+        <span style="font-size:0.9rem;">${data.text}</span>
+                </div >
+    `;
         });
         container.innerHTML = html;
     });
@@ -534,20 +530,20 @@ function renderDurumSchedule() {
     const todayItems = fullSchedule.filter(i => parseInt(i.day) === d).sort((a, b) => a.time.localeCompare(b.time));
 
     if (todayItems.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:10px; color:#64748b;">Bugün boşsun! 🥳</div>`;
+        container.innerHTML = `< div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div > `;
         return;
     }
 
     let html = '';
     todayItems.forEach(item => {
         html += `
-             <div class="list-item-card" style="border-left-color: #3b82f6;">
-                <div class="item-info">
-                    <h3>${item.subject}</h3>
-                    <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
-                </div>
-            </div>
-        `;
+    < div class="list-item-card" style = "border-left-color: #3b82f6;" >
+        <div class="item-info">
+            <h3>${item.subject}</h3>
+            <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
+        </div>
+            </div >
+    `;
     });
     container.innerHTML = html;
 }
@@ -583,7 +579,7 @@ function loadGoals() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Henüz hedef eklemedin. Hadi başla! 🚀</div>`;
+            container.innerHTML = `< div style = "text-align:center; padding:20px; color:#64748b;" > Henüz hedef eklemedin.Hadi başla! 🚀</div > `;
             return;
         }
 
@@ -591,10 +587,10 @@ function loadGoals() {
         snap.forEach(doc => {
             const data = doc.data();
             const isDone = data.completed;
-            const dateBadge = data.targetDate ? `<span class="item-badge" style="background:#f1f5f9; color:#64748b; font-size:0.7rem; margin-right:5px;">📅 ${new Date(data.targetDate).toLocaleDateString('tr-TR')}</span>` : '';
+            const dateBadge = data.targetDate ? `< span class="item-badge" style = "background:#f1f5f9; color:#64748b; font-size:0.7rem; margin-right:5px;" >📅 ${new Date(data.targetDate).toLocaleDateString('tr-TR')}</span > ` : '';
 
             html += `
-                <div class="list-item-card" style="border-left-color: ${isDone ? '#10b981' : '#f97316'}; opacity: ${isDone ? '0.6' : '1'};">
+    < div class="list-item-card" style = "border-left-color: ${isDone ? '#10b981' : '#f97316'}; opacity: ${isDone ? '0.6' : '1'};" >
                     <div class="item-info">
                         <h3 style="text-decoration: ${isDone ? 'line-through' : 'none'}">${data.text}</h3>
                         <div style="margin-top:5px;">
@@ -610,8 +606,8 @@ function loadGoals() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                </div>
-            `;
+                </div >
+    `;
         });
         container.innerHTML = html;
     });
@@ -657,7 +653,7 @@ function loadNotes() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Henüz not yok.</div>`;
+            container.innerHTML = `< div style = "text-align:center; padding:20px; color:#64748b;" > Henüz not yok.</div > `;
             return;
         }
 
@@ -665,7 +661,7 @@ function loadNotes() {
         snap.forEach(doc => {
             const data = doc.data();
             html += `
-                <div class="list-item-card" style="border-left-color: #a855f7;">
+    < div class="list-item-card" style = "border-left-color: #a855f7;" >
                     <div class="item-info">
                         <h3>${data.text}</h3>
                         <span class="item-sub">${new Date(data.timestamp).toLocaleDateString('tr-TR')}</span>
@@ -673,8 +669,8 @@ function loadNotes() {
                     <button onclick="deleteNote('${doc.id}')" style="background:none; border:none; cursor:pointer; color:#ef4444;">
                         <i class="fas fa-trash"></i>
                     </button>
-                </div>
-            `;
+                </div >
+    `;
         });
         container.innerHTML = html;
     });
@@ -746,7 +742,7 @@ function openSocialSubTab(subName) {
     document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
 
     // Show target
-    const target = document.getElementById(`social-view-${subName}`);
+    const target = document.getElementById(`social - view - ${subName} `);
     if (target) {
         target.classList.remove('hidden');
 
@@ -795,7 +791,7 @@ function loadCapsules() {
     const container = document.getElementById('capsule-list');
     db.collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
         if (snap.empty) {
-            container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Henüz kapsülün yok.</div>`;
+            container.innerHTML = `< div style = "text-align:center; color:#64748b; padding:20px;" > Henüz kapsülün yok.</div > `;
             return;
         }
 
@@ -809,24 +805,24 @@ function loadCapsules() {
 
             if (isLocked) {
                 html += `
-                    <div class="list-item-card" style="border-left-color: #fbbf24; opacity:0.7;">
+    < div class="list-item-card" style = "border-left-color: #fbbf24; opacity:0.7;" >
                         <div class="item-info">
                             <h3>🔒 ${data.title}</h3>
                             <span class="item-sub">Açılma Tarihi: ${unlock.toLocaleDateString('tr-TR')}</span>
                         </div>
                         <i class="fas fa-lock" style="color:#fbbf24;"></i>
-                    </div>
-                `;
+                    </div >
+    `;
             } else {
                 html += `
-                    <div class="list-item-card" style="border-left-color: #10b981;">
-                        <div class="item-info">
-                            <h3>🔓 ${data.title}</h3>
-                            <p style="font-size:0.9rem; margin-top:5px; color:#cbd5e1;">${data.message}</p>
-                            <span class="item-sub" style="margin-top:5px; display:block;">${unlock.toLocaleDateString('tr-TR')} tarihinde açıldı.</span>
-                        </div>
-                    </div>
-                `;
+    < div class="list-item-card" style = "border-left-color: #10b981;" >
+        <div class="item-info">
+            <h3>🔓 ${data.title}</h3>
+            <p style="font-size:0.9rem; margin-top:5px; color:#cbd5e1;">${data.message}</p>
+            <span class="item-sub" style="margin-top:5px; display:block;">${unlock.toLocaleDateString('tr-TR')} tarihinde açıldı.</span>
+        </div>
+                    </div >
+    `;
             }
         });
         container.innerHTML = html;
@@ -854,7 +850,7 @@ function loadBucketList() {
     db.collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('bucket-list');
         if (snap.empty) {
-            container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Listen boş. Ekle bi şeyler!</div>`;
+            container.innerHTML = `< div style = "text-align:center; color:#64748b; padding:20px;" > Listen boş.Ekle bi şeyler!</div > `;
             return;
         }
 
@@ -862,7 +858,7 @@ function loadBucketList() {
         snap.forEach(doc => {
             const data = doc.data();
             html += `
-                <div class="list-item-card" style="border-left-color: #34d399;">
+    < div class="list-item-card" style = "border-left-color: #34d399;" >
                     <div class="item-info">
                         <h3 style="text-decoration: ${data.done ? 'line-through' : 'none'}; opacity:${data.done ? 0.5 : 1}">${data.text}</h3>
                     </div>
@@ -874,8 +870,8 @@ function loadBucketList() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                </div>
-            `;
+                </div >
+    `;
         });
         container.innerHTML = html;
     });
@@ -898,29 +894,29 @@ function renderSubjectTabs() {
 
     // "All" Tab (Fixed)
     html += `
-        <div class="shape-btn subject-tab-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterSubjects('all', this)">
+    < div class="shape-btn subject-tab-btn ${currentFilter === 'all' ? 'active' : ''}" onclick = "filterSubjects('all', this)" >
             <i class="fas fa-layer-group"></i>
             <span>Tümü</span>
-        </div>
+        </div >
     `;
 
     // Dynamic Tabs
     subjects.forEach(sub => {
         html += `
-            <div class="shape-btn subject-tab-btn ${currentFilter === sub.id ? 'active' : ''}" onclick="filterSubjects('${sub.id}', this, event)">
+    < div class="shape-btn subject-tab-btn ${currentFilter === sub.id ? 'active' : ''}" onclick = "filterSubjects('${sub.id}', this, event)" >
                 <i class="${sub.icon || 'fas fa-book'}"></i>
                 <span>${sub.name}</span>
                 ${generateSubjectDeletePrompt(sub.id)}
-            </div>
-        `;
+            </div >
+    `;
     });
 
     // "Add" Button
     html += `
-        <div class="shape-btn" onclick="addNewSubject()" style="background: rgba(255,255,255,0.05); border:1px dashed #64748b;">
+    < div class="shape-btn" onclick = "addNewSubject()" style = "background: rgba(255,255,255,0.05); border:1px dashed #64748b;" >
             <i class="fas fa-plus"></i>
             <span>Ekle</span>
-        </div>
+        </div >
     `;
 
     container.innerHTML = html;
@@ -928,9 +924,9 @@ function renderSubjectTabs() {
 
 function generateSubjectDeletePrompt(id) {
     return `
-        <div id="del-prompt-${id}" class="delete-prompt hidden" onclick="confirmDeleteSubject('${id}', event)">
-            Sileyim mi? <span style="text-decoration:underline; font-weight:bold;">SİL</span>
-        </div>
+    < div id = "del-prompt-${id}" class="delete-prompt hidden" onclick = "confirmDeleteSubject('${id}', event)" >
+        Sileyim mi ? <span style="text-decoration:underline; font-weight:bold;">SİL</span>
+        </div >
     `;
 }
 
@@ -961,7 +957,7 @@ function filterSubjects(cat, btnElement, event) {
     if (cat !== 'all' && event) {
         // Show prompt logic similar to previous attempt
         hideAllDeletePrompts();
-        const prompt = document.getElementById(`del-prompt-${cat}`);
+        const prompt = document.getElementById(`del - prompt - ${cat} `);
         if (prompt) {
             prompt.classList.remove('hidden');
             deleteSubjectPromptId = cat;
@@ -1001,7 +997,7 @@ function renderTopics() {
 
     if (displayTopics.length === 0) {
         if (currentFilter === 'all' && subjects.length === 0) {
-            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Hiç ders yok. "Ekle" butonuna basarak başla!</div>`;
+            container.innerHTML = `< div style = "text-align:center; padding:20px; color:#64748b;" > Hiç ders yok. "Ekle" butonuna basarak başla!</div > `;
             return;
         }
         // Show "Add Topic" button even if empty
@@ -1018,7 +1014,7 @@ function renderTopics() {
         else if (t.status === 'done') { statusColor = '#10b981'; statusText = 'Tamamlandı'; }
 
         html += `
-            <div class="list-item-card" style="border-left-color: ${statusColor};">
+    < div class="list-item-card" style = "border-left-color: ${statusColor};" >
                 <div class="item-info">
                     <h3>${t.name}</h3>
                     <span class="item-sub">${getSubjectName(t.subjectId)}</span>
@@ -1029,27 +1025,27 @@ function renderTopics() {
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
-            </div>
-        `;
+            </div >
+    `;
     });
 
     // Add "New Topic" Button at bottom
     // Only show if a specific subject is selected (to know where to add)
     // Or if 'all' is selected, prompt needs to ask for subject.
     html += `
-        <div onclick="addNewTopic()" style="
-            margin-top: 15px; 
-            padding: 15px; 
-            border: 2px dashed #334155; 
-            border-radius: 15px; 
-            text-align: center; 
-            color: #94a3b8; 
-            cursor: pointer;
-            transition: all 0.2s;
-        " onmouseover="this.style.borderColor='#3b82f6'; this.style.color='#3b82f6'" 
-          onmouseout="this.style.borderColor='#334155'; this.style.color='#94a3b8'">
-            <i class="fas fa-plus-circle"></i> Yeni Konu Ekle
-        </div>
+    < div onclick = "addNewTopic()" style = "
+margin - top: 15px;
+padding: 15px;
+border: 2px dashed #334155;
+border - radius: 15px;
+text - align: center;
+color: #94a3b8;
+cursor: pointer;
+transition: all 0.2s;
+" onmouseover="this.style.borderColor = '#3b82f6'; this.style.color = '#3b82f6'" 
+onmouseout = "this.style.borderColor='#334155'; this.style.color='#94a3b8'" >
+    <i class="fas fa-plus-circle"></i> Yeni Konu Ekle
+        </div >
     `;
 
     container.innerHTML = html;
@@ -1153,7 +1149,7 @@ function renderNetChart(data) {
     const svg = document.getElementById('net-chart');
     const labelsDiv = document.getElementById('chart-labels');
     if (!svg || data.length < 2) {
-        if (svg) svg.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#64748b" font-size="12">Grafik için en az 2 veri lazım</text>`;
+        if (svg) svg.innerHTML = `< text x = "50%" y = "50%" dominant - baseline="middle" text - anchor="middle" fill = "#64748b" font - size="12" > Grafik için en az 2 veri lazım</text > `;
         return;
     }
 
@@ -1171,33 +1167,33 @@ function renderNetChart(data) {
     const getX = (i) => padding + (i / (data.length - 1)) * (width - 2 * padding);
 
     // Build Path
-    let pathD = `M ${getX(0)} ${getY(data[0].net)}`;
-    let areaD = `M ${getX(0)} ${height} L ${getX(0)} ${getY(data[0].net)}`;
+    let pathD = `M ${getX(0)} ${getY(data[0].net)} `;
+    let areaD = `M ${getX(0)} ${height} L ${getX(0)} ${getY(data[0].net)} `;
 
     data.forEach((d, i) => {
-        pathD += ` L ${getX(i)} ${getY(d.net)}`;
-        areaD += ` L ${getX(i)} ${getY(d.net)}`;
+        pathD += ` L ${getX(i)} ${getY(d.net)} `;
+        areaD += ` L ${getX(i)} ${getY(d.net)} `;
     });
 
     areaD += ` L ${getX(data.length - 1)} ${height} Z`;
 
     // Draw SVG
     let html = `
-        <!-- Area -->
+    < !--Area -->
         <path d="${areaD}" class="chart-area" />
-        <!-- Line -->
-        <path d="${pathD}" class="chart-line" />
-    `;
+        <!--Line -->
+    <path d="${pathD}" class="chart-line" />
+`;
 
     // Dots & Labels
     let labelsHtml = '';
     data.forEach((d, i) => {
-        html += `<circle cx="${getX(i)}" cy="${getY(d.net)}" class="chart-dot"><title>${d.net} Net - ${d.date}</title></circle>`;
-        html += `<text x="${getX(i)}" y="${getY(d.net) - 10}" class="chart-label">${d.net}</text>`;
+        html += `< circle cx = "${getX(i)}" cy = "${getY(d.net)}" class="chart-dot" > <title>${d.net} Net - ${d.date}</title></circle > `;
+        html += `< text x = "${getX(i)}" y = "${getY(d.net) - 10}" class="chart-label" > ${d.net}</text > `;
 
         // Axis Labels (First and Last only to prevent crowd)
         if (i === 0 || i === data.length - 1) {
-            labelsHtml += `<span>${d.date}</span>`;
+            labelsHtml += `< span > ${d.date}</span > `;
         }
     });
 
@@ -1214,13 +1210,13 @@ function renderHistoryList(data) {
     let html = '';
     listData.forEach(item => {
         html += `
-             <div class="list-item-card" style="border-left-color: #f97316; height:auto; padding:10px;">
-                <div class="item-info">
-                    <h3>${item.net} Net</h3>
-                    <span class="item-sub">${item.date}</span>
-                </div>
-            </div>
-        `;
+    < div class="list-item-card" style = "border-left-color: #f97316; height:auto; padding:10px;" >
+        <div class="item-info">
+            <h3>${item.net} Net</h3>
+            <span class="item-sub">${item.date}</span>
+        </div>
+            </div >
+    `;
     });
     container.innerHTML = html;
 }
@@ -1301,11 +1297,11 @@ function renderHomeNetChart() {
                 el.className = 'list-item-card';
                 el.style.borderLeftColor = '#3b82f6';
                 el.innerHTML = `
-                    <div class="item-info">
+    < div class="item-info" >
                          <h3>${d.net} Net</h3>
                          <span class="item-sub">${new Date(d.timestamp).toLocaleDateString('tr-TR')}</span>
-                    </div>
-                 `;
+                    </div >
+    `;
                 historyContainer.appendChild(el);
             }
         });
@@ -1351,7 +1347,7 @@ function renderHomeNetChart() {
 
             // Label inside SVG
             const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-            title.textContent = `${d.net} Net (${d.date})`;
+            title.textContent = `${d.net} Net(${d.date})`;
             dot.appendChild(title);
 
             svg.appendChild(dot);
@@ -1427,14 +1423,14 @@ function renderMovies(list) {
     if (!container) return;
 
     if (list.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:20px; color:#cbd5e1;">Kriterlere uygun film bulunamadı.</div>`;
+        container.innerHTML = `< div style = "text-align:center; padding:20px; color:#cbd5e1;" > Kriterlere uygun film bulunamadı.</div > `;
         return;
     }
 
     let html = '';
     list.forEach(m => {
         html += `
-            <div class="list-item-card" style="border-left-color: #f472b6; display:block;">
+    < div class="list-item-card" style = "border-left-color: #f472b6; display:block;" >
                 <div style="display:flex; justify-content:space-between; align-items:start;">
                     <h3 style="color:#f472b6;">${m.title}</h3>
                     <span style="background:#f472b6; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem; font-weight:bold;">${m.imdb}</span>
@@ -1448,8 +1444,8 @@ function renderMovies(list) {
                 <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">
                    Oyuncular: ${m.cast.join(', ')}
                 </div>
-            </div>
-        `;
+            </div >
+    `;
     });
     container.innerHTML = html;
 }
@@ -1486,7 +1482,7 @@ async function loadStories() {
             const preview = isLong ? s.story.substring(0, 100) + '...' : s.story;
 
             html += `
-                 <div class="list-item-card" id="story-${index}" style="border-left-color: #fb923c; display:block; cursor:pointer;" onclick="toggleStory(${index})">
+    < div class="list-item-card" id = "story-${index}" style = "border-left-color: #fb923c; display:block; cursor:pointer;" onclick = "toggleStory(${index})" >
                     <div style="display:flex; justify-content:space-between;">
                         <h3 style="color:#fb923c;">${s.name}</h3>
                         <i class="fas fa-chevron-down" id="icon-${index}" style="color:#cbd5e1; transition:transform 0.3s;"></i>
@@ -1499,17 +1495,17 @@ async function loadStories() {
                     <p class="story-full hidden" id="full-${index}" style="font-size:0.9rem; color:#fff; line-height:1.6; margin-top:10px;">
                         "${s.story}"
                     </p>
-                </div>
-            `;
+                </div >
+    `;
         });
         container.innerHTML = html;
     } catch (e) { console.error(e); }
 }
 
 function toggleStory(index) {
-    const preview = document.getElementById(`preview-${index}`);
-    const full = document.getElementById(`full-${index}`);
-    const icon = document.getElementById(`icon-${index}`);
+    const preview = document.getElementById(`preview - ${index} `);
+    const full = document.getElementById(`full - ${index} `);
+    const icon = document.getElementById(`icon - ${index} `);
 
     if (full.classList.contains('hidden')) {
         full.classList.remove('hidden');
@@ -1563,8 +1559,8 @@ function voteThisOrThat(option) {
     let pctA = Math.floor(Math.random() * 80) + 10; // Random % between 10-90
     let pctB = 100 - pctA;
 
-    document.getElementById('stat-a-label').innerText = `${q.a} (%${pctA})`;
-    document.getElementById('stat-b-label').innerText = `${q.b} (%${pctB})`;
+    document.getElementById('stat-a-label').innerText = `${q.a} (% ${pctA})`;
+    document.getElementById('stat-b-label').innerText = `${q.b} (% ${pctB})`;
 
     document.getElementById('stat-bar').style.width = pctA + '%';
 }
