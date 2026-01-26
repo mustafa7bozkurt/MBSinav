@@ -481,35 +481,6 @@
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore-compat.js"></script>
 
 
-    <!-- NUCLEAR CACHE CL SCRIPT -->
-    <script>
-        (async function () {
-            try {
-                // Unique version to track nukes
-                const NUKE_VERSION = 'v1-nuke';
-                if (!localStorage.getItem(NUKE_VERSION)) {
-                    console.log('NUCLEAR CACHE CLEAR INITIATED');
-
-                    if ('serviceWorker' in navigator) {
-                        const registrations = await navigator.serviceWorker.getRegistrations();
-                        for (const registration of registrations) {
-                            await registration.unregister();
-                        }
-                    }
-
-                    if ('caches' in window) {
-                        const keys = await caches.keys();
-                        await Promise.all(keys.map(key => caches.delete(key)));
-                    }
-
-                    localStorage.setItem(NUKE_VERSION, 'true');
-                    window.location.reload(true);
-                }
-            } catch (e) {
-                console.error("Cache clear failed", e);
-            }
-        })();
-    </script>
     <script src="app.js?v=9.0.0"></script>
 
     </script>
