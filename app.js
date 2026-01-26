@@ -88,7 +88,7 @@ function switchTab(tabName) {
     });
 
     // Show target section
-    const targetSection = document.getElementById(`tab - ${tabName} `);
+    const targetSection = document.getElementById(`tab-${tabName}`);
     if (targetSection) {
         targetSection.classList.remove('hidden');
         targetSection.classList.add('active');
@@ -466,7 +466,7 @@ function switchHomeSubTab(tabName) {
     document.getElementById('home-view-notlar').classList.add('hidden');
 
     // 3. Show Target View
-    const target = document.getElementById(`home - view - ${tabName} `);
+    const target = document.getElementById(`home-view-${tabName}`);
     if (target) {
         target.classList.remove('hidden');
     }
@@ -736,7 +736,7 @@ function openSocialSubTab(subName) {
     document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
 
     // Show target
-    const target = document.getElementById(`social - view - ${subName} `);
+    const target = document.getElementById(`social-view-${subName}`);
     if (target) {
         target.classList.remove('hidden');
 
@@ -951,7 +951,7 @@ function filterSubjects(cat, btnElement, event) {
     if (cat !== 'all' && event) {
         // Show prompt logic similar to previous attempt
         hideAllDeletePrompts();
-        const prompt = document.getElementById(`del - prompt - ${cat} `);
+        const prompt = document.getElementById(`del-prompt-${cat}`);
         if (prompt) {
             prompt.classList.remove('hidden');
             deleteSubjectPromptId = cat;
@@ -1499,9 +1499,9 @@ async function loadStories() {
 }
 
 function toggleStory(index) {
-    const preview = document.getElementById(`preview - ${index} `);
-    const full = document.getElementById(`full - ${index} `);
-    const icon = document.getElementById(`icon - ${index} `);
+    const preview = document.getElementById(`preview-${index}`);
+    const full = document.getElementById(`full-${index}`);
+    const icon = document.getElementById(`icon-${index}`);
 
     if (full.classList.contains('hidden')) {
         full.classList.remove('hidden');
