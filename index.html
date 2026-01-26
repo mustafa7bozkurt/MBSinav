@@ -364,13 +364,13 @@
             </div>
 
             <!-- 2. Geleceğe Kapsül -->
-            <div class="social-card" onclick="alert('Geleceğe Mektup Yakında!')">
+            <div class="social-card" onclick="openSocialSubTab('capsule')">
                 <i class="fas fa-hourglass-half" style="color: #fbbf24;"></i>
                 <span>Geleceğe<br>Kapsül</span>
             </div>
 
             <!-- 3. Sınavdan Sonra -->
-            <div class="social-card" onclick="alert('Bucket List Yakında!')">
+            <div class="social-card" onclick="openSocialSubTab('bucket')">
                 <i class="fas fa-plane-departure" style="color: #34d399;"></i>
                 <span>Sınavdan<br>Sonra</span>
             </div>
@@ -394,8 +394,68 @@
             </div>
         </div>
 
+        </div>
+
         <div style="text-align:center; margin-top:20px; opacity:0.5; font-size:0.8rem;">
             Daha fazlası yolda... 🚀
+        </div>
+
+        <!-- SUB-VIEW: Geleceğe Kapsül -->
+        <div id="social-view-capsule" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">Geleceğe Kapsül</h3>
+            </div>
+
+            <div class="form-section">
+                <h4>Yeni Kapsül Oluştur</h4>
+                <div class="input-grid" style="grid-template-columns: 1fr;">
+                    <input type="text" id="cap-title" class="form-input" placeholder="Başlık (Örn: Sınav Sonucu)">
+                    <textarea id="cap-message" class="form-input" rows="4"
+                        placeholder="Gelecekteki kendine ne söylemek istersin?"></textarea>
+                    <label class="form-label">Açılacağı Tarih</label>
+                    <input type="date" id="cap-date" class="form-input">
+                    <button class="primary-btn" onclick="addCapsule()">Kapsüle At 🔒</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Kapsüllerim</h4>
+                <div id="capsule-list" class="list-container">
+                    <div style="text-align:center; color:#64748b; padding:20px;">Henüz kapsülün yok.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUB-VIEW: Sınavdan Sonra (Bucket List) -->
+        <div id="social-view-bucket" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">Sınavdan Sonra...</h3>
+            </div>
+
+            <div class="form-section">
+                <h4>Listeye Ekle</h4>
+                <div class="input-grid" style="grid-template-columns: 1fr auto;">
+                    <input type="text" id="bucket-input" class="form-input"
+                        placeholder="Ne yapacaksın? (Örn: Sabahlara kadar oyun)">
+                    <button class="primary-btn" style="width:auto; padding:0 20px;"
+                        onclick="addBucketItem()">Ekle</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h4>Yapılacaklar Listesi</h4>
+                <div id="bucket-list" class="list-container">
+                    <!-- JS Injected -->
+                </div>
+            </div>
         </div>
     </section>
 
