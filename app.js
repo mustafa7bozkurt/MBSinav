@@ -718,79 +718,96 @@ function loadSubjectsAndTopics() {
         topics = [];
         snap.forEach(doc => topics.push({ id: doc.id, ...doc.data() }));
 
-        // --- SOCIAL PAGE LOGIC ---
-        const CAPSULE_COLLECTION = "mbsinav_capsules";
-        const BUCKET_COLLECTION = "mbsinav_bucketlist";
+        renderTopics();
+    });
+}
 
-        // Navigation
-        function openSocialSubTab(subName) {
-            const grid = document.querySelector('.social-grid');
-            if (grid) grid.classList.add('hidden');
+function seedDefaultSubjects() {
+    const defaults = [
+        { name: 'Matematik', icon: 'fas fa-infinity' },
+        { name: 'Türkçe', icon: 'fas fa-book' },
+        { name: 'Fen', icon: 'fas fa-flask' },
+        { name: 'Sosyal', icon: 'fas fa-globe-europe' }
+    ];
+    defaults.forEach(d => {
+        db.collection(SUBJECTS_COLLECTION).add({ ...d, timestamp: Date.now() });
+    });
+    localStorage.setItem('mbsinav_seeded', 'true');
+}
 
-            // Hide all social sub-views first
-            document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
+// --- SOCIAL PAGE LOGIC ---
+const CAPSULE_COLLECTION = "mbsinav_capsules";
+const BUCKET_COLLECTION = "mbsinav_bucketlist";
 
-            // Show target
-            const target = document.getElementById(`social-view-${subName}`);
-            if (target) {
-                target.classList.remove('hidden');
+// Navigation
+function openSocialSubTab(subName) {
+    const grid = document.querySelector('.social-grid');
+    if (grid) grid.classList.add('hidden');
 
-                // Load data if needed
-                if (subName === 'capsule') loadCapsules();
-                if (subName === 'bucket') loadBucketList();
-            }
+    // Hide all social sub-views first
+    document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
+
+    // Show target
+    const target = document.getElementById(`social-view-${subName}`);
+    if (target) {
+        target.classList.remove('hidden');
+
+        // Load data if needed
+        if (subName === 'capsule') loadCapsules();
+        if (subName === 'bucket') loadBucketList();
+    }
+}
+
+function closeSocialSubTab() {
+    // Hide all social sub-views
+    document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
+
+    // Show grid
+    const grid = document.querySelector('.social-grid');
+    if (grid) grid.classList.remove('hidden');
+}
+
+// 1. CAPSULE LOGIC
+function addCapsule() {
+    const title = document.getElementById('cap-title').value;
+    const msg = document.getElementById('cap-message').value;
+    const date = document.getElementById('cap-date').value;
+
+    if (!title || !msg || !date) { alert("Lütfen tüm alanları doldurun."); return; }
+
+    db.collection(CAPSULE_COLLECTION).add({
+        title,
+        message: msg,
+        unlockDate: date,
+        timestamp: Date.now()
+    }).then(() => {
+        alert("Kapsül kilitlendi! 🔒");
+        document.getElementById('cap-title').value = '';
+        document.getElementById('cap-message').value = '';
+        document.getElementById('cap-date').value = '';
+        loadCapsules();
+    });
+}
+
+function loadCapsules() {
+    if (!db) return;
+    const container = document.getElementById('capsule-list');
+    db.collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
+        if (snap.empty) {
+            container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Henüz kapsülün yok.</div>`;
+            return;
         }
 
-        function closeSocialSubTab() {
-            // Hide all social sub-views
-            document.querySelectorAll('[id^="social-view-"]').forEach(el => el.classList.add('hidden'));
+        let html = '';
+        const now = new Date();
 
-            // Show grid
-            const grid = document.querySelector('.social-grid');
-            if (grid) grid.classList.remove('hidden');
-        }
+        snap.forEach(doc => {
+            const data = doc.data();
+            const unlock = new Date(data.unlockDate);
+            const isLocked = unlock > now;
 
-        // 1. CAPSULE LOGIC
-        function addCapsule() {
-            const title = document.getElementById('cap-title').value;
-            const msg = document.getElementById('cap-message').value;
-            const date = document.getElementById('cap-date').value;
-
-            if (!title || !msg || !date) { alert("Lütfen tüm alanları doldurun."); return; }
-
-            db.collection(CAPSULE_COLLECTION).add({
-                title,
-                message: msg,
-                unlockDate: date,
-                timestamp: Date.now()
-            }).then(() => {
-                alert("Kapsül kilitlendi! 🔒");
-                document.getElementById('cap-title').value = '';
-                document.getElementById('cap-message').value = '';
-                document.getElementById('cap-date').value = '';
-                loadCapsules();
-            });
-        }
-
-        function loadCapsules() {
-            if (!db) return;
-            const container = document.getElementById('capsule-list');
-            db.collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
-                if (snap.empty) {
-                    container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Henüz kapsülün yok.</div>`;
-                    return;
-                }
-
-                let html = '';
-                const now = new Date();
-
-                snap.forEach(doc => {
-                    const data = doc.data();
-                    const unlock = new Date(data.unlockDate);
-                    const isLocked = unlock > now;
-
-                    if (isLocked) {
-                        html += `
+            if (isLocked) {
+                html += `
                     <div class="list-item-card" style="border-left-color: #fbbf24; opacity:0.7;">
                         <div class="item-info">
                             <h3>🔒 ${data.title}</h3>
@@ -799,8 +816,8 @@ function loadSubjectsAndTopics() {
                         <i class="fas fa-lock" style="color:#fbbf24;"></i>
                     </div>
                 `;
-                    } else {
-                        html += `
+            } else {
+                html += `
                     <div class="list-item-card" style="border-left-color: #10b981;">
                         <div class="item-info">
                             <h3>🔓 ${data.title}</h3>
@@ -809,41 +826,41 @@ function loadSubjectsAndTopics() {
                         </div>
                     </div>
                 `;
-                    }
-                });
-                container.innerHTML = html;
-            });
+            }
+        });
+        container.innerHTML = html;
+    });
+}
+
+// 2. BUCKET LIST LOGIC
+function addBucketItem() {
+    const input = document.getElementById('bucket-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    db.collection(BUCKET_COLLECTION).add({
+        text,
+        done: false,
+        timestamp: Date.now()
+    }).then(() => {
+        input.value = '';
+        loadBucketList();
+    });
+}
+
+function loadBucketList() {
+    if (!db) return;
+    db.collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+        const container = document.getElementById('bucket-list');
+        if (snap.empty) {
+            container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Listen boş. Ekle bi şeyler!</div>`;
+            return;
         }
 
-        // 2. BUCKET LIST LOGIC
-        function addBucketItem() {
-            const input = document.getElementById('bucket-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            db.collection(BUCKET_COLLECTION).add({
-                text,
-                done: false,
-                timestamp: Date.now()
-            }).then(() => {
-                input.value = '';
-                loadBucketList();
-            });
-        }
-
-        function loadBucketList() {
-            if (!db) return;
-            db.collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
-                const container = document.getElementById('bucket-list');
-                if (snap.empty) {
-                    container.innerHTML = `<div style="text-align:center; color:#64748b; padding:20px;">Listen boş. Ekle bi şeyler!</div>`;
-                    return;
-                }
-
-                let html = '';
-                snap.forEach(doc => {
-                    const data = doc.data();
-                    html += `
+        let html = '';
+        snap.forEach(doc => {
+            const data = doc.data();
+            html += `
                 <div class="list-item-card" style="border-left-color: #34d399;">
                     <div class="item-info">
                         <h3 style="text-decoration: ${data.done ? 'line-through' : 'none'}; opacity:${data.done ? 0.5 : 1}">${data.text}</h3>
@@ -858,160 +875,148 @@ function loadSubjectsAndTopics() {
                     </div>
                 </div>
             `;
-                });
-                container.innerHTML = html;
-            });
-        }
-
-        function toggleBucket(id, state) {
-            db.collection(BUCKET_COLLECTION).doc(id).update({ done: state });
-        }
-
-        function deleteBucket(id) {
-            if (confirm("Silmek istiyor musun?")) db.collection(BUCKET_COLLECTION).doc(id).delete();
-        }
-
-        const defaults = [
-            { name: 'Matematik', icon: 'fas fa-infinity' },
-            { name: 'Türkçe', icon: 'fas fa-book' },
-            { name: 'Fen', icon: 'fas fa-flask' },
-            { name: 'Sosyal', icon: 'fas fa-globe-europe' }
-        ];
-        defaults.forEach(d => {
-            db.collection(SUBJECTS_COLLECTION).add({ ...d, timestamp: Date.now() });
         });
-        localStorage.setItem('mbsinav_seeded', 'true');
-    }
+        container.innerHTML = html;
+    });
+}
+
+function toggleBucket(id, state) {
+    db.collection(BUCKET_COLLECTION).doc(id).update({ done: state });
+}
+
+function deleteBucket(id) {
+    if (confirm("Silmek istiyor musun?")) db.collection(BUCKET_COLLECTION).doc(id).delete();
+}
 
 // 1. SUBJECTS (TABS)
 function renderSubjectTabs() {
-            const container = document.getElementById('subject-tabs-container');
-            if (!container) return;
+    const container = document.getElementById('subject-tabs-container');
+    if (!container) return;
 
-            let html = '';
+    let html = '';
 
-            // "All" Tab (Fixed)
-            html += `
+    // "All" Tab (Fixed)
+    html += `
         <div class="shape-btn subject-tab-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterSubjects('all', this)">
             <i class="fas fa-layer-group"></i>
             <span>Tümü</span>
         </div>
     `;
 
-            // Dynamic Tabs
-            subjects.forEach(sub => {
-                html += `
+    // Dynamic Tabs
+    subjects.forEach(sub => {
+        html += `
             <div class="shape-btn subject-tab-btn ${currentFilter === sub.id ? 'active' : ''}" onclick="filterSubjects('${sub.id}', this, event)">
                 <i class="${sub.icon || 'fas fa-book'}"></i>
                 <span>${sub.name}</span>
                 ${generateSubjectDeletePrompt(sub.id)}
             </div>
         `;
-            });
+    });
 
-            // "Add" Button
-            html += `
+    // "Add" Button
+    html += `
         <div class="shape-btn" onclick="addNewSubject()" style="background: rgba(255,255,255,0.05); border:1px dashed #64748b;">
             <i class="fas fa-plus"></i>
             <span>Ekle</span>
         </div>
     `;
 
-            container.innerHTML = html;
-        }
+    container.innerHTML = html;
+}
 
 function generateSubjectDeletePrompt(id) {
-            return `
+    return `
         <div id="del-prompt-${id}" class="delete-prompt hidden" onclick="confirmDeleteSubject('${id}', event)">
             Sileyim mi? <span style="text-decoration:underline; font-weight:bold;">SİL</span>
         </div>
     `;
-        }
+}
 
 function addNewSubject() {
-            const name = prompt("Yeni dersin adı ne?");
-            if (!name) return;
+    const name = prompt("Yeni dersin adı ne?");
+    if (!name) return;
 
-            db.collection(SUBJECTS_COLLECTION).add({
-                name: name,
-                icon: 'fas fa-bookmark', // Default icon
-                timestamp: Date.now()
-            });
-        }
+    db.collection(SUBJECTS_COLLECTION).add({
+        name: name,
+        icon: 'fas fa-bookmark', // Default icon
+        timestamp: Date.now()
+    });
+}
 
 function filterSubjects(cat, btnElement, event) {
-            currentFilter = cat;
+    currentFilter = cat;
 
-            // UI Update
-            // Re-rendering whole tabs to update 'active' class is easiest or just toggle
-            // Let's just update classes manually for smoothness
-            document.querySelectorAll('.subject-tab-btn').forEach(b => b.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
+    // UI Update
+    // Re-rendering whole tabs to update 'active' class is easiest or just toggle
+    // Let's just update classes manually for smoothness
+    document.querySelectorAll('.subject-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
 
-            // Filter Topics
-            renderTopics();
+    // Filter Topics
+    renderTopics();
 
-            // Delete Prompt Logic (Only for specific subjects, not 'all')
-            if (cat !== 'all' && event) {
-                // Show prompt logic similar to previous attempt
-                hideAllDeletePrompts();
-                const prompt = document.getElementById(`del-prompt-${cat}`);
-                if (prompt) {
-                    prompt.classList.remove('hidden');
-                    deleteSubjectPromptId = cat;
-                    event.stopPropagation();
-                }
-            } else {
-                hideAllDeletePrompts();
-            }
+    // Delete Prompt Logic (Only for specific subjects, not 'all')
+    if (cat !== 'all' && event) {
+        // Show prompt logic similar to previous attempt
+        hideAllDeletePrompts();
+        const prompt = document.getElementById(`del-prompt-${cat}`);
+        if (prompt) {
+            prompt.classList.remove('hidden');
+            deleteSubjectPromptId = cat;
+            event.stopPropagation();
         }
+    } else {
+        hideAllDeletePrompts();
+    }
+}
 
 function confirmDeleteSubject(id, event) {
-            event.stopPropagation();
-            if (!db) return;
+    event.stopPropagation();
+    if (!db) return;
 
-            // Delete Subject
-            db.collection(SUBJECTS_COLLECTION).doc(id).delete();
+    // Delete Subject
+    db.collection(SUBJECTS_COLLECTION).doc(id).delete();
 
-            // Delete associated topics? Or keep them orphaned?
-            // Better to keep them or delete? For simplicity, let's keep them (or user can delete manually)
-            // But typically user expects cleanup. Let's leave them for now to avoid accidental mass data loss.
+    // Delete associated topics? Or keep them orphaned?
+    // Better to keep them or delete? For simplicity, let's keep them (or user can delete manually)
+    // But typically user expects cleanup. Let's leave them for now to avoid accidental mass data loss.
 
-            // Reset filter
-            filterSubjects('all');
-            hideAllDeletePrompts();
-        }
+    // Reset filter
+    filterSubjects('all');
+    hideAllDeletePrompts();
+}
 
 // 2. TOPICS (LIST)
 function renderTopics() {
-            const container = document.getElementById('subject-list');
-            if (!container) return;
+    const container = document.getElementById('subject-list');
+    if (!container) return;
 
-            // Filter
-            let displayTopics = topics;
-            if (currentFilter !== 'all') {
-                displayTopics = topics.filter(t => t.subjectId === currentFilter);
-            }
+    // Filter
+    let displayTopics = topics;
+    if (currentFilter !== 'all') {
+        displayTopics = topics.filter(t => t.subjectId === currentFilter);
+    }
 
-            if (displayTopics.length === 0) {
-                if (currentFilter === 'all' && subjects.length === 0) {
-                    container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Hiç ders yok. "Ekle" butonuna basarak başla!</div>`;
-                    return;
-                }
-                // Show "Add Topic" button even if empty
-            }
+    if (displayTopics.length === 0) {
+        if (currentFilter === 'all' && subjects.length === 0) {
+            container.innerHTML = `<div style="text-align:center; padding:20px; color:#64748b;">Hiç ders yok. "Ekle" butonuna basarak başla!</div>`;
+            return;
+        }
+        // Show "Add Topic" button even if empty
+    }
 
-            let html = '';
+    let html = '';
 
-            displayTopics.forEach(t => {
-                // Find subject color/icon if needed. For now standard look.
-                // Status color logic
-                let statusColor = '#64748b'; // Gray (Not started)
-                let statusText = 'Başlanmadı';
-                if (t.status === 'working') { statusColor = '#f97316'; statusText = 'Çalışılıyor'; }
-                else if (t.status === 'done') { statusColor = '#10b981'; statusText = 'Tamamlandı'; }
+    displayTopics.forEach(t => {
+        // Find subject color/icon if needed. For now standard look.
+        // Status color logic
+        let statusColor = '#64748b'; // Gray (Not started)
+        let statusText = 'Başlanmadı';
+        if (t.status === 'working') { statusColor = '#f97316'; statusText = 'Çalışılıyor'; }
+        else if (t.status === 'done') { statusColor = '#10b981'; statusText = 'Tamamlandı'; }
 
-                html += `
+        html += `
             <div class="list-item-card" style="border-left-color: ${statusColor};">
                 <div class="item-info">
                     <h3>${t.name}</h3>
@@ -1025,12 +1030,12 @@ function renderTopics() {
                 </div>
             </div>
         `;
-            });
+    });
 
-            // Add "New Topic" Button at bottom
-            // Only show if a specific subject is selected (to know where to add)
-            // Or if 'all' is selected, prompt needs to ask for subject.
-            html += `
+    // Add "New Topic" Button at bottom
+    // Only show if a specific subject is selected (to know where to add)
+    // Or if 'all' is selected, prompt needs to ask for subject.
+    html += `
         <div onclick="addNewTopic()" style="
             margin-top: 15px; 
             padding: 15px; 
@@ -1046,168 +1051,168 @@ function renderTopics() {
         </div>
     `;
 
-            container.innerHTML = html;
-        }
+    container.innerHTML = html;
+}
 
 function addNewTopic() {
-            let subjectId = currentFilter;
+    let subjectId = currentFilter;
 
-            // If "All" is selected, we must ask user to choose a subject
-            if (subjectId === 'all') {
-                // For simplicity, let's just pick the first one or ask user to select a tab first.
-                // Or show a prompt with dropdown.
-                // Let's ask user to select a tab first for better UX than a complex prompt.
-                const subName = prompt("Hangi derse ekleyeceksin? (Dersin tam adını yaz):");
-                if (!subName) return;
-                const sub = subjects.find(s => s.name.toLowerCase() === subName.toLowerCase());
-                if (!sub) {
-                    alert("Böyle bir ders bulunamadı. Önce dersi seçebilir ya da ders ekleyebilirsin.");
-                    return;
-                }
-                subjectId = sub.id;
-            }
-
-            const name = prompt("Konu adı ne?");
-            if (!name) return;
-
-            db.collection(TOPICS_COLLECTION).add({
-                name: name,
-                subjectId: subjectId,
-                status: 'pending', // pending, working, done
-                timestamp: Date.now()
-            });
+    // If "All" is selected, we must ask user to choose a subject
+    if (subjectId === 'all') {
+        // For simplicity, let's just pick the first one or ask user to select a tab first.
+        // Or show a prompt with dropdown.
+        // Let's ask user to select a tab first for better UX than a complex prompt.
+        const subName = prompt("Hangi derse ekleyeceksin? (Dersin tam adını yaz):");
+        if (!subName) return;
+        const sub = subjects.find(s => s.name.toLowerCase() === subName.toLowerCase());
+        if (!sub) {
+            alert("Böyle bir ders bulunamadı. Önce dersi seçebilir ya da ders ekleyebilirsin.");
+            return;
         }
+        subjectId = sub.id;
+    }
+
+    const name = prompt("Konu adı ne?");
+    if (!name) return;
+
+    db.collection(TOPICS_COLLECTION).add({
+        name: name,
+        subjectId: subjectId,
+        status: 'pending', // pending, working, done
+        timestamp: Date.now()
+    });
+}
 
 function deleteTopic(id) {
-            if (confirm("Bu konuyu silmek istiyor musun?")) {
-                db.collection(TOPICS_COLLECTION).doc(id).delete();
-            }
-        }
+    if (confirm("Bu konuyu silmek istiyor musun?")) {
+        db.collection(TOPICS_COLLECTION).doc(id).delete();
+    }
+}
 
 function getSubjectName(id) {
-            const s = subjects.find(sub => sub.id === id);
-            return s ? s.name : 'Genel';
-        }
+    const s = subjects.find(sub => sub.id === id);
+    return s ? s.name : 'Genel';
+}
 
 function hideAllDeletePrompts() {
-            document.querySelectorAll('.delete-prompt').forEach(p => p.classList.add('hidden'));
-            deleteSubjectPromptId = null;
-        }
+    document.querySelectorAll('.delete-prompt').forEach(p => p.classList.add('hidden'));
+    deleteSubjectPromptId = null;
+}
 
 // Global Click for prompts
 document.addEventListener('click', (e) => {
-            if (deleteSubjectPromptId) {
-                hideAllDeletePrompts();
-            }
-        });
+    if (deleteSubjectPromptId) {
+        hideAllDeletePrompts();
+    }
+});
 
-    // --- CHART & EXAMS ---
-    function switchExamSubTab(subTab) {
-        // Buttons
-        document.querySelectorAll('.sub-nav-btn').forEach(btn => {
-            if (btn.innerText.toLowerCase().includes(subTab === 'netlerim' ? 'netlerim' : 'hesapla')) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-
-        // Views
-        if (subTab === 'netlerim') {
-            document.getElementById('sub-view-netlerim').classList.remove('hidden');
-            document.getElementById('sub-view-hesapla').classList.add('hidden');
-            loadExams(); // Refresh chart
+// --- CHART & EXAMS ---
+function switchExamSubTab(subTab) {
+    // Buttons
+    document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(subTab === 'netlerim' ? 'netlerim' : 'hesapla')) {
+            btn.classList.add('active');
         } else {
-            document.getElementById('sub-view-netlerim').classList.add('hidden');
-            document.getElementById('sub-view-hesapla').classList.remove('hidden');
+            btn.classList.remove('active');
         }
-    }
+    });
 
-    function loadExams() {
-        if (!db) return;
-        db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(10).get().then(snap => {
-            const data = [];
-            snap.forEach(doc => {
-                const d = doc.data();
-                data.push({
-                    net: d.net,
-                    date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
-                    timestamp: d.timestamp
-                });
+    // Views
+    if (subTab === 'netlerim') {
+        document.getElementById('sub-view-netlerim').classList.remove('hidden');
+        document.getElementById('sub-view-hesapla').classList.add('hidden');
+        loadExams(); // Refresh chart
+    } else {
+        document.getElementById('sub-view-netlerim').classList.add('hidden');
+        document.getElementById('sub-view-hesapla').classList.remove('hidden');
+    }
+}
+
+function loadExams() {
+    if (!db) return;
+    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(10).get().then(snap => {
+        const data = [];
+        snap.forEach(doc => {
+            const d = doc.data();
+            data.push({
+                net: d.net,
+                date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+                timestamp: d.timestamp
             });
-            // Sort for chart: Oldest first
-            data.sort((a, b) => a.timestamp - b.timestamp);
-
-            renderNetChart(data);
-            renderHistoryList(data);
         });
+        // Sort for chart: Oldest first
+        data.sort((a, b) => a.timestamp - b.timestamp);
+
+        renderNetChart(data);
+        renderHistoryList(data);
+    });
+}
+
+function renderNetChart(data) {
+    const svg = document.getElementById('net-chart');
+    const labelsDiv = document.getElementById('chart-labels');
+    if (!svg || data.length < 2) {
+        if (svg) svg.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#64748b" font-size="12">Grafik için en az 2 veri lazım</text>`;
+        return;
     }
 
-    function renderNetChart(data) {
-        const svg = document.getElementById('net-chart');
-        const labelsDiv = document.getElementById('chart-labels');
-        if (!svg || data.length < 2) {
-            if (svg) svg.innerHTML = `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#64748b" font-size="12">Grafik için en az 2 veri lazım</text>`;
-            return;
-        }
+    // Config
+    const width = 350;
+    const height = 200;
+    const padding = 20;
 
-        // Config
-        const width = 350;
-        const height = 200;
-        const padding = 20;
+    // Scales
+    const nets = data.map(d => d.net);
+    const minNet = Math.min(...nets) - 5;
+    const maxNet = Math.max(...nets) + 5;
 
-        // Scales
-        const nets = data.map(d => d.net);
-        const minNet = Math.min(...nets) - 5;
-        const maxNet = Math.max(...nets) + 5;
+    const getY = (net) => height - padding - ((net - minNet) / (maxNet - minNet)) * (height - 2 * padding);
+    const getX = (i) => padding + (i / (data.length - 1)) * (width - 2 * padding);
 
-        const getY = (net) => height - padding - ((net - minNet) / (maxNet - minNet)) * (height - 2 * padding);
-        const getX = (i) => padding + (i / (data.length - 1)) * (width - 2 * padding);
+    // Build Path
+    let pathD = `M ${getX(0)} ${getY(data[0].net)}`;
+    let areaD = `M ${getX(0)} ${height} L ${getX(0)} ${getY(data[0].net)}`;
 
-        // Build Path
-        let pathD = `M ${getX(0)} ${getY(data[0].net)}`;
-        let areaD = `M ${getX(0)} ${height} L ${getX(0)} ${getY(data[0].net)}`;
+    data.forEach((d, i) => {
+        pathD += ` L ${getX(i)} ${getY(d.net)}`;
+        areaD += ` L ${getX(i)} ${getY(d.net)}`;
+    });
 
-        data.forEach((d, i) => {
-            pathD += ` L ${getX(i)} ${getY(d.net)}`;
-            areaD += ` L ${getX(i)} ${getY(d.net)}`;
-        });
+    areaD += ` L ${getX(data.length - 1)} ${height} Z`;
 
-        areaD += ` L ${getX(data.length - 1)} ${height} Z`;
-
-        // Draw SVG
-        let html = `
+    // Draw SVG
+    let html = `
         <!-- Area -->
         <path d="${areaD}" class="chart-area" />
         <!-- Line -->
         <path d="${pathD}" class="chart-line" />
     `;
 
-        // Dots & Labels
-        let labelsHtml = '';
-        data.forEach((d, i) => {
-            html += `<circle cx="${getX(i)}" cy="${getY(d.net)}" class="chart-dot"><title>${d.net} Net - ${d.date}</title></circle>`;
-            html += `<text x="${getX(i)}" y="${getY(d.net) - 10}" class="chart-label">${d.net}</text>`;
+    // Dots & Labels
+    let labelsHtml = '';
+    data.forEach((d, i) => {
+        html += `<circle cx="${getX(i)}" cy="${getY(d.net)}" class="chart-dot"><title>${d.net} Net - ${d.date}</title></circle>`;
+        html += `<text x="${getX(i)}" y="${getY(d.net) - 10}" class="chart-label">${d.net}</text>`;
 
-            // Axis Labels (First and Last only to prevent crowd)
-            if (i === 0 || i === data.length - 1) {
-                labelsHtml += `<span>${d.date}</span>`;
-            }
-        });
+        // Axis Labels (First and Last only to prevent crowd)
+        if (i === 0 || i === data.length - 1) {
+            labelsHtml += `<span>${d.date}</span>`;
+        }
+    });
 
-        svg.innerHTML = html;
-        labelsDiv.innerHTML = labelsHtml;
-    }
+    svg.innerHTML = html;
+    labelsDiv.innerHTML = labelsHtml;
+}
 
-    function renderHistoryList(data) {
-        // Reverse for list: Newest first
-        const listData = [...data].reverse();
-        const container = document.getElementById('net-history-list');
-        if (!container) return;
+function renderHistoryList(data) {
+    // Reverse for list: Newest first
+    const listData = [...data].reverse();
+    const container = document.getElementById('net-history-list');
+    if (!container) return;
 
-        let html = '';
-        listData.forEach(item => {
-            html += `
+    let html = '';
+    listData.forEach(item => {
+        html += `
              <div class="list-item-card" style="border-left-color: #f97316; height:auto; padding:10px;">
                 <div class="item-info">
                     <h3>${item.net} Net</h3>
@@ -1215,190 +1220,190 @@ document.addEventListener('click', (e) => {
                 </div>
             </div>
         `;
-        });
-        container.innerHTML = html;
-    }
+    });
+    container.innerHTML = html;
+}
 
-    function saveQuickNet() {
-        const val = parseFloat(document.getElementById('quick-net-input').value);
-        if (!val) return;
+function saveQuickNet() {
+    const val = parseFloat(document.getElementById('quick-net-input').value);
+    if (!val) return;
 
+    db.collection(EXAM_COLLECTION).add({
+        net: val,
+        type: 'quick',
+        timestamp: Date.now()
+    }).then(() => {
+        document.getElementById('quick-net-input').value = '';
+        loadExams();
+        alert("Net kaydedildi!");
+    });
+}
+
+function calculateNet() {
+    const inps = document.querySelectorAll('#sub-view-hesapla input');
+    let totalNet = 0;
+    // Specific IDs mapping
+    const trD = parseFloat(document.getElementById('calc-tr-d').value) || 0;
+    const trY = parseFloat(document.getElementById('calc-tr-y').value) || 0;
+    const matD = parseFloat(document.getElementById('calc-mat-d').value) || 0;
+    const matY = parseFloat(document.getElementById('calc-mat-y').value) || 0;
+    const fenD = parseFloat(document.getElementById('calc-fen-d').value) || 0;
+    const sosD = parseFloat(document.getElementById('calc-sos-d').value) || 0;
+
+    // Simple logic: we need 'calc-tr-d' etc. 
+    // Just sum loops if we used class-based, but here we have specific IDs now.
+    // Let's rely on manual calculation for accuracy or keep it simple.
+
+    // Actually the user kept the old structure logic but IDs changed.
+    // Let's implement robustly.
+    totalNet += trD - (trY / 4);
+    totalNet += matD - (matY / 4);
+    totalNet += fenD - 0; // Assuming 0 wrong if not present, but user didn't ask for full inputs there
+    // Wait, the HTML has specific inputs for Fen/Sos but only D?
+    // Let's re-read HTML.
+    // Ah, Fen(D), Sos(D) are there. No wrong inputs for them in previous step?
+    // Checking previous step... Yes, only D for Fen/Sos in the HTML snapshot.
+    totalNet += sosD;
+
+    const resDisplay = document.querySelector('.result-value');
+    if (resDisplay) resDisplay.innerText = totalNet.toFixed(2);
+
+    if (db) {
         db.collection(EXAM_COLLECTION).add({
-            net: val,
-            type: 'quick',
+            net: totalNet,
+            detail: { trD, trY, matD, matY, fenD, sosD },
             timestamp: Date.now()
-        }).then(() => {
-            document.getElementById('quick-net-input').value = '';
-            loadExams();
-            alert("Net kaydedildi!");
-        });
+        }).then(() => alert("Net kaydedildi: " + totalNet.toFixed(2)));
     }
+}
 
-    function calculateNet() {
-        const inps = document.querySelectorAll('#sub-view-hesapla input');
-        let totalNet = 0;
-        // Specific IDs mapping
-        const trD = parseFloat(document.getElementById('calc-tr-d').value) || 0;
-        const trY = parseFloat(document.getElementById('calc-tr-y').value) || 0;
-        const matD = parseFloat(document.getElementById('calc-mat-d').value) || 0;
-        const matY = parseFloat(document.getElementById('calc-mat-y').value) || 0;
-        const fenD = parseFloat(document.getElementById('calc-fen-d').value) || 0;
-        const sosD = parseFloat(document.getElementById('calc-sos-d').value) || 0;
+// --- Home Page Net Chart ---
+function renderHomeNetChart() {
+    if (!db) return;
+    const historyContainer = document.getElementById('home-net-history-list');
 
-        // Simple logic: we need 'calc-tr-d' etc. 
-        // Just sum loops if we used class-based, but here we have specific IDs now.
-        // Let's rely on manual calculation for accuracy or keep it simple.
+    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(5).get().then(snap => {
+        const data = [];
+        if (historyContainer) historyContainer.innerHTML = '';
 
-        // Actually the user kept the old structure logic but IDs changed.
-        // Let's implement robustly.
-        totalNet += trD - (trY / 4);
-        totalNet += matD - (matY / 4);
-        totalNet += fenD - 0; // Assuming 0 wrong if not present, but user didn't ask for full inputs there
-        // Wait, the HTML has specific inputs for Fen/Sos but only D?
-        // Let's re-read HTML.
-        // Ah, Fen(D), Sos(D) are there. No wrong inputs for them in previous step?
-        // Checking previous step... Yes, only D for Fen/Sos in the HTML snapshot.
-        totalNet += sosD;
+        snap.forEach(doc => {
+            const d = doc.data();
+            data.push({
+                net: d.net,
+                date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+                timestamp: d.timestamp
+            });
 
-        const resDisplay = document.querySelector('.result-value');
-        if (resDisplay) resDisplay.innerText = totalNet.toFixed(2);
-
-        if (db) {
-            db.collection(EXAM_COLLECTION).add({
-                net: totalNet,
-                detail: { trD, trY, matD, matY, fenD, sosD },
-                timestamp: Date.now()
-            }).then(() => alert("Net kaydedildi: " + totalNet.toFixed(2)));
-        }
-    }
-
-    // --- Home Page Net Chart ---
-    function renderHomeNetChart() {
-        if (!db) return;
-        const historyContainer = document.getElementById('home-net-history-list');
-
-        db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(5).get().then(snap => {
-            const data = [];
-            if (historyContainer) historyContainer.innerHTML = '';
-
-            snap.forEach(doc => {
-                const d = doc.data();
-                data.push({
-                    net: d.net,
-                    date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
-                    timestamp: d.timestamp
-                });
-
-                // Populate List
-                if (historyContainer) {
-                    const el = document.createElement('div');
-                    el.className = 'list-item-card';
-                    el.style.borderLeftColor = '#3b82f6';
-                    el.innerHTML = `
+            // Populate List
+            if (historyContainer) {
+                const el = document.createElement('div');
+                el.className = 'list-item-card';
+                el.style.borderLeftColor = '#3b82f6';
+                el.innerHTML = `
                     <div class="item-info">
                          <h3>${d.net} Net</h3>
                          <span class="item-sub">${new Date(d.timestamp).toLocaleDateString('tr-TR')}</span>
                     </div>
                  `;
-                    historyContainer.appendChild(el);
-                }
-            });
-
-            // Simplified Chart Logic (Reusing same SVG structure as main but applied to home chart)
-            data.sort((a, b) => a.timestamp - b.timestamp); // Sort by date ascending
-
-            if (data.length < 2) return; // Need points
-
-            // Draw Chart
-            const svg = document.getElementById('home-net-chart');
-            const labelArea = document.getElementById('home-chart-labels');
-            if (!svg) return;
-
-            // Reset
-            svg.innerHTML = '';
-            if (labelArea) labelArea.innerHTML = '';
-
-            // Dimensions
-            const width = 350;
-            const height = 200;
-            const padding = 20;
-            const effectiveHeight = height - (padding * 2);
-            const effectiveWidth = width - (padding * 2);
-
-            // Normalize
-            const maxNet = Math.max(...data.map(d => d.net)) * 1.1; // +10%
-            const minNet = 0;
-
-            // Points
-            let pointsStr = "";
-            data.forEach((d, i) => {
-                const x = padding + (i / (data.length - 1)) * effectiveWidth;
-                const y = height - padding - ((d.net / maxNet) * effectiveHeight);
-
-                pointsStr += `${x},${y} `;
-
-                // Draw Dots
-                const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                dot.classList.add("chart-dot");
-                dot.setAttribute("cx", x);
-                dot.setAttribute("cy", y);
-
-                // Label inside SVG
-                const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-                title.textContent = `${d.net} Net (${d.date})`;
-                dot.appendChild(title);
-
-                svg.appendChild(dot);
-
-                // Axis Labels
-                if (labelArea) {
-                    const span = document.createElement('span');
-                    span.innerText = d.date;
-                    labelArea.appendChild(span);
-                }
-            });
-
-            // Path
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-            path.classList.add("chart-line");
-            path.setAttribute("points", pointsStr.trim());
-            svg.prepend(path);
+                historyContainer.appendChild(el);
+            }
         });
+
+        // Simplified Chart Logic (Reusing same SVG structure as main but applied to home chart)
+        data.sort((a, b) => a.timestamp - b.timestamp); // Sort by date ascending
+
+        if (data.length < 2) return; // Need points
+
+        // Draw Chart
+        const svg = document.getElementById('home-net-chart');
+        const labelArea = document.getElementById('home-chart-labels');
+        if (!svg) return;
+
+        // Reset
+        svg.innerHTML = '';
+        if (labelArea) labelArea.innerHTML = '';
+
+        // Dimensions
+        const width = 350;
+        const height = 200;
+        const padding = 20;
+        const effectiveHeight = height - (padding * 2);
+        const effectiveWidth = width - (padding * 2);
+
+        // Normalize
+        const maxNet = Math.max(...data.map(d => d.net)) * 1.1; // +10%
+        const minNet = 0;
+
+        // Points
+        let pointsStr = "";
+        data.forEach((d, i) => {
+            const x = padding + (i / (data.length - 1)) * effectiveWidth;
+            const y = height - padding - ((d.net / maxNet) * effectiveHeight);
+
+            pointsStr += `${x},${y} `;
+
+            // Draw Dots
+            const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            dot.classList.add("chart-dot");
+            dot.setAttribute("cx", x);
+            dot.setAttribute("cy", y);
+
+            // Label inside SVG
+            const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+            title.textContent = `${d.net} Net (${d.date})`;
+            dot.appendChild(title);
+
+            svg.appendChild(dot);
+
+            // Axis Labels
+            if (labelArea) {
+                const span = document.createElement('span');
+                span.innerText = d.date;
+                labelArea.appendChild(span);
+            }
+        });
+
+        // Path
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+        path.classList.add("chart-line");
+        path.setAttribute("points", pointsStr.trim());
+        svg.prepend(path);
+    });
+}
+
+// --- Initialization ---
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('app-version-display').innerText = APP_VERSION;
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const savedTab = localStorage.getItem('mbsinav_current_tab');
+    if (savedTab) {
+        switchTab(savedTab);
+    } else {
+        switchTab('home');
     }
 
-    // --- Initialization ---
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('app-version-display').innerText = APP_VERSION;
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+    if ('serviceWorker' in navigator) {
+        // ULTRA AGGRESSIVE CACHE BUSTING
+        // We use Date.now() to ensure the browser ALWAYS fetches the new sw.js file
+        navigator.serviceWorker.register('./sw-v9.js?t=' + Date.now()).then(reg => {
+            console.log('SW Registered');
+            // Force update check immediately
+            reg.update();
+        }).catch(console.log);
+    }
 
-        const savedTab = localStorage.getItem('mbsinav_current_tab');
-        if (savedTab) {
-            switchTab(savedTab);
-        } else {
-            switchTab('home');
-        }
+    if (typeof firebase !== 'undefined') {
+        loadSchedule(); // This also triggers dashboard update
+    }
 
-        if ('serviceWorker' in navigator) {
-            // ULTRA AGGRESSIVE CACHE BUSTING
-            // We use Date.now() to ensure the browser ALWAYS fetches the new sw.js file
-            navigator.serviceWorker.register('./sw-v9.js?t=' + Date.now()).then(reg => {
-                console.log('SW Registered');
-                // Force update check immediately
-                reg.update();
-            }).catch(console.log);
-        }
+    renderDaySelector();
 
-        if (typeof firebase !== 'undefined') {
-            loadSchedule(); // This also triggers dashboard update
-        }
+    if (typeof firebase !== 'undefined') {
+        loadSettings();
+        loadSubjectsAndTopics();
+    }
 
-        renderDaySelector();
-
-        if (typeof firebase !== 'undefined') {
-            loadSettings();
-            loadSubjectsAndTopics();
-        }
-
-        initModalLogic();
-    });
+    initModalLogic();
+});
