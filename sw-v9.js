@@ -1,5 +1,5 @@
 // MBSinav Service Worker - NUCLEAR MODE (No Caching)
-const CACHE_NAME = 'mbsinav-v7-nuclear';
+const CACHE_NAME = 'mbsinav-v9-nuclear';
 
 self.addEventListener('install', (event) => {
     self.skipWaiting();

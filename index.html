@@ -47,7 +47,7 @@
                 <i class="fas fa-bullseye"></i>
                 <span>Hedefler</span>
             </div>
-            <div class="shape-btn small-tab" onclick="switchTab('exam')">
+            <div class="shape-btn small-tab" onclick="switchHomeSubTab('netler')">
                 <i class="fas fa-chart-line"></i>
                 <span>Netler</span>
             </div>
@@ -122,8 +122,9 @@
         <div id="home-view-hedefler" class="hidden">
             <div class="form-section">
                 <h4>Yeni Hedef Ekle</h4>
-                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
+                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
                     <input type="text" id="goal-input" class="form-input" placeholder="Hedefin ne?">
+                    <input type="date" id="goal-date" class="form-input" style="padding:10px;">
                     <button class="primary-btn" style="padding:10px 20px;" onclick="addGoal()">Ekle</button>
                 </div>
             </div>
@@ -137,11 +138,13 @@
         </div>
 
         <!-- VIEW 4: NOTLAR (Notes) -->
+        <!-- VIEW 4: NOTLAR (Notes) -->
         <div id="home-view-notlar" class="hidden">
             <div class="form-section">
                 <h4>Yeni Not Ekle</h4>
-                <div class="input-grid" style="grid-template-columns: 1fr auto; gap:10px;">
+                <div class="input-grid" style="grid-template-columns: 1fr auto auto; gap:10px;">
                     <input type="text" id="note-input" class="form-input" placeholder="Notun ne?">
+                    <input type="date" id="note-date" class="form-input" style="padding:10px;">
                     <button class="primary-btn" style="padding:10px 20px;" onclick="addNote()">Ekle</button>
                 </div>
             </div>
@@ -149,6 +152,27 @@
                 <h4>Notlarım</h4>
                 <div id="note-list" class="list-container">
                     <div style="text-align:center; padding:20px; color:#64748b;">Henüz not yok...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 5: NETLER (Inline Graph) -->
+        <div id="home-view-netler" class="hidden">
+            <div class="page-title">
+                <h2>Gelişim Grafiği</h2>
+            </div>
+            <div class="chart-wrapper">
+                <svg id="home-net-chart" width="100%" height="200" viewBox="0 0 350 200" preserveAspectRatio="none">
+                    <!-- JS will draw paths here -->
+                </svg>
+                <div id="home-chart-labels"
+                    style="display:flex; justify-content:space-between; padding:0 10px; font-size:0.7rem; color:#64748b; margin-top:5px;">
+                </div>
+            </div>
+            <div class="form-section mt-20">
+                <h4>Son Kayıtlar</h4>
+                <div id="home-net-history-list" class="list-container">
+                    <div style="text-align:center; padding:10px; color:#64748b;">Yükleniyor...</div>
                 </div>
             </div>
         </div>
@@ -379,7 +403,10 @@
             <input type="time" id="sch-time" class="form-input">
 
             <label class="form-label">Ders / Etkinlik</label>
-            <input type="text" id="sch-subject" class="form-input" placeholder="Örn: Matematik">
+            <input type="text" id="sch-subject" class="form-input" placeholder="Örn: Matematik" list="subject-options">
+            <datalist id="subject-options">
+                <!-- JS Injected -->
+            </datalist>
 
             <label class="form-label">Not (Opsiyonel)</label>
             <input type="text" id="sch-note" class="form-input" placeholder="Konu, detay...">
@@ -453,7 +480,38 @@
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore-compat.js"></script>
 
-    <script src="script.js?v=8.4.1"></script>
+
+    <!-- NUCLEAR CACHE CL SCRIPT -->
+    <script>
+        (async function () {
+            try {
+                // Unique version to track nukes
+                const NUKE_VERSION = 'v1-nuke';
+                if (!localStorage.getItem(NUKE_VERSION)) {
+                    console.log('NUCLEAR CACHE CLEAR INITIATED');
+
+                    if ('serviceWorker' in navigator) {
+                        const registrations = await navigator.serviceWorker.getRegistrations();
+                        for (const registration of registrations) {
+                            await registration.unregister();
+                        }
+                    }
+
+                    if ('caches' in window) {
+                        const keys = await caches.keys();
+                        await Promise.all(keys.map(key => caches.delete(key)));
+                    }
+
+                    localStorage.setItem(NUKE_VERSION, 'true');
+                    window.location.reload(true);
+                }
+            } catch (e) {
+                console.error("Cache clear failed", e);
+            }
+        })();
+    </script>
+    <script src="app.js?v=9.0.0"></script>
+
     </script>
 </body>
 

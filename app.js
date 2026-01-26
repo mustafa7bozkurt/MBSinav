@@ -1,7 +1,7 @@
 
 
 
-const APP_VERSION = "8.4.0"; // Sosyal Page Update
+const APP_VERSION = "9.0.0"; // RENAMED TO app.js
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -18,23 +18,47 @@ if ('serviceWorker' in navigator) {
 
 
 
-function forceUpdate() {
-    confirm("Uygulama tamamen sıfırlanıp güncellenecek. Onaylıyor musun?");
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (let registration of registrations) {
-                registration.unregister();
+
+// --- VERSION CHECK SYSTEM ---
+async function checkVersion() {
+    try {
+        const response = await fetch('version.json?t=' + Date.now());
+        const data = await response.json();
+
+        if (data.version !== APP_VERSION) {
+            console.log(`New version found: ${data.version} (Current: ${APP_VERSION})`);
+
+            // Clear all caches
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map(key => caches.delete(key)));
             }
-        });
-        caches.keys().then(names => {
-            Promise.all(names.map(name => caches.delete(name))).then(() => {
-                window.location.reload(true);
-            });
-        });
-    } else {
-        window.location.reload(true);
+
+            // Unregister SW
+            if ('serviceWorker' in navigator) {
+                const regs = await navigator.serviceWorker.getRegistrations();
+                for (let reg of regs) await reg.unregister();
+            }
+
+            // Reload
+            window.location.reload(true);
+        }
+    } catch (e) {
+        console.error("Version check failed", e);
     }
 }
+
+// Check on load, visibility change, and every 60s
+document.addEventListener('DOMContentLoaded', checkVersion);
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkVersion();
+});
+setInterval(checkVersion, 60000);
+
+function forceUpdate() {
+    checkVersion();
+}
+
 
 // --- FIREBASE CONFIG (Copied from AluminyumHesap) ---
 const firebaseConfig = {
@@ -295,6 +319,19 @@ function openScheduleModal(prefillTime = '') {
     } else {
         document.getElementById('sch-time').value = '';
     }
+
+    // Populate Datalist for Subject Suggestions
+    const datalist = document.getElementById('subject-options');
+    if (datalist) {
+        let options = '';
+        subjects.forEach(s => {
+            options += `<option value="${s.name}">`;
+        });
+        topics.forEach(t => {
+            options += `<option value="${t.name}">`; // Just topic name for simplicity, or Subject - Topic
+        });
+        datalist.innerHTML = options;
+    }
 }
 function closeScheduleModal() { document.getElementById('schedule-modal').classList.add('hidden'); }
 
@@ -454,8 +491,10 @@ function switchHomeSubTab(tabName) {
         renderDurumSchedule(); // New function for list view in Durum tab
     } else if (tabName === 'hedefler') {
         loadGoals();
+    } else if (tabName === 'netler') {
+        renderHomeNetChart();
     } else if (tabName === 'notlar') {
-        loadNotes(); // Assuming loadNotes exists or needs creation
+        loadNotes();
     }
 }
 
@@ -518,25 +557,29 @@ function renderDurumSchedule() {
 
 function addGoal() {
     const input = document.getElementById('goal-input');
+    const dateInput = document.getElementById('goal-date');
     const text = input.value.trim();
+    const dateVal = dateInput ? dateInput.value : null;
+
     if (!text) return;
 
     if (db) {
         db.collection(GOAL_COLLECTION).add({
             text: text,
+            targetDate: dateVal,
             completed: false,
             timestamp: Date.now()
         }).then(() => {
             input.value = '';
-            loadGoals(); // Refresh list if on Goals tab
-            renderDashboardGoals(); // Refresh dashboard if needed
+            if (dateInput) dateInput.value = '';
+            loadGoals();
+            renderDashboardGoals();
         });
     }
 }
 
 function loadGoals() {
     if (!db) return;
-    // Real-time listener for goals
     db.collection(GOAL_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('goal-list');
         if (!container) return;
@@ -550,11 +593,16 @@ function loadGoals() {
         snap.forEach(doc => {
             const data = doc.data();
             const isDone = data.completed;
+            const dateBadge = data.targetDate ? `<span class="item-badge" style="background:#f1f5f9; color:#64748b; font-size:0.7rem; margin-right:5px;">📅 ${new Date(data.targetDate).toLocaleDateString('tr-TR')}</span>` : '';
+
             html += `
                 <div class="list-item-card" style="border-left-color: ${isDone ? '#10b981' : '#f97316'}; opacity: ${isDone ? '0.6' : '1'};">
                     <div class="item-info">
                         <h3 style="text-decoration: ${isDone ? 'line-through' : 'none'}">${data.text}</h3>
-                        <span class="item-sub">${new Date(data.timestamp).toLocaleDateString('tr-TR')}</span>
+                        <div style="margin-top:5px;">
+                            ${dateBadge}
+                            <span class="item-sub">${new Date(data.timestamp).toLocaleDateString('tr-TR')}</span>
+                        </div>
                     </div>
                     <div style="display:flex; gap:10px;">
                         <button onclick="toggleGoal('${doc.id}', ${!isDone})" style="background:none; border:none; cursor:pointer; color:${isDone ? '#10b981' : '#cbd5e1'}; font-size:1.2rem;">
@@ -586,15 +634,20 @@ const NOTES_COLLECTION = "mbsinav_notes";
 
 function addNote() {
     const input = document.getElementById('note-input');
+    const dateInput = document.getElementById('note-date');
     const text = input.value.trim();
+    const dateVal = dateInput ? dateInput.value : null;
+
     if (!text) return;
 
     if (db) {
         db.collection(NOTES_COLLECTION).add({
             text: text,
+            targetDate: dateVal,
             timestamp: Date.now()
         }).then(() => {
             input.value = '';
+            if (dateInput) dateInput.value = '';
         });
     }
 }
@@ -1070,6 +1123,100 @@ function calculateNet() {
     }
 }
 
+// --- Home Page Net Chart ---
+function renderHomeNetChart() {
+    if (!db) return;
+    const historyContainer = document.getElementById('home-net-history-list');
+
+    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(5).get().then(snap => {
+        const data = [];
+        if (historyContainer) historyContainer.innerHTML = '';
+
+        snap.forEach(doc => {
+            const d = doc.data();
+            data.push({
+                net: d.net,
+                date: new Date(d.timestamp).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+                timestamp: d.timestamp
+            });
+
+            // Populate List
+            if (historyContainer) {
+                const el = document.createElement('div');
+                el.className = 'list-item-card';
+                el.style.borderLeftColor = '#3b82f6';
+                el.innerHTML = `
+                    <div class="item-info">
+                         <h3>${d.net} Net</h3>
+                         <span class="item-sub">${new Date(d.timestamp).toLocaleDateString('tr-TR')}</span>
+                    </div>
+                 `;
+                historyContainer.appendChild(el);
+            }
+        });
+
+        // Simplified Chart Logic (Reusing same SVG structure as main but applied to home chart)
+        data.sort((a, b) => a.timestamp - b.timestamp); // Sort by date ascending
+
+        if (data.length < 2) return; // Need points
+
+        // Draw Chart
+        const svg = document.getElementById('home-net-chart');
+        const labelArea = document.getElementById('home-chart-labels');
+        if (!svg) return;
+
+        // Reset
+        svg.innerHTML = '';
+        if (labelArea) labelArea.innerHTML = '';
+
+        // Dimensions
+        const width = 350;
+        const height = 200;
+        const padding = 20;
+        const effectiveHeight = height - (padding * 2);
+        const effectiveWidth = width - (padding * 2);
+
+        // Normalize
+        const maxNet = Math.max(...data.map(d => d.net)) * 1.1; // +10%
+        const minNet = 0;
+
+        // Points
+        let pointsStr = "";
+        data.forEach((d, i) => {
+            const x = padding + (i / (data.length - 1)) * effectiveWidth;
+            const y = height - padding - ((d.net / maxNet) * effectiveHeight);
+
+            pointsStr += `${x},${y} `;
+
+            // Draw Dots
+            const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            dot.classList.add("chart-dot");
+            dot.setAttribute("cx", x);
+            dot.setAttribute("cy", y);
+
+            // Label inside SVG
+            const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+            title.textContent = `${d.net} Net (${d.date})`;
+            dot.appendChild(title);
+
+            svg.appendChild(dot);
+
+            // Axis Labels
+            if (labelArea) {
+                const span = document.createElement('span');
+                span.innerText = d.date;
+                labelArea.appendChild(span);
+            }
+        });
+
+        // Path
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+        path.classList.add("chart-line");
+        path.setAttribute("points", pointsStr.trim());
+        svg.prepend(path);
+    });
+}
+
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app-version-display').innerText = APP_VERSION;
@@ -1084,8 +1231,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if ('serviceWorker' in navigator) {
-        // CACHE BUSTING: Add version query param to force browser to see it as a new file
-        navigator.serviceWorker.register('./sw.js?v=' + APP_VERSION).catch(console.log);
+        // ULTRA AGGRESSIVE CACHE BUSTING
+        // We use Date.now() to ensure the browser ALWAYS fetches the new sw.js file
+        navigator.serviceWorker.register('./sw-v9.js?t=' + Date.now()).then(reg => {
+            console.log('SW Registered');
+            // Force update check immediately
+            reg.update();
+        }).catch(console.log);
     }
 
     if (typeof firebase !== 'undefined') {
