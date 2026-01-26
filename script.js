@@ -1,7 +1,7 @@
 
 
 
-const APP_VERSION = "8.3.0"; // Notes & Date Update
+const APP_VERSION = "8.4.0"; // Sosyal Page Update
 
 // KILL ALL SERVICE WORKERS IMMEDIATELY
 if ('serviceWorker' in navigator) {
@@ -16,20 +16,20 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Force clear old tab state on load to ensure Home Page
-localStorage.removeItem('mbsinav_current_tab');
+
 
 function forceUpdate() {
+    confirm("Uygulama tamamen sıfırlanıp güncellenecek. Onaylıyor musun?");
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function (registrations) {
             for (let registration of registrations) {
                 registration.unregister();
             }
-            window.location.reload(true);
         });
-        // Also clear cache storage
         caches.keys().then(names => {
-            for (let name of names) caches.delete(name);
+            Promise.all(names.map(name => caches.delete(name))).then(() => {
+                window.location.reload(true);
+            });
         });
     } else {
         window.location.reload(true);
@@ -950,7 +950,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    switchTab('home');
+    const savedTab = localStorage.getItem('mbsinav_current_tab');
+    if (savedTab) {
+        switchTab(savedTab);
+    } else {
+        switchTab('home');
+    }
 
     if ('serviceWorker' in navigator) {
         // CACHE BUSTING: Add version query param to force browser to see it as a new file
