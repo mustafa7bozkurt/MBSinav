@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.2.0"; // Force Update v2
+const APP_VERSION = "9.3.0"; // Force Update v3
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -146,7 +146,7 @@ function updateCountdown() {
     const container = document.getElementById('countdown-display');
     if (!container) return;
 
-    if (distance <0) {
+    if (distance < 0) {
         container.innerHTML = `<div style = "text-align:center; width:100%; color:#ef4444; font-weight:800;" > SINAV TARİHİ GEÇTİ</div> `;
         return;
     }
@@ -1142,7 +1142,7 @@ function loadExams() {
 function renderNetChart(data) {
     const svg = document.getElementById('net-chart');
     const labelsDiv = document.getElementById('chart-labels');
-    if (!svg || data.length <2) {
+    if (!svg || data.length < 2) {
         if (svg) svg.innerHTML = `<text x = "50%" y = "50%" dominant - baseline="middle" text - anchor="middle" fill = "#64748b" font - size="12" > Grafik için en az 2 veri lazım</text> `;
         return;
     }
@@ -1303,7 +1303,7 @@ function renderHomeNetChart() {
         // Simplified Chart Logic (Reusing same SVG structure as main but applied to home chart)
         data.sort((a, b) => a.timestamp - b.timestamp); // Sort by date ascending
 
-        if (data.length <2) return; // Need points
+        if (data.length < 2) return; // Need points
 
         // Draw Chart
         const svg = document.getElementById('home-net-chart');
