@@ -146,8 +146,8 @@ function updateCountdown() {
     const container = document.getElementById('countdown-display');
     if (!container) return;
 
-    if (distance < 0) {
-        container.innerHTML = `<div style = "text-align:center; width:100%; color:#ef4444; font-weight:800;" > SINAV TARİHİ GEÇTİ</div > `;
+    if (distance <0) {
+        container.innerHTML = `<div style = "text-align:center; width:100%; color:#ef4444; font-weight:800;" > SINAV TARİHİ GEÇTİ</div> `;
         return;
     }
 
@@ -156,7 +156,7 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
     container.innerHTML = `
-    <div class="time-box" ><span class="time-val">${days}</span><span class="time-label">GÜN</span></div >
+    <div class="time-box" ><span class="time-val">${days}</span><span class="time-label">GÜN</span></div>
         <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">SAAT</span></div>
         <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">DK</span></div>
 `;
@@ -227,7 +227,7 @@ function renderDaySelector() {
     <div class="shape-btn ${d === currentScheduleDay ? 'active' : ''}" onclick = "selectScheduleDay(${d})" >
                 <span style="font-weight:700; font-size:1.1rem;">${short}</span>
                 <span style="font-size:0.6rem;">Gün</span>
-            </div >
+            </div>
     `;
     });
     container.innerHTML = html;
@@ -275,18 +275,18 @@ function renderSchedule(dayIdx) {
                         <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
                     </div>
                     <button onclick="deleteScheduleItem('${item.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
-                </div >
+                </div>
     `;
         } else {
             contentHtml = `
     <div class="empty-slot" onclick = "openScheduleModal('${hourStr}')" >
         <i class="fas fa-plus"></i> Ekle
-                </div >
+                </div>
     `;
         }
 
         row.innerHTML = `
-    <div class="time-col" > ${hourStr}</div >
+    <div class="time-col" > ${hourStr}</div>
         <div class="content-col">
             ${contentHtml}
         </div>
@@ -422,7 +422,7 @@ function updateDashboardSchedule() {
     const todayItems = fullSchedule.filter(i => parseInt(i.day) === d).sort((a, b) => a.time.localeCompare(b.time));
 
     if (todayItems.length === 0) {
-        container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div > `;
+        container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div> `;
         return;
     }
 
@@ -436,7 +436,7 @@ function updateDashboardSchedule() {
                     <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
                 </div>
                 <span class="item-badge badge-blue">Program</span>
-            </div >
+            </div>
     `;
     });
     // Add "See All" link behavior?
@@ -496,7 +496,7 @@ function renderDashboardGoals() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün için hedefin yok.</div > `;
+            container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün için hedefin yok.</div> `;
             return;
         }
 
@@ -506,7 +506,7 @@ function renderDashboardGoals() {
             html += `
     <div class="list-item-card" style = "border-left-color: #f97316; padding:10px;" >
         <span style="font-size:0.9rem;">${data.text}</span>
-                </div >
+                </div>
     `;
         });
         container.innerHTML = html;
@@ -524,7 +524,7 @@ function renderDurumSchedule() {
     const todayItems = fullSchedule.filter(i => parseInt(i.day) === d).sort((a, b) => a.time.localeCompare(b.time));
 
     if (todayItems.length === 0) {
-        container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div > `;
+        container.innerHTML = `<div style = "text-align:center; padding:10px; color:#64748b;" > Bugün boşsun! 🥳</div> `;
         return;
     }
 
@@ -536,7 +536,7 @@ function renderDurumSchedule() {
             <h3>${item.subject}</h3>
             <span class="item-sub">${item.time} ${item.note ? '- ' + item.note : ''}</span>
         </div>
-            </div >
+            </div>
     `;
     });
     container.innerHTML = html;
@@ -573,7 +573,7 @@ function loadGoals() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Henüz hedef eklemedin.Hadi başla! 🚀</div > `;
+            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Henüz hedef eklemedin.Hadi başla! 🚀</div> `;
             return;
         }
 
@@ -581,7 +581,7 @@ function loadGoals() {
         snap.forEach(doc => {
             const data = doc.data();
             const isDone = data.completed;
-            const dateBadge = data.targetDate ? `<span class="item-badge" style = "background:#f1f5f9; color:#64748b; font-size:0.7rem; margin-right:5px;" >📅 ${new Date(data.targetDate).toLocaleDateString('tr-TR')}</span > ` : '';
+            const dateBadge = data.targetDate ? `<span class="item-badge" style = "background:#f1f5f9; color:#64748b; font-size:0.7rem; margin-right:5px;" >📅 ${new Date(data.targetDate).toLocaleDateString('tr-TR')}</span> ` : '';
 
             html += `
     <div class="list-item-card" style = "border-left-color: ${isDone ? '#10b981' : '#f97316'}; opacity: ${isDone ? '0.6' : '1'};" >
@@ -600,7 +600,7 @@ function loadGoals() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                </div >
+                </div>
     `;
         });
         container.innerHTML = html;
@@ -647,7 +647,7 @@ function loadNotes() {
         if (!container) return;
 
         if (snap.empty) {
-            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Henüz not yok.</div > `;
+            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Henüz not yok.</div> `;
             return;
         }
 
@@ -663,7 +663,7 @@ function loadNotes() {
                     <button onclick="deleteNote('${doc.id}')" style="background:none; border:none; cursor:pointer; color:#ef4444;">
                         <i class="fas fa-trash"></i>
                     </button>
-                </div >
+                </div>
     `;
         });
         container.innerHTML = html;
@@ -785,7 +785,7 @@ function loadCapsules() {
     const container = document.getElementById('capsule-list');
     db.collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
         if (snap.empty) {
-            container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Henüz kapsülün yok.</div > `;
+            container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Henüz kapsülün yok.</div> `;
             return;
         }
 
@@ -805,7 +805,7 @@ function loadCapsules() {
                             <span class="item-sub">Açılma Tarihi: ${unlock.toLocaleDateString('tr-TR')}</span>
                         </div>
                         <i class="fas fa-lock" style="color:#fbbf24;"></i>
-                    </div >
+                    </div>
     `;
             } else {
                 html += `
@@ -815,7 +815,7 @@ function loadCapsules() {
             <p style="font-size:0.9rem; margin-top:5px; color:#cbd5e1;">${data.message}</p>
             <span class="item-sub" style="margin-top:5px; display:block;">${unlock.toLocaleDateString('tr-TR')} tarihinde açıldı.</span>
         </div>
-                    </div >
+                    </div>
     `;
             }
         });
@@ -844,7 +844,7 @@ function loadBucketList() {
     db.collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('bucket-list');
         if (snap.empty) {
-            container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Listen boş.Ekle bi şeyler!</div > `;
+            container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Listen boş.Ekle bi şeyler!</div> `;
             return;
         }
 
@@ -864,7 +864,7 @@ function loadBucketList() {
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
-                </div >
+                </div>
     `;
         });
         container.innerHTML = html;
@@ -891,7 +891,7 @@ function renderSubjectTabs() {
     <div class="shape-btn subject-tab-btn ${currentFilter === 'all' ? 'active' : ''}" onclick = "filterSubjects('all', this)" >
             <i class="fas fa-layer-group"></i>
             <span>Tümü</span>
-        </div >
+        </div>
     `;
 
     // Dynamic Tabs
@@ -901,7 +901,7 @@ function renderSubjectTabs() {
                 <i class="${sub.icon || 'fas fa-book'}"></i>
                 <span>${sub.name}</span>
                 ${generateSubjectDeletePrompt(sub.id)}
-            </div >
+            </div>
     `;
     });
 
@@ -910,7 +910,7 @@ function renderSubjectTabs() {
     <div class="shape-btn" onclick = "addNewSubject()" style = "background: rgba(255,255,255,0.05); border:1px dashed #64748b;" >
             <i class="fas fa-plus"></i>
             <span>Ekle</span>
-        </div >
+        </div>
     `;
 
     container.innerHTML = html;
@@ -920,7 +920,7 @@ function generateSubjectDeletePrompt(id) {
     return `
     <div id = "del-prompt-${id}" class="delete-prompt hidden" onclick = "confirmDeleteSubject('${id}', event)" >
         Sileyim mi ? <span style="text-decoration:underline; font-weight:bold;">SİL</span>
-        </div >
+        </div>
     `;
 }
 
@@ -991,7 +991,7 @@ function renderTopics() {
 
     if (displayTopics.length === 0) {
         if (currentFilter === 'all' && subjects.length === 0) {
-            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Hiç ders yok. "Ekle" butonuna basarak başla!</div > `;
+            container.innerHTML = `<div style = "text-align:center; padding:20px; color:#64748b;" > Hiç ders yok. "Ekle" butonuna basarak başla!</div> `;
             return;
         }
         // Show "Add Topic" button even if empty
@@ -1019,7 +1019,7 @@ function renderTopics() {
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
-            </div >
+            </div>
     `;
     });
 
@@ -1039,7 +1039,7 @@ transition: all 0.2s;
 " onmouseover="this.style.borderColor = '#3b82f6'; this.style.color = '#3b82f6'" 
 onmouseout = "this.style.borderColor='#334155'; this.style.color='#94a3b8'" >
     <i class="fas fa-plus-circle"></i> Yeni Konu Ekle
-        </div >
+        </div>
     `;
 
     container.innerHTML = html;
@@ -1142,8 +1142,8 @@ function loadExams() {
 function renderNetChart(data) {
     const svg = document.getElementById('net-chart');
     const labelsDiv = document.getElementById('chart-labels');
-    if (!svg || data.length < 2) {
-        if (svg) svg.innerHTML = `< text x = "50%" y = "50%" dominant - baseline="middle" text - anchor="middle" fill = "#64748b" font - size="12" > Grafik için en az 2 veri lazım</text > `;
+    if (!svg || data.length <2) {
+        if (svg) svg.innerHTML = `<text x = "50%" y = "50%" dominant - baseline="middle" text - anchor="middle" fill = "#64748b" font - size="12" > Grafik için en az 2 veri lazım</text> `;
         return;
     }
 
@@ -1182,12 +1182,12 @@ function renderNetChart(data) {
     // Dots & Labels
     let labelsHtml = '';
     data.forEach((d, i) => {
-        html += `< circle cx = "${getX(i)}" cy = "${getY(d.net)}" class="chart-dot" > <title>${d.net} Net - ${d.date}</title></circle > `;
-        html += `< text x = "${getX(i)}" y = "${getY(d.net) - 10}" class="chart-label" > ${d.net}</text > `;
+        html += `<circle cx = "${getX(i)}" cy = "${getY(d.net)}" class="chart-dot" > <title>${d.net} Net - ${d.date}</title></circle> `;
+        html += `<text x = "${getX(i)}" y = "${getY(d.net) - 10}" class="chart-label" > ${d.net}</text> `;
 
         // Axis Labels (First and Last only to prevent crowd)
         if (i === 0 || i === data.length - 1) {
-            labelsHtml += `<span > ${d.date}</span > `;
+            labelsHtml += `<span > ${d.date}</span> `;
         }
     });
 
@@ -1209,7 +1209,7 @@ function renderHistoryList(data) {
             <h3>${item.net} Net</h3>
             <span class="item-sub">${item.date}</span>
         </div>
-            </div >
+            </div>
     `;
     });
     container.innerHTML = html;
@@ -1294,7 +1294,7 @@ function renderHomeNetChart() {
     <div class="item-info" >
                          <h3>${d.net} Net</h3>
                          <span class="item-sub">${new Date(d.timestamp).toLocaleDateString('tr-TR')}</span>
-                    </div >
+                    </div>
     `;
                 historyContainer.appendChild(el);
             }
@@ -1303,7 +1303,7 @@ function renderHomeNetChart() {
         // Simplified Chart Logic (Reusing same SVG structure as main but applied to home chart)
         data.sort((a, b) => a.timestamp - b.timestamp); // Sort by date ascending
 
-        if (data.length < 2) return; // Need points
+        if (data.length <2) return; // Need points
 
         // Draw Chart
         const svg = document.getElementById('home-net-chart');
@@ -1419,7 +1419,7 @@ function renderMovies(list) {
     if (!container) return;
 
     if (list.length === 0) {
-        container.innerHTML = `<div style = "text-align:center; padding:20px; color:#cbd5e1;" > Kriterlere uygun film bulunamadı.</div > `;
+        container.innerHTML = `<div style = "text-align:center; padding:20px; color:#cbd5e1;" > Kriterlere uygun film bulunamadı.</div> `;
         return;
     }
 
@@ -1440,7 +1440,7 @@ function renderMovies(list) {
                 <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">
                    Oyuncular: ${m.cast.join(', ')}
                 </div>
-            </div >
+            </div>
     `;
     });
     container.innerHTML = html;
@@ -1491,7 +1491,7 @@ async function loadStories() {
                     <p class="story-full hidden" id="full-${index}" style="font-size:0.9rem; color:#fff; line-height:1.6; margin-top:10px;">
                         "${s.story}"
                     </p>
-                </div >
+                </div>
     `;
         });
         container.innerHTML = html;
