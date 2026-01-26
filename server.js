@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the current directory with custom cache headers
 app.use(express.static(path.join(__dirname, '/'), {
     setHeaders: (res, path) => {
-        if (path.endsWith('.html') || path.endsWith('sw.js') || path.endsWith('.css') || path.endsWith('.js')) {
-            // Never cache index.html, service worker, styles, or scripts
+        if (path.endsWith('.html') || path.endsWith('sw.js') || path.endsWith('.css') || path.endsWith('.js') || path.endsWith('.json')) {
+            // Never cache index.html, service worker, styles, scripts, or JSON data
             res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
             res.setHeader('Pragma', 'no-cache');
             res.setHeader('Expires', '0');

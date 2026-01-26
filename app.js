@@ -1,14 +1,7 @@
 // --- CONFIGURATION ---
 const APP_VERSION = "9.2.0"; // Force Update v2
 
-// KILL ALL SERVICE WORKERS IMMEDIATELY (Safety Mode)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-            registration.unregister();
-        }
-    });
-}
+// SW Safety Check Removed to prevent loop with registration below
 
 
 
@@ -35,7 +28,8 @@ async function checkVersion() {
             }
 
             // Reload
-            window.location.reload(true);
+            console.warn("Auto-reload disabled due to stability issues.");
+            // window.location.reload(true);
         }
     } catch (e) {
         console.error("Version check failed", e);
@@ -43,11 +37,11 @@ async function checkVersion() {
 }
 
 // Check on load, visibility change, and every 60s
-document.addEventListener('DOMContentLoaded', checkVersion);
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') checkVersion();
-});
-setInterval(checkVersion, 60000);
+// document.addEventListener('DOMContentLoaded', checkVersion);
+// document.addEventListener('visibilitychange', () => {
+//     if (document.visibilityState === 'visible') checkVersion();
+// });
+// setInterval(checkVersion, 60000);
 
 function forceUpdate() {
     checkVersion();
@@ -1381,6 +1375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switchTab('home');
     }
 
+    /* SW DISABLED
     if ('serviceWorker' in navigator) {
         // ULTRA AGGRESSIVE CACHE BUSTING
         // We use Date.now() to ensure the browser ALWAYS fetches the new sw.js file
@@ -1390,6 +1385,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reg.update();
         }).catch(console.log);
     }
+    */
 
     if (typeof firebase !== 'undefined') {
         loadSchedule(); // This also triggers dashboard update
