@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "a": "Pizza",
+        "b": "Lahmacun"
+    },
+    {
+        "id": 2,
+        "a": "Film",
+        "b": "Dizi"
+    },
+    {
+        "id": 3,
+        "a": "Yaz",
+        "b": "Kış"
+    },
+    {
+        "id": 4,
+        "a": "Çay",
+        "b": "Kahve"
+    },
+    {
+        "id": 5,
+        "a": "Deniz Tatili",
+        "b": "Kültür Gezisi"
+    },
+    {
+        "id": 6,
+        "a": "Zenginlik",
+        "b": "Huzur"
+    },
+    {
+        "id": 7,
+        "a": "Görünmezlik",
+        "b": "Uçabilmek"
+    },
+    {
+        "id": 8,
+        "a": "Geçmişe Gitmek",
+        "b": "Geleceğe Gitmek"
+    },
+    {
+        "id": 9,
+        "a": "Android",
+        "b": "iOS"
+    },
+    {
+        "id": 10,
+        "a": "Köpek",
+        "b": "Kedi"
+    },
+    {
+        "id": 11,
+        "a": "Sabah İnsanı",
+        "b": "Gece Kuşu"
+    },
+    {
+        "id": 12,
+        "a": "Ev Yemeği",
+        "b": "Fast Food"
+    },
+    {
+        "id": 13,
+        "a": "Instagram",
+        "b": "Twitter (X)"
+    },
+    {
+        "id": 14,
+        "a": "Netflix",
+        "b": "YouTube"
+    },
+    {
+        "id": 15,
+        "a": "Marvel",
+        "b": "DC"
+    },
+    {
+        "id": 16,
+        "a": "Harry Potter",
+        "b": "Yüzüklerin Efendisi"
+    },
+    {
+        "id": 17,
+        "a": "Matematik",
+        "b": "Edebiyat"
+    },
+    {
+        "id": 18,
+        "a": "Çok Zeki Olmak",
+        "b": "Çok Şanslı Olmak"
+    },
+    {
+        "id": 19,
+        "a": "Her Dili Konuşmak",
+        "b": "Hayvanlarla Konuşmak"
+    },
+    {
+        "id": 20,
+        "a": "Sınırsız Yemek",
+        "b": "Sınırsız İnternet"
+    }
+]

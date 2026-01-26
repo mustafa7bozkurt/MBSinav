@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Naim Süleymanoğlu",
+        "title": "Cep Herkülü",
+        "story": "Kendi ağırlığının 3 katından fazlasını kaldırarak tarihe geçen, olimpiyat şampiyonu milli haltercimiz. Boyu küçük ama yüreği ve başarısı dünyalar kadardı."
+    },
+    {
+        "name": "Aziz Sancar",
+        "title": "Nobel Ödüllü Bilim İnsanı",
+        "story": "Mardin'in Savur ilçesinden çıkıp, DNA onarımı alanındaki çalışmalarıyla Nobel Kimya Ödülü'nü kazanan gururumuz. 'Çoğu insan zekaya inanır, ben inanmam, bizi birbirimizden ayıran emektir, ben çalışmaya inanırım' demiştir."
+    },
+    {
+        "name": "Mustafa Kemal Atatürk",
+        "title": "Türkiye Cumhuriyeti'nin Kurucusu",
+        "story": "Yokluk içindeki bir milletten modern bir cumhuriyet inşa etti. İmkansız denileni başardı. 'Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!' diyerek tüm gençliğe ilham oldu."
+    },
+    {
+        "name": "J.K. Rowling",
+        "title": "Harry Potter'ın Yazarı",
+        "story": "İşsiz, depresyonda ve bekar bir anneyken tren yolculuğunda kurguladığı Harry Potter serisiyle dünyanın en çok okunan yazarlarından biri oldu. 12 yayınevi tarafından reddedildi ama asla pes etmedi."
+    },
+    {
+        "name": "Oprah Winfrey",
+        "title": "Medya Kraliçesi",
+        "story": "Yoksulluk ve travmalarla dolu bir çocukluktan gelip, dünyanın en etkili kadınlarından biri oldu. Kendi talk show'uyla milyonlara ilham verdi."
+    },
+    {
+        "name": "Elon Musk",
+        "title": "Teknoloji Vizyoneri",
+        "story": "PayPal'dan kazandığı tüm parayı uzay ve elektrikli araç hayallerine yatırdı. İflasın eşiğine geldi ama vazgeçmedi. Şimdi Mars'a gitmeyi hedefliyor."
+    },
+    {
+        "name": "Jack Ma",
+        "title": "Alibaba'nın Kurucusu",
+        "story": "KFC iş başvurusunda 24 kişiden reddedilen tek kişiydi. Üniversite sınavında defalarca başarısız oldu. Ama sonunda dünyanın en büyük e-ticaret sitelerinden birini kurdu."
+    },
+    {
+        "name": "Walt Disney",
+        "title": "Hayalperest",
+        "story": "'Hayal gücün yok' denilerek gazetedeki işinden kovuldu. Yarattığı Mickey Mouse karakteri ve kurduğu Disney imparatorluğu ile çocukların hayal dünyasını değiştirdi."
+    },
+    {
+        "name": "Michael Jordan",
+        "title": "Efsane Basketbolcu",
+        "story": "Lise basketbol takımına alınmadı. 'Kariyerimde 9000'den fazla şut kaçırdım, 300'e yakın maç kaybettim, ama bu sayede başardım' dedi."
+    },
+    {
+        "name": "Stephen Hawking",
+        "title": "Fizikçi",
+        "story": "ALS hastalığı nedeniyle hareket edememesine ve konuşamamasına rağmen, zihniyle evrenin sırlarını çözdü ve bilim dünyasına ışık tuttu."
+    }
+]

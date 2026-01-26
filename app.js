@@ -752,9 +752,12 @@ function openSocialSubTab(subName) {
     if (target) {
         target.classList.remove('hidden');
 
-        // Load data if needed
+        // Load data specific functions
         if (subName === 'capsule') loadCapsules();
         if (subName === 'bucket') loadBucketList();
+        if (subName === 'movies') loadMovies();
+        if (subName === 'stories') loadStories();
+        if (subName === 'thisorthat') loadQuestions();
     }
 }
 

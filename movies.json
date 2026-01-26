@@ -1,0 +1,194 @@
+[
+    {
+        "title": "Esaretin Bedeli (The Shawshank Redemption)",
+        "year": 1994,
+        "imdb": 9.3,
+        "genre": "Drama",
+        "cast": [
+            "Tim Robbins",
+            "Morgan Freeman"
+        ],
+        "awards": "Oscar Adayı",
+        "description": "Suçsuz yere hapse giren bir bankacının umut dolu hikayesi."
+    },
+    {
+        "title": "Baba (The Godfather)",
+        "year": 1972,
+        "imdb": 9.2,
+        "genre": "Suç, Drama",
+        "cast": [
+            "Marlon Brando",
+            "Al Pacino"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Bir mafya ailesinin yükselişi ve düşüşü."
+    },
+    {
+        "title": "Kara Şövalye (The Dark Knight)",
+        "year": 2008,
+        "imdb": 9.0,
+        "genre": "Aksiyon, Suç",
+        "cast": [
+            "Christian Bale",
+            "Heath Ledger"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Batman, Joker'in yarattığı kaosla yüzleşiyor."
+    },
+    {
+        "title": "Yüzüklerin Efendisi: Kralın Dönüşü",
+        "year": 2003,
+        "imdb": 9.0,
+        "genre": "Fantastik, Macera",
+        "cast": [
+            "Elijah Wood",
+            "Viggo Mortensen"
+        ],
+        "awards": "11 Oscar Ödülü",
+        "description": "Orta Dünya'nın kaderi belirleniyor."
+    },
+    {
+        "title": "Schindler'in Listesi",
+        "year": 1993,
+        "imdb": 9.0,
+        "genre": "Biyografi, Drama",
+        "cast": [
+            "Liam Neeson",
+            "Ralph Fiennes"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "II. Dünya Savaşı sırasında Yahudileri kurtaran bir adamın hikayesi."
+    },
+    {
+        "title": "Başlangıç (Inception)",
+        "year": 2010,
+        "imdb": 8.8,
+        "genre": "Bilim Kurgu, Aksiyon",
+        "cast": [
+            "Leonardo DiCaprio",
+            "Joseph Gordon-Levitt"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Rüyaların içine girip fikir çalma sanatı."
+    },
+    {
+        "title": "Dövüş Kulübü (Fight Club)",
+        "year": 1999,
+        "imdb": 8.8,
+        "genre": "Drama",
+        "cast": [
+            "Brad Pitt",
+            "Edward Norton"
+        ],
+        "awards": "Oscar Adayı",
+        "description": "Uykusuz bir ofis çalışanı ve sabun yapımcısının yeraltı örgütü."
+    },
+    {
+        "title": "Forrest Gump",
+        "year": 1994,
+        "imdb": 8.8,
+        "genre": "Drama, Romantik",
+        "cast": [
+            "Tom Hanks",
+            "Robin Wright"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Düşük IQ'lu ama koca yürekli bir adamın inanılmaz hayatı."
+    },
+    {
+        "title": "Yıldızlararası (Interstellar)",
+        "year": 2014,
+        "imdb": 8.7,
+        "genre": "Bilim Kurgu, Drama",
+        "cast": [
+            "Matthew McConaughey",
+            "Anne Hathaway"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "İnsanlığı kurtarmak için solucan deliğinden geçen bir grup astronot."
+    },
+    {
+        "title": "Yeşil Yol (The Green Mile)",
+        "year": 1999,
+        "imdb": 8.6,
+        "genre": "Suç, Drama, Fantastik",
+        "cast": [
+            "Tom Hanks",
+            "Michael Clarke Duncan"
+        ],
+        "awards": "Oscar Adayı",
+        "description": "Mucizevi güçlere sahip bir idam mahkumunun hikayesi."
+    },
+    {
+        "title": "Parazit (Parasite)",
+        "year": 2019,
+        "imdb": 8.5,
+        "genre": "Gerilim, Komedi",
+        "cast": [
+            "Song Kang-ho",
+            "Lee Sun-kyun"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Fakir bir ailenin zengin bir ailenin hayatına sızması."
+    },
+    {
+        "title": "Can Dostum (Good Will Hunting)",
+        "year": 1997,
+        "imdb": 8.3,
+        "genre": "Drama, Romantik",
+        "cast": [
+            "Robin Williams",
+            "Matt Damon"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Matematik dehası bir hademenin hayatı."
+    },
+    {
+        "title": "Akıl Oyunları (A Beautiful Mind)",
+        "year": 2001,
+        "imdb": 8.2,
+        "genre": "Biyografi, Drama",
+        "cast": [
+            "Russell Crowe",
+            "Ed Harris"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Nobel ödüllü matematikçi John Nash'in şizofreniyle mücadelesi."
+    },
+    {
+        "title": "Whiplash",
+        "year": 2014,
+        "imdb": 8.5,
+        "genre": "Drama, Müzik",
+        "cast": [
+            "Miles Teller",
+            "J.K. Simmons"
+        ],
+        "awards": "Oscar Ödüllü",
+        "description": "Hırslı bir davulcu ve acımasız hocasının psikolojik savaşı."
+    },
+    {
+        "title": "Esrarengiz Kasaba (Gravity Falls)",
+        "year": 2012,
+        "imdb": 8.9,
+        "genre": "Macera, Gizem (Dizi)",
+        "cast": [
+            "Jason Ritter",
+            "Kristen Schaal"
+        ],
+        "awards": "Annie Ödüllü",
+        "description": "İkiz kardeşlerin gizemli bir kasabadaki yaz tatili."
+    },
+    {
+        "title": "Breaking Bad",
+        "year": 2008,
+        "imdb": 9.5,
+        "genre": "Suç, Drama (Dizi)",
+        "cast": [
+            "Bryan Cranston",
+            "Aaron Paul"
+        ],
+        "awards": "Emmy Ödüllü",
+        "description": "Kanser olan bir kimya öğretmeninin uyuşturucu baronuna dönüşümü."
+    }
+]
