@@ -1410,3 +1410,133 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initModalLogic();
 });
+
+// 3. MOVIES LOGIC
+let allMovies = [];
+
+async function loadMovies() {
+    try {
+        if (allMovies.length === 0) {
+            const res = await fetch('movies.json?v=' + APP_VERSION);
+            allMovies = await res.json();
+        }
+        renderMovies(allMovies);
+    } catch (e) { console.error(e); }
+}
+
+function renderMovies(list) {
+    const container = document.getElementById('movie-list');
+    if (!container) return;
+
+    if (list.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:20px; color:#cbd5e1;">Kriterlere uygun film bulunamadı.</div>`;
+        return;
+    }
+
+    let html = '';
+    list.forEach(m => {
+        html += `
+            <div class="list-item-card" style="border-left-color: #f472b6; display:block;">
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <h3 style="color:#f472b6;">${m.title}</h3>
+                    <span style="background:#f472b6; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem; font-weight:bold;">${m.imdb}</span>
+                </div>
+                <div style="font-size:0.85rem; color:#cbd5e1; margin:5px 0;">
+                    ${m.year} • ${m.genre}
+                </div>
+                 <div style="font-size:0.8rem; color:#94a3b8; font-style:italic;">
+                    ${m.description}
+                </div>
+                <div style="font-size:0.75rem; color:#64748b; margin-top:5px;">
+                   Oyuncular: ${m.cast.join(', ')}
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+function filterMovies() {
+    const genre = document.getElementById('movie-genre').value;
+    const minImdb = parseFloat(document.getElementById('movie-min-imdb').value) || 0;
+    const cast = document.getElementById('movie-cast').value.toLowerCase();
+
+    const filtered = allMovies.filter(m => {
+        const matchesGenre = genre === '' || m.genre.includes(genre);
+        const matchesImdb = m.imdb >= minImdb;
+        const matchesCast = cast === '' || m.cast.some(c => c.toLowerCase().includes(cast));
+        return matchesGenre && matchesImdb && matchesCast;
+    });
+
+    renderMovies(filtered);
+}
+
+// 4. STORIES LOGIC
+async function loadStories() {
+    const container = document.getElementById('story-list');
+    try {
+        const res = await fetch('stories.json?v=' + APP_VERSION);
+        const stories = await res.json();
+
+        let html = '';
+        stories.forEach(s => {
+            html += `
+                 <div class="list-item-card" style="border-left-color: #fb923c; display:block;">
+                    <h3 style="color:#fb923c;">${s.name}</h3>
+                    <span class="item-sub" style="display:block; margin-bottom:10px;">${s.title}</span>
+                    <p style="font-size:0.9rem; color:#cbd5e1; line-height:1.4;">
+                        "${s.story}"
+                    </p>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    } catch (e) { console.error(e); }
+}
+
+// 5. THIS OR THAT
+let questions = [];
+let currentQIndex = -1;
+
+async function loadQuestions() {
+    try {
+        if (questions.length === 0) {
+            const res = await fetch('questions.json?v=' + APP_VERSION);
+            questions = await res.json();
+            // Shuffle
+            questions.sort(() => Math.random() - 0.5);
+        }
+        nextQuestion();
+    } catch (e) { console.error(e); }
+}
+
+function nextQuestion() {
+    currentQIndex++;
+    if (currentQIndex >= questions.length) {
+        alert("Tüm sorular bitti! Başa dönülüyor.");
+        currentQIndex = 0;
+    }
+
+    document.getElementById('game-container').classList.remove('hidden');
+    document.getElementById('game-stats').classList.add('hidden');
+
+    const q = questions[currentQIndex];
+    document.getElementById('btn-opt-a').innerText = q.a;
+    document.getElementById('btn-opt-b').innerText = q.b;
+}
+
+function voteThisOrThat(option) {
+    document.getElementById('game-container').classList.add('hidden');
+    document.getElementById('game-stats').classList.remove('hidden');
+
+    const q = questions[currentQIndex];
+
+    // Fake stats generator for fun
+    let pctA = Math.floor(Math.random() * 80) + 10; // Random % between 10-90
+    let pctB = 100 - pctA;
+
+    document.getElementById('stat-a-label').innerText = `${q.a} (%${pctA})`;
+    document.getElementById('stat-b-label').innerText = `${q.b} (%${pctB})`;
+
+    document.getElementById('stat-bar').style.width = pctA + '%';
+}

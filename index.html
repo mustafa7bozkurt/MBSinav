@@ -457,6 +457,87 @@
                 </div>
             </div>
         </div>
+
+        <!-- SUB-VIEW: Dizi-Film Tavsiyesi -->
+        <div id="social-view-movies" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">Ne İzlesem?</h3>
+            </div>
+
+            <div class="form-section">
+                <h4>Filtrele</h4>
+                <div class="input-grid">
+                    <select id="movie-genre" class="form-input">
+                        <option value="">Tüm Türler</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Bilim Kurgu">Bilim Kurgu</option>
+                        <option value="Aksiyon">Aksiyon</option>
+                        <option value="Suç">Suç</option>
+                        <option value="Fantastik">Fantastik</option>
+                    </select>
+                    <input type="number" id="movie-min-imdb" class="form-input" placeholder="Min İMDB (Örn: 8.0)">
+                </div>
+                <div class="input-grid" style="margin-top:10px;">
+                    <input type="text" id="movie-cast" class="form-input" placeholder="Oyuncu (Örn: Brad Pitt)">
+                    <button class="primary-btn" onclick="filterMovies()">Bul 🎬</button>
+                </div>
+            </div>
+
+            <div id="movie-list" class="list-container">
+                <!-- JS Injected -->
+            </div>
+        </div>
+
+        <!-- SUB-VIEW: O mu Bu mu? -->
+        <div id="social-view-thisorthat" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">O mu Bu mu?</h3>
+            </div>
+
+            <div id="game-container"
+                style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; min-height:300px;">
+                <button id="btn-opt-a" class="primary-btn" style="height:120px; font-size:1.5rem; background:#3b82f6;"
+                    onclick="voteThisOrThat('a')">???</button>
+                <div style="font-weight:bold; color:#cbd5e1;">VS</div>
+                <button id="btn-opt-b" class="primary-btn" style="height:120px; font-size:1.5rem; background:#ec4899;"
+                    onclick="voteThisOrThat('b')">???</button>
+            </div>
+            <div id="game-stats" class="hidden" style="text-align:center; padding:20px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span id="stat-a-label"></span>
+                    <span id="stat-b-label"></span>
+                </div>
+                <!-- Fake Progress Bar -->
+                <div style="height:10px; width:100%; background:#334155; border-radius:5px; overflow:hidden;">
+                    <div id="stat-bar" style="height:100%; width:50%; background:#3b82f6;"></div>
+                </div>
+                <button class="secondary-btn" style="margin-top:20px;" onclick="nextQuestion()">Sıradaki Soru
+                    ➡️</button>
+            </div>
+        </div>
+
+        <!-- SUB-VIEW: Başarı Hikayeleri -->
+        <div id="social-view-stories" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">İlham Verenler</h3>
+            </div>
+
+            <div id="story-list" class="list-container">
+                <!-- JS Injected -->
+            </div>
+        </div>
     </section>
 
     </main>
