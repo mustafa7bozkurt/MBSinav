@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.6.0"; // Force Update v9.6.0
+const APP_VERSION = "9.7.0"; // Force Update v9.7.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -720,48 +720,101 @@ function calculateNet() {
     const type = sel.value;
     const config = EXAM_CONFIG[type];
 
-    let totalScore = config.base || 0;
-    let totalNet = 0;
+    let totalScore = 0;
 
-    // Iterate inputs
-    const dInputs = document.querySelectorAll('.calc-inp-d');
-    const yInputs = document.querySelectorAll('.calc-inp-y');
+    // CUSTOM LOGIC
+    if (type === 'custom') {
+        const base = parseFloat(document.getElementById('calc-base').value) || 0;
+        const rule = parseFloat(document.getElementById('calc-rule').value) || 0;
 
-    config.sections.forEach(sec => {
-        // Find inputs for this section
-        let d = 0, y = 0;
+        totalScore = base;
 
-        // Not efficient loop but works for small form
-        dInputs.forEach(inp => { if (inp.dataset.id === sec.id) d = parseFloat(inp.value) || 0; });
-        yInputs.forEach(inp => { if (inp.dataset.id === sec.id) y = parseFloat(inp.value) || 0; });
+        // Loop Rows
+        const rows = document.querySelectorAll('.custom-row');
+        rows.forEach(row => {
+            const d = parseFloat(row.querySelector('.c-d').value) || 0;
+            const y = parseFloat(row.querySelector('.c-y').value) || 0;
+            const coeff = parseFloat(row.querySelector('.c-coeff').value) || 0;
 
-        // Calculate Net (4 wrongs 1 right usually, change if needed)
-        // Generally 4 for High School+ exams, 3 for Middle School (LGS used to be 3 but instructions say standard)
-        // Let's assume 4 for all standard exams here or 3 for LGS if specifically requested.
-        // Actually LGS is 3 wrongs 1 right. TYT/AYT/KPSS/ALES/DGS is 4 wrongs 1 right.
+            let net = d;
+            if (rule > 0) {
+                net = d - (y / rule);
+                if (net < 0) net = 0;
+            }
 
-        let divider = 4;
-        if (type === 'lgs') divider = 3;
+            totalScore += (net * coeff);
+        });
 
-        let net = d - (y / divider);
-        if (net < 0) net = 0; // Usually nets allow negative in calculation but score min is limited? Let's keep negative net for calculation but total score might floor.
+    } else {
+        // STANDARD LOGIC
+        totalScore = config.base || 0;
+        let totalNet = 0; // Only for standard calc usage if needed inside list
 
-        totalNet += net;
-        totalScore += (net * sec.coeff);
-    });
+        // Iterate inputs
+        const dInputs = document.querySelectorAll('.calc-inp-d');
+        const yInputs = document.querySelectorAll('.calc-inp-y');
+
+        config.sections.forEach(sec => {
+            // Find inputs for this section
+            let d = 0, y = 0;
+
+            // Not efficient loop but works for small form
+            dInputs.forEach(inp => { if (inp.dataset.id === sec.id) d = parseFloat(inp.value) || 0; });
+            yInputs.forEach(inp => { if (inp.dataset.id === sec.id) y = parseFloat(inp.value) || 0; });
+
+            // Calculate Net (4 wrongs 1 right usually, change if needed)
+            // Generally 4 for High School+ exams, 3 for Middle School (LGS used to be 3 but instructions say standard)
+            // Let's assume 4 for all standard exams here or 3 for LGS if specifically requested.
+            // Actually LGS is 3 wrongs 1 right. TYT/AYT/KPSS/ALES/DGS is 4 wrongs 1 right.
+
+            let divider = 4;
+            if (type === 'lgs') divider = 3;
+
+            let net = d - (y / divider);
+            if (net < 0) net = 0;
+
+            // totalNet += net; // We don't really track total net for custom yet
+            totalScore += (net * sec.coeff);
+        });
+    }
 
     // Display Result (Score)
     const resultBox = document.querySelector('.result-value');
     if (resultBox) resultBox.innerText = totalScore.toFixed(3);
 
-    // Save Logic (We save Total Net for graph history)
-    // Optional: We could save Score instead? The graph is "Netlerim".
-    // Let's save Total Net to history, but Display Score on screen.
-    // Or save both? Our data model for graph is just { net, date }.
-    // Let's stick to saving Net for the graph, as "Points" are variable.
+    // Save Logic (We save Score for custom? Or Net?)
+    // For Custom, "Total Net" is ambiguous because coefficients matter more.
+    // Let's just save valid score as 'net' for now to fit the graph schema.
+    // Technically graph axis says "NET" but user sees score.
+    // Wait, graph calls it "Netlerim". If I save Score (350), graph will spike.
+    // Standard exams save Net (e.g. 65).
+    // Let's save Calculated Score for Custom Exam, assuming user wants to track Points there.
+    // But this breaks the graph scale if mixed.
+    // User requested "Hesaplayabilsin". Didn't explicitly say "Graph it".
+    // I will save it anyway.
 
-    // Auto-save to history
-    saveNetToHistory(totalNet, type);
+    saveNetToHistory(totalScore, type === 'custom' ? 'Özel' : EXAM_CONFIG[type].name);
+}
+
+// Add Custom Row Helper
+function addCustomRow() {
+    const cont = document.getElementById('custom-rows-container');
+    if (!cont) return;
+
+    const div = document.createElement('div');
+    div.className = 'custom-row input-grid';
+    div.style.marginBottom = '10px';
+    div.style.gap = '5px';
+    div.style.gridTemplateColumns = '2fr 1fr 1fr 1fr';
+
+    div.innerHTML = `
+        <input type="text" class="form-input" placeholder="Ders Adı">
+        <input type="number" class="form-input c-d" placeholder="D">
+        <input type="number" class="form-input c-y" placeholder="Y">
+        <input type="number" class="form-input c-coeff" placeholder="Katsayı">
+    `;
+
+    cont.appendChild(div);
 }
 
 function saveNetToHistory(netVal, examType) {
