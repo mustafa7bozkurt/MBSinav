@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.14.0"; // Force Update v9.14.0
+const APP_VERSION = "9.15.0"; // Force Update v9.15.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -699,6 +699,12 @@ function renderCalculatorInputs() {
 
         container.innerHTML = html;
         addCustomRow(); // Add first row
+
+        // Listeners for custom inputs are added inside addCustomRow
+        // But we also need listener for base and rule
+        const baseRule = container.querySelectorAll('#calc-base, #calc-rule');
+        baseRule.forEach(inp => inp.addEventListener('input', () => calculateNet(false)));
+
         return;
     }
 
@@ -743,6 +749,12 @@ function renderCalculatorInputs() {
     html += `<div style="font-size:0.75rem; color:#64748b; margin-top:10px; font-style:italic;">${config.info}</div>`;
 
     container.innerHTML = html;
+
+    // Auto-Calculate Listeners (Standard)
+    const inputs = container.querySelectorAll('input');
+    inputs.forEach(inp => {
+        inp.addEventListener('input', () => calculateNet(false));
+    });
 }
 
 function calculateNet(shouldSave = false) {
