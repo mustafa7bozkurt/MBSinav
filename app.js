@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "10.0.0"; // Force Update v10.0.0
+const APP_VERSION = "10.0.1"; // Force Update v10.0.1
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -830,24 +830,6 @@ function calculateNet(shouldSave = false) {
     }
 }
 
-// REAL-TIME CALCULATION WRAPPER
-function calculateNet(save = false) {
-    const sel = document.getElementById('calc-exam-select');
-    if (!sel) return;
-    const type = sel.value;
-
-    // ... (rest of logic needs to be inside here or reused)
-    // To avoid massive duplicate code, I will refactor calculateNet to be the main function
-    // But I can't overwrite the whole file easily.
-    // Let's modify the EXISTING calculateNet to accept a parameter.
-    // WAIT, I can't easily change the Function Signature in a MultiReplace if I don't match the top line.
-
-    // Alternative: Create calculateScoreInternal that returns score.
-    // And calculateNet() calls it and saves.
-    // And real-time listeners call calculateScoreInternal and update UI.
-
-    // Let's stick to modifying the existing function body.
-}
 // The chunk above is messy thinking. Let's do a clean replace of the FUNCTION START.
 
 
