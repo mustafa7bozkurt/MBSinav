@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "10.0.1"; // Force Update v10.0.1
+const APP_VERSION = "10.0.2"; // Force Update v10.0.2
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -757,14 +757,11 @@ function renderCalculatorInputs() {
     });
 }
 
+// REAL-TIME CALCULATION WRAPPER
 function calculateNet(shouldSave = false) {
     const sel = document.getElementById('calc-exam-select');
     if (!sel) return;
     const type = sel.value;
-
-    // Safe check for config
-    const config = EXAM_CONFIG[type];
-    // if (!config && type !== 'custom') return; // Custom doesn't use config object directly
 
     let totalScore = 0;
 
@@ -793,7 +790,8 @@ function calculateNet(shouldSave = false) {
 
     } else {
         // STANDARD LOGIC
-        if (!config) return; // Safety
+        const config = EXAM_CONFIG[type];
+        if (!config) return;
 
         totalScore = config.base || 0;
 
@@ -805,9 +803,14 @@ function calculateNet(shouldSave = false) {
             // Find inputs for this section
             let d = 0, y = 0;
 
-            // Not efficient loop but works for small form
-            dInputs.forEach(inp => { if (inp.dataset.id === sec.id) d = parseFloat(inp.value) || 0; });
-            yInputs.forEach(inp => { if (inp.dataset.id === sec.id) y = parseFloat(inp.value) || 0; });
+            // Simple loop to find matching inputs
+            // Note: Since we have multiple inputs with same classes, we need to match data-id
+            for (let inp of dInputs) {
+                if (inp.dataset.id === sec.id) { d = parseFloat(inp.value) || 0; break; }
+            }
+            for (let inp of yInputs) {
+                if (inp.dataset.id === sec.id) { y = parseFloat(inp.value) || 0; break; }
+            }
 
             let divider = 4;
             if (type === 'lgs') divider = 3;
@@ -820,8 +823,14 @@ function calculateNet(shouldSave = false) {
     }
 
     // Display Result (Score)
-    const resultBox = document.querySelector('.result-value');
-    if (resultBox) resultBox.innerText = totalScore.toFixed(3);
+    // Use specific ID to avoid selecting wrong element
+    const resultBox = document.getElementById('calc-result-value');
+    if (resultBox) {
+        resultBox.innerText = totalScore.toFixed(3);
+        // Add visual feedback
+        resultBox.style.color = '#2dd4bf'; // Flash teal color
+        setTimeout(() => { resultBox.style.color = ''; }, 300);
+    }
 
     // Only Save if requested
     if (shouldSave) {
