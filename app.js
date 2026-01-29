@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.10.0"; // Force Update v9.10.0
+const APP_VERSION = "9.11.0"; // Force Update v9.11.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -745,11 +745,14 @@ function renderCalculatorInputs() {
     container.innerHTML = html;
 }
 
-function calculateNet() {
+function calculateNet(shouldSave = false) {
     const sel = document.getElementById('calc-exam-select');
     if (!sel) return;
     const type = sel.value;
+
+    // Safe check for config
     const config = EXAM_CONFIG[type];
+    // if (!config && type !== 'custom') return; // Custom doesn't use config object directly
 
     let totalScore = 0;
 
@@ -778,8 +781,9 @@ function calculateNet() {
 
     } else {
         // STANDARD LOGIC
+        if (!config) return; // Safety
+
         totalScore = config.base || 0;
-        let totalNet = 0; // Only for standard calc usage if needed inside list
 
         // Iterate inputs
         const dInputs = document.querySelectorAll('.calc-inp-d');
@@ -793,18 +797,12 @@ function calculateNet() {
             dInputs.forEach(inp => { if (inp.dataset.id === sec.id) d = parseFloat(inp.value) || 0; });
             yInputs.forEach(inp => { if (inp.dataset.id === sec.id) y = parseFloat(inp.value) || 0; });
 
-            // Calculate Net (4 wrongs 1 right usually, change if needed)
-            // Generally 4 for High School+ exams, 3 for Middle School (LGS used to be 3 but instructions say standard)
-            // Let's assume 4 for all standard exams here or 3 for LGS if specifically requested.
-            // Actually LGS is 3 wrongs 1 right. TYT/AYT/KPSS/ALES/DGS is 4 wrongs 1 right.
-
             let divider = 4;
             if (type === 'lgs') divider = 3;
 
             let net = d - (y / divider);
             if (net < 0) net = 0;
 
-            // totalNet += net; // We don't really track total net for custom yet
             totalScore += (net * sec.coeff);
         });
     }
@@ -813,19 +811,33 @@ function calculateNet() {
     const resultBox = document.querySelector('.result-value');
     if (resultBox) resultBox.innerText = totalScore.toFixed(3);
 
-    // Save Logic (We save Score for custom? Or Net?)
-    // For Custom, "Total Net" is ambiguous because coefficients matter more.
-    // Let's just save valid score as 'net' for now to fit the graph schema.
-    // Technically graph axis says "NET" but user sees score.
-    // Wait, graph calls it "Netlerim". If I save Score (350), graph will spike.
-    // Standard exams save Net (e.g. 65).
-    // Let's save Calculated Score for Custom Exam, assuming user wants to track Points there.
-    // But this breaks the graph scale if mixed.
-    // User requested "Hesaplayabilsin". Didn't explicitly say "Graph it".
-    // I will save it anyway.
-
-    saveNetToHistory(totalScore, type === 'custom' ? 'Özel' : EXAM_CONFIG[type].name);
+    // Only Save if requested
+    if (shouldSave) {
+        saveNetToHistory(totalScore, type === 'custom' ? 'Özel' : EXAM_CONFIG[type].name);
+        alert("Sonuç Kaydedildi!");
+    }
 }
+
+// REAL-TIME CALCULATION WRAPPER
+function calculateNet(save = false) {
+    const sel = document.getElementById('calc-exam-select');
+    if (!sel) return;
+    const type = sel.value;
+
+    // ... (rest of logic needs to be inside here or reused)
+    // To avoid massive duplicate code, I will refactor calculateNet to be the main function
+    // But I can't overwrite the whole file easily.
+    // Let's modify the EXISTING calculateNet to accept a parameter.
+    // WAIT, I can't easily change the Function Signature in a MultiReplace if I don't match the top line.
+
+    // Alternative: Create calculateScoreInternal that returns score.
+    // And calculateNet() calls it and saves.
+    // And real-time listeners call calculateScoreInternal and update UI.
+
+    // Let's stick to modifying the existing function body.
+}
+// The chunk above is messy thinking. Let's do a clean replace of the FUNCTION START.
+
 
 // Add Custom Row Helper
 function addCustomRow() {
@@ -846,6 +858,10 @@ function addCustomRow() {
     `;
 
     cont.appendChild(div);
+
+    // Add Listeners
+    const newInps = div.querySelectorAll('input');
+    newInps.forEach(inp => inp.addEventListener('input', () => calculateNet(false)));
 }
 
 function saveNetToHistory(netVal, examType) {
