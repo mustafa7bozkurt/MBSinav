@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.3.0"; // Force Update v3
+const APP_VERSION = "9.5.0"; // Force Update v9.5.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -102,6 +102,9 @@ function switchTab(tabName) {
             selectScheduleDay(d);
         } else if (tabName === 'exam') {
             loadExams();
+            // Init calc if empty
+            const cont = document.getElementById('calc-dynamic-inputs');
+            if (cont && !cont.innerHTML.trim()) renderCalculatorInputs();
         }
     }
 
@@ -119,6 +122,7 @@ function switchTab(tabName) {
 // --- SETTINGS (Date Sync) ---
 const SETTINGS_COLLECTION = "mbsinav_settings";
 let targetDate = '2026-06-15T10:00'; // Default fallback
+let startDate = '2025-09-01'; // Default Start Date
 
 function loadSettings() {
     if (!db) return;
@@ -127,6 +131,7 @@ function loadSettings() {
             const data = doc.data();
             if (data.targetDate) {
                 targetDate = data.targetDate;
+                if (data.startDate) startDate = data.startDate;
                 updateCountdown();
             }
         } else {
@@ -142,6 +147,9 @@ function updateCountdown() {
     const examDate = new Date(targetDate).getTime();
     const now = new Date().getTime();
     const distance = examDate - now;
+
+    // Call Process Update Here too
+    renderProcessStatus();
 
     const container = document.getElementById('countdown-display');
     if (!container) return;
@@ -166,29 +174,99 @@ function updateCountdown() {
 function openDateModal() {
     document.getElementById('date-modal').classList.remove('hidden');
     document.getElementById('exam-date-input').value = targetDate;
+    document.getElementById('start-date-input').value = startDate;
 }
 function closeDateModal() { document.getElementById('date-modal').classList.add('hidden'); }
 function saveExamDate() {
     const inp = document.getElementById('exam-date-input').value;
-    if (!inp) { alert("Lütfen bir tarih seçin"); return; }
+    const startInp = document.getElementById('start-date-input').value;
+
+    if (!inp || !startInp) { alert("Lütfen tarihleri seçin"); return; }
+
+    // Validate
+    if (new Date(startInp) > new Date(inp)) {
+        alert("Başlangıç tarihi sınav tarihinden sonra olamaz!");
+        return;
+    }
 
     // Save to Firebase
     if (db) {
         db.collection(SETTINGS_COLLECTION).doc('global').update({
-            targetDate: inp
+            targetDate: inp,
+            startDate: startInp
         }).then(() => {
-            alert("Tarih güncellendi ve tüm cihazlarla eşleşti!");
+            alert("Tarihler güncellendi!");
             closeDateModal();
         }).catch(e => {
             console.error(e);
-            alert("Kaydederken hata oluştu: " + e.message);
+            // If doc doesn't exist, set it
+            db.collection(SETTINGS_COLLECTION).doc('global').set({
+                targetDate: inp,
+                startDate: startInp
+            }).then(() => {
+                alert("Ayarlar oluşturuldu ve kaydedildi!");
+                closeDateModal();
+            });
         });
     } else {
         // Fallback for offline
         targetDate = inp;
+        startDate = startInp;
         updateCountdown();
         closeDateModal();
     }
+}
+
+function renderProcessStatus() {
+    const startDisplay = document.getElementById('process-start-display');
+    const endDisplay = document.getElementById('process-end-display');
+    const bar = document.getElementById('process-bar');
+    const percentTxt = document.getElementById('process-percent');
+    const daysPassedTxt = document.getElementById('days-passed');
+    const daysRemainingTxt = document.getElementById('days-remaining');
+
+    if (!startDisplay || !bar) return;
+
+    const start = new Date(startDate).getTime();
+    const end = new Date(targetDate).getTime();
+    const now = new Date().getTime();
+
+    // Text Updates
+    startDisplay.innerText = `Başlangıç: ${new Date(startDate).toLocaleDateString('tr-TR')}`;
+    endDisplay.innerText = `Bitiş: ${new Date(targetDate).toLocaleDateString('tr-TR')}`;
+
+    // Calculation
+    let totalDuration = end - start;
+    let elapsed = now - start;
+
+    if (totalDuration <= 0) totalDuration = 1; // Prevent div by zero
+
+    let percent = (elapsed / totalDuration) * 100;
+
+    // Bounds
+    if (percent < 0) percent = 0;
+    if (percent > 100) percent = 100;
+
+    // Remaining / Passed Days
+    const dPassed = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+    const dRemaining = Math.floor((end - now) / (1000 * 60 * 60 * 24));
+
+    // Update DOM
+    bar.style.width = `${percent}%`;
+    percentTxt.innerText = `%${Math.floor(percent)}`;
+
+    // Make text readable if bar is too small
+    if (percent < 10) {
+        percentTxt.style.position = 'absolute';
+        percentTxt.style.left = '5px';
+        percentTxt.style.color = '#94a3b8';
+    } else {
+        percentTxt.style.position = 'static';
+        percentTxt.style.color = 'white';
+    }
+
+    if (daysPassedTxt) daysPassedTxt.innerText = dPassed > 0 ? dPassed : 0;
+    if (daysRemainingTxt) daysRemainingTxt.innerText = dRemaining > 0 ? dRemaining : 0;
 }
 
 // --- SCHEDULE SYSTEM ---
@@ -444,6 +522,298 @@ function updateDashboardSchedule() {
 }
 
 // --- CALC & INTERACTIVITY ---
+const EXAM_CONFIG = {
+    'tyt': {
+        name: "YKS - TYT",
+        base: 100, // Base points are rough estimates
+        sections: [
+            { id: "tr", label: "Türkçe (40)", coeff: 3.3 },
+            { id: "sos", label: "Sosyal (20)", coeff: 3.4 },
+            { id: "mat", label: "Matematik (40)", coeff: 3.3 },
+            { id: "fen", label: "Fen (20)", coeff: 3.4 }
+        ],
+        info: "Tahmini puanlardır. OBP dahil edilmemiştir."
+    },
+    'ayt_say': {
+        name: "YKS - AYT (Sayısal)",
+        base: 100,
+        sections: [
+            { id: "mat", label: "Matematik (40)", coeff: 3 },
+            { id: "fiz", label: "Fizik (14)", coeff: 2.85 },
+            { id: "kim", label: "Kimya (13)", coeff: 3.07 },
+            { id: "biyo", label: "Biyoloji (13)", coeff: 3.07 }
+        ],
+        info: "Sadece AYT ham puanıdır. TYT ve OBP dahil değildir."
+    },
+    'ayt_ea': {
+        name: "YKS - AYT (Eşit Ağırlık)",
+        base: 100,
+        sections: [
+            { id: "mat", label: "Matematik (40)", coeff: 3 },
+            { id: "edb", label: "Edebiyat (24)", coeff: 3 },
+            { id: "tar", label: "Tarih-1 (10)", coeff: 2.8 },
+            { id: "cog", label: "Coğrafya-1 (6)", coeff: 3.33 }
+        ],
+        info: "Sadece AYT ham puanıdır. TYT ve OBP dahil değildir."
+    },
+    'ayt_soz': {
+        name: "YKS - AYT (Sözel)",
+        base: 100,
+        sections: [
+            { id: "edb", label: "Edebiyat (24)", coeff: 3 },
+            { id: "tar", label: "Tarih-1 (10)", coeff: 2.8 },
+            { id: "cog", label: "Coğrafya-1 (6)", coeff: 3.33 },
+            { id: "tar2", label: "Tarih-2 (11)", coeff: 2.91 },
+            { id: "cog2", label: "Coğrafya-2 (11)", coeff: 2.91 },
+            { id: "fel", label: "Felsefe Grb. (12)", coeff: 3 },
+            { id: "din", label: "Din Kül. (6)", coeff: 3.33 }
+        ],
+        info: "Sadece AYT ham puanıdır. TYT ve OBP dahil değildir."
+    },
+    'lgs': {
+        name: "LGS",
+        base: 195, // Approximate base
+        sections: [
+            { id: "tr", label: "Türkçe (20)", coeff: 3.6 }, // Coeffs scaled roughly for 500
+            { id: "mat", label: "Matematik (20)", coeff: 3.6 },
+            { id: "fen", label: "Fen (20)", coeff: 3.6 },
+            { id: "ink", label: "İnkılap (10)", coeff: 1 },
+            { id: "din", label: "Din (10)", coeff: 1 },
+            { id: "dil", label: "Yabancı Dil (10)", coeff: 1 }
+        ],
+        info: "Standart sapma her yıl değişir, bu tahmini bir puandır."
+    },
+    'kpss_lisans': {
+        name: "KPSS Lisans (P3)",
+        base: 40, // Rough base
+        sections: [
+            { id: "gy", label: "Genel Yetenek (60)", coeff: 0.5 },
+            { id: "gk", label: "Genel Kültür (60)", coeff: 0.5 }
+        ],
+        info: "Tahmini P3 puanıdır. Standart sapmaya göre değişir."
+    },
+    'kpss_onlisans': {
+        name: "KPSS Önlisans (P93)",
+        base: 40,
+        sections: [
+            { id: "gy", label: "Genel Yetenek (60)", coeff: 0.5 },
+            { id: "gk", label: "Genel Kültür (60)", coeff: 0.5 }
+        ],
+        info: "Tahmini P93 puanıdır."
+    },
+    'kpss_orta': {
+        name: "KPSS Ortaöğretim (P94)",
+        base: 40,
+        sections: [
+            { id: "gy", label: "Genel Yetenek (60)", coeff: 0.5 },
+            { id: "gk", label: "Genel Kültür (60)", coeff: 0.5 }
+        ],
+        info: "Tahmini P94 puanıdır."
+    },
+    'ales_say': {
+        name: "ALES (Sayısal)",
+        base: 70, // Differs wildly
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 0.75 },
+            { id: "soz", label: "Sözel (50)", coeff: 0.25 }
+        ],
+        info: "Tahmini Sayısal puanıdır."
+    },
+    'ales_ea': {
+        name: "ALES (Eşit Ağırlık)",
+        base: 70,
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 0.5 },
+            { id: "soz", label: "Sözel (50)", coeff: 0.5 }
+        ],
+        info: "Tahmini EA puanıdır."
+    },
+    'ales_soz': {
+        name: "ALES (Sözel)",
+        base: 70,
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 0.25 },
+            { id: "soz", label: "Sözel (50)", coeff: 0.75 }
+        ],
+        info: "Tahmini Sözel puanıdır."
+    },
+    'dgs_say': {
+        name: "DGS (Sayısal)",
+        base: 130, // Very approximate
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 3 },
+            { id: "soz", label: "Sözel (50)", coeff: 0.6 }
+        ],
+        info: "ÖBP hariç ham puandır."
+    },
+    'dgs_ea': {
+        name: "DGS (Eşit Ağırlık)",
+        base: 130,
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 1.8 },
+            { id: "soz", label: "Sözel (50)", coeff: 1.8 }
+        ],
+        info: "ÖBP hariç ham puandır."
+    },
+    'dgs_soz': {
+        name: "DGS (Sözel)",
+        base: 130,
+        sections: [
+            { id: "say", label: "Sayısal (50)", coeff: 0.6 },
+            { id: "soz", label: "Sözel (50)", coeff: 3 }
+        ],
+        info: "ÖBP hariç ham puandır."
+    }
+};
+
+function renderCalculatorInputs() {
+    const sel = document.getElementById('calc-exam-select');
+    const container = document.getElementById('calc-dynamic-inputs');
+    if (!sel || !container) return;
+
+    const type = sel.value;
+    const config = EXAM_CONFIG[type];
+
+    let html = '';
+
+    // Group into pairs for grid layout
+    for (let i = 0; i < config.sections.length; i += 2) {
+        const sec1 = config.sections[i];
+        const sec2 = config.sections[i + 1];
+
+        html += `<div class="input-grid" style="margin-bottom:15px;">`;
+
+        // Col 1
+        html += `
+            <div>
+                <label class="form-label">${sec1.label} (D)</label>
+                <input type="number" class="form-input calc-inp-d" data-id="${sec1.id}" placeholder="0" min="0">
+                <input type="number" class="form-input calc-inp-y" data-id="${sec1.id}" placeholder="Yanlış" min="0" style="margin-top:5px; font-size:0.8rem; padding:8px; opacity:0.8;">
+            </div>
+        `;
+
+        // Col 2 (if exists)
+        if (sec2) {
+            html += `
+            <div>
+                <label class="form-label">${sec2.label} (D)</label>
+                <input type="number" class="form-input calc-inp-d" data-id="${sec2.id}" placeholder="0" min="0">
+                <input type="number" class="form-input calc-inp-y" data-id="${sec2.id}" placeholder="Yanlış" min="0" style="margin-top:5px; font-size:0.8rem; padding:8px; opacity:0.8;">
+            </div>
+        `;
+        } else {
+            html += `<div></div>`; // Spacer
+        }
+
+        html += `</div>`;
+    }
+
+    // Add info note
+    html += `<div style="font-size:0.75rem; color:#64748b; margin-top:10px; font-style:italic;">${config.info}</div>`;
+
+    container.innerHTML = html;
+}
+
+function calculateNet() {
+    const sel = document.getElementById('calc-exam-select');
+    if (!sel) return;
+    const type = sel.value;
+    const config = EXAM_CONFIG[type];
+
+    let totalScore = config.base || 0;
+    let totalNet = 0;
+
+    // Iterate inputs
+    const dInputs = document.querySelectorAll('.calc-inp-d');
+    const yInputs = document.querySelectorAll('.calc-inp-y');
+
+    config.sections.forEach(sec => {
+        // Find inputs for this section
+        let d = 0, y = 0;
+
+        // Not efficient loop but works for small form
+        dInputs.forEach(inp => { if (inp.dataset.id === sec.id) d = parseFloat(inp.value) || 0; });
+        yInputs.forEach(inp => { if (inp.dataset.id === sec.id) y = parseFloat(inp.value) || 0; });
+
+        // Calculate Net (4 wrongs 1 right usually, change if needed)
+        // Generally 4 for High School+ exams, 3 for Middle School (LGS used to be 3 but instructions say standard)
+        // Let's assume 4 for all standard exams here or 3 for LGS if specifically requested.
+        // Actually LGS is 3 wrongs 1 right. TYT/AYT/KPSS/ALES/DGS is 4 wrongs 1 right.
+
+        let divider = 4;
+        if (type === 'lgs') divider = 3;
+
+        let net = d - (y / divider);
+        if (net < 0) net = 0; // Usually nets allow negative in calculation but score min is limited? Let's keep negative net for calculation but total score might floor.
+
+        totalNet += net;
+        totalScore += (net * sec.coeff);
+    });
+
+    // Display Result (Score)
+    const resultBox = document.querySelector('.result-value');
+    if (resultBox) resultBox.innerText = totalScore.toFixed(3);
+
+    // Save Logic (We save Total Net for graph history)
+    // Optional: We could save Score instead? The graph is "Netlerim".
+    // Let's save Total Net to history, but Display Score on screen.
+    // Or save both? Our data model for graph is just { net, date }.
+    // Let's stick to saving Net for the graph, as "Points" are variable.
+
+    // Auto-save to history
+    saveNetToHistory(totalNet, type);
+}
+
+function saveNetToHistory(netVal, examType) {
+    if (!db) return;
+
+    // Prepare object
+    const docData = {
+        net: parseFloat(netVal.toFixed(2)),
+        examType: examType,
+        timestamp: Date.now()
+    };
+
+    db.collection(EXAM_COLLECTION).add(docData).then(() => {
+        // Refresh graph
+        renderHomeNetChart();
+        loadExams(); // Refreshes history list
+    });
+}
+
+// Exam Sub Tab Switcher
+function switchExamSubTab(subName) {
+    // 1. Update Buttons
+    // Since buttons are manual div logic in HTML: onclick="switchExamSubTab('netlerim')"
+    // We need to find them. They are .sub-nav-btn inside .sub-nav-container
+    const btns = document.querySelectorAll('.sub-nav-btn');
+    btns.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(subName)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // 2. toggle views
+    // IDs: sub-view-netlerim, sub-view-hesapla
+    document.getElementById('sub-view-netlerim').classList.add('hidden');
+    document.getElementById('sub-view-hesapla').classList.add('hidden');
+
+    document.getElementById(`sub-view-${subName}`).classList.remove('hidden');
+
+    // 3. Render logic
+    if (subName === 'hesapla') {
+        const cont = document.getElementById('calc-dynamic-inputs');
+        // Initial render if empty
+        if (cont && !cont.innerHTML.trim()) {
+            renderCalculatorInputs();
+        }
+    } else if (subName === 'netlerim') {
+        renderHomeNetChart(); // reuse home chart logic or separate?
+    }
+}
+
 // --- GOALS & INTERACTIVITY ---
 const GOAL_COLLECTION = "mbsinav_goals";
 
@@ -477,10 +847,15 @@ function switchHomeSubTab(tabName) {
         renderDashboardGoals();
     } else if (tabName === 'durum') {
         renderDurumSchedule(); // New function for list view in Durum tab
+        // Also ensure progress is updated
+        renderProcessStatus();
     } else if (tabName === 'hedefler') {
         loadGoals();
     } else if (tabName === 'netler') {
         renderHomeNetChart();
+        // Init calc if empty
+        const cont = document.getElementById('calc-dynamic-inputs');
+        if (cont && !cont.innerHTML.trim()) renderCalculatorInputs();
     } else if (tabName === 'notlar') {
         loadNotes();
     }

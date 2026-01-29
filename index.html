@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MBSınav</title>
-    <link rel="stylesheet" href="style.css?v=9.2.0">
+    <link rel="stylesheet" href="style.css?v=9.5.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e293b">
@@ -40,8 +40,8 @@
                 <span>Genel Bakış</span>
             </div>
             <div class="shape-btn small-tab" onclick="switchHomeSubTab('durum')">
-                <i class="fas fa-chart-pie"></i>
-                <span>Durum</span>
+                <i class="fas fa-tasks"></i>
+                <span>Süreç</span>
             </div>
             <div class="shape-btn small-tab" onclick="switchHomeSubTab('hedefler')">
                 <i class="fas fa-bullseye"></i>
@@ -109,6 +109,40 @@
         <!-- VIEW 2: DURUM (Full Schedule) -->
         <div id="home-view-durum" class="hidden">
             <!-- Reuse existing logic but simplified usage -->
+
+            <!-- NEW: Process Status Section -->
+            <div class="form-section">
+                <h4>Süreç Durumu</h4>
+                <div class="progress-status-container" style="text-align:center; padding:10px;">
+                    <div
+                        style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9rem; color:#94a3b8;">
+                        <span id="process-start-display">Başlangıç: --</span>
+                        <span id="process-end-display">Bitiş: --</span>
+                    </div>
+
+                    <div class="progress-track"
+                        style="background:rgba(255,255,255,0.1); height:25px; border-radius:15px; overflow:hidden; position:relative; margin-bottom:10px;">
+                        <div id="process-bar"
+                            style="width:0%; height:100%; background:linear-gradient(90deg, #3b82f6, #8b5cf6); transition:width 1s ease-out; display:flex; align-items:center; justify-content:center;">
+                            <span id="process-percent"
+                                style="color:white; font-size:0.8rem; font-weight:bold; padding-left:5px; text-shadow:0 1px 2px rgba(0,0,0,0.5);">0%</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-around; align-items:center; margin-top:15px;">
+                        <div class="stat-bubble">
+                            <span class="stat-val" id="days-passed">--</span>
+                            <span class="stat-lbl">Geçen Gün</span>
+                        </div>
+                        <div style="width:1px; height:30px; background:rgba(255,255,255,0.1);"></div>
+                        <div class="stat-bubble">
+                            <span class="stat-val" id="days-remaining">--</span>
+                            <span class="stat-lbl">Kalan Gün</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-section">
                 <h4 style="margin-bottom:15px;">Günlük Akış</h4>
                 <div class="list-container" id="durum-schedule-list">
@@ -298,46 +332,35 @@
             <div class="result-display">
                 <span class="result-label">Toplam Net</span>
                 <div class="result-value">--</div>
-                <span class="result-unit">NET</span>
+                <span class="result-unit" id="calc-result-unit">PUAN</span>
             </div>
 
             <div class="form-section">
                 <h4>Deneme Sonuçları</h4>
 
-                <!-- Input Grid for TYT/AYT -->
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Türkçe (D)</label>
-                        <input type="number" class="form-input" value="0" id="calc-tr-d">
-                    </div>
-                    <div>
-                        <label class="form-label">Türkçe (Y)</label>
-                        <input type="number" class="form-input" value="0" id="calc-tr-y">
-                    </div>
+                <div class="input-grid" style="margin-bottom:15px; grid-template-columns: 1fr;">
+                    <label class="form-label" style="color:white;">Sınav Türü Seç</label>
+                    <select id="calc-exam-select" class="form-input" onchange="renderCalculatorInputs()">
+                        <option value="tyt">YKS - TYT (Temel Yeterlilik)</option>
+                        <option value="ayt_say">YKS - AYT (Sayısal)</option>
+                        <option value="ayt_ea">YKS - AYT (Eşit Ağırlık)</option>
+                        <option value="ayt_soz">YKS - AYT (Sözel)</option>
+                        <option value="lgs">LGS (Liseye Geçiş)</option>
+                        <option value="kpss_lisans">KPSS (Lisans - Genel)</option>
+                        <option value="kpss_onlisans">KPSS (Önlisans)</option>
+                        <option value="kpss_orta">KPSS (Ortaöğretim)</option>
+                        <option value="ales_say">ALES (Sayısal)</option>
+                        <option value="ales_ea">ALES (Eşit Ağırlık)</option>
+                        <option value="ales_soz">ALES (Sözel)</option>
+                        <option value="dgs_say">DGS (Sayısal)</option>
+                        <option value="dgs_ea">DGS (Eşit Ağırlık)</option>
+                        <option value="dgs_soz">DGS (Sözel)</option>
+                    </select>
                 </div>
 
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Matematik (D)</label>
-                        <input type="number" class="form-input" value="0" id="calc-mat-d">
-                    </div>
-                    <div>
-                        <label class="form-label">Matematik (Y)</label>
-                        <input type="number" class="form-input" value="0" id="calc-mat-y">
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="input-grid" style="margin-bottom:15px;">
-                    <div>
-                        <label class="form-label">Fen (D)</label>
-                        <input type="number" class="form-input" value="0" id="calc-fen-d">
-                    </div>
-                    <div>
-                        <label class="form-label">Sosyal (D)</label>
-                        <input type="number" class="form-input" value="0" id="calc-sos-d">
-                    </div>
+                <!-- Dynamic Inputs Container -->
+                <div id="calc-dynamic-inputs">
+                    <!-- JS will inject inputs here -->
                 </div>
 
                 <button class="primary-btn mt-20" onclick="calculateNet()">
@@ -549,8 +572,12 @@
             style="background:#334155; padding:25px; border-radius:20px; width:80%; max-width:350px;">
             <h3 style="color:white; margin-bottom:15px; text-align:center;">Sınav Tarihi Seç</h3>
 
-            <label style="color:#94a3b8; font-size:0.9rem; margin-bottom:5px; display:block;">Hedef Tarih</label>
-            <input type="datetime-local" id="exam-date-input" class="form-input" style="margin-bottom:20px;">
+            <label style="color:#94a3b8; font-size:0.9rem; margin-bottom:5px; display:block;">Hedef Sınav Tarihi</label>
+            <input type="datetime-local" id="exam-date-input" class="form-input" style="margin-bottom:15px;">
+
+            <label style="color:#94a3b8; font-size:0.9rem; margin-bottom:5px; display:block;">Çalışmaya Başlama
+                Tarihi</label>
+            <input type="date" id="start-date-input" class="form-input" style="margin-bottom:20px;">
 
             <div style="display:flex; gap:10px;">
                 <button class="secondary-btn" onclick="closeDateModal()">İptal</button>
@@ -659,8 +686,23 @@
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore-compat.js"></script>
 
 
-    <script src="app.js?v=9.3.0"></script>
+    <script src="app.js?v=9.5.0"></script>
 
+    </script>
+    <script>
+        // EMERGENCY CACHE CLEAR
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+            if (window.caches) {
+                caches.keys().then(names => {
+                    for (let name of names) caches.delete(name);
+                });
+            }
+        }
     </script>
 </body>
 

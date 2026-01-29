@@ -1,5 +1,5 @@
 // MBSinav Service Worker - NUCLEAR MODE (No Caching)
-const CACHE_NAME = 'static-cache-v9.2.0-FORCE'; // Updated cache name-nuclear';
+const CACHE_NAME = 'static-cache-v9.4.0-FORCE'; // Updated cache name-nuclear';
 
 self.addEventListener('install', (event) => {
     self.skipWaiting();
