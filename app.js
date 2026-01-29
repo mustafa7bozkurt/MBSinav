@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "9.9.0"; // Force Update v9.9.0
+const APP_VERSION = "9.10.0"; // Force Update v9.10.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -672,7 +672,38 @@ function renderCalculatorInputs() {
     if (!sel || !container) return;
 
     const type = sel.value;
+
+    // Custom Exam Render
+    if (type === 'custom') {
+        let html = `
+        <div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; margin-bottom:15px;">
+            <label class="form-label">Taban Puan</label>
+            <input type="number" id="calc-base" class="form-input" value="0">
+            
+            <label class="form-label" style="margin-top:10px;">Yanlış Kuralı</label>
+            <select id="calc-rule" class="form-input">
+                <option value="4">4 Yanlış 1 Doğruyu Götürür</option>
+                <option value="3">3 Yanlış 1 Doğruyu Götürür</option>
+                <option value="0">Yanlışlar Doğruyu Götürmez</option>
+            </select>
+        </div>
+
+        <div id="custom-rows-container">
+            <!-- Dynamic Rows -->
+        </div>
+
+        <button class="secondary-btn" onclick="addCustomRow()" style="width:100%; border:1px dashed #475569; color:#94a3b8; margin-top:5px; padding:10px;">
+            <i class="fas fa-plus"></i> Ders Ekle
+        </button>
+        `;
+
+        container.innerHTML = html;
+        addCustomRow(); // Add first row
+        return;
+    }
+
     const config = EXAM_CONFIG[type];
+    if (!config) return;
 
     let html = '';
 
