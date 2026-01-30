@@ -50,23 +50,100 @@ function forceUpdate() {
 
 // --- FIREBASE CONFIG (Copied from AluminyumHesap) ---
 const firebaseConfig = {
-    apiKey: "AIzaSyA-iba_G88bOloy08of9LtV3WbGLIYj7sw",
-    authDomain: "aluminyumapp.firebaseapp.com",
-    projectId: "aluminyumapp",
-    storageBucket: "aluminyumapp.firebasestorage.app",
-    messagingSenderId: "595544210446",
-    appId: "1:595544210446:web:120a178403556b3e06905f",
-    measurementId: "G-K44PGWGPG1"
+    apiKey: "AIzaSyDbHaonEAyFSf88-DEjBsQatbiloBmPqc4",
+    authDomain: "mbsinav-c1a92.firebaseapp.com",
+    projectId: "mbsinav-c1a92",
+    storageBucket: "mbsinav-c1a92.firebasestorage.app",
+    messagingSenderId: "577755077551",
+    appId: "1:577755077551:web:ea9592cd50e5c8c843ad5a",
+    measurementId: "G-47Q0K6JBX4"
 };
 
 // Initialize
+// Initialize
 let db;
+let auth;
+let user_uid = null;
+
 try {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
+    auth = firebase.auth();
     console.log("Firebase initialized");
+
+    // Start Auth Flow immediately
+    auth.signInAnonymously().catch(e => {
+        console.error("Auth Failed:", e);
+        alert("Giriş Yapılamadı: " + e.message);
+    });
+
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            console.log("Logged in as:", user.uid);
+            user_uid = user.uid;
+            checkUserProfile();
+        } else {
+            console.log("Logged out");
+        }
+    });
+
 } catch (e) {
     console.log("Firebase init error (might be offline):", e);
+}
+
+// User-Specific DB Helper
+function getUserDb() {
+    if (!db || !user_uid) return null;
+    return db.collection('users').doc(user_uid);
+}
+
+// Check Profile
+function checkUserProfile() {
+    if (!getUserDb()) return;
+
+    getUserDb().collection('profile').doc('info').get().then(doc => {
+        if (doc.exists) {
+            // Profile exists, load app
+            initAppAfterLogin();
+        } else {
+            // Show Modal
+            document.getElementById('profile-modal').classList.remove('hidden');
+        }
+    }).catch(e => console.error(e));
+}
+
+// Save Profile
+function saveUserProfile() {
+    const name = document.getElementById('prof-name').value.trim();
+    const surname = document.getElementById('prof-surname').value.trim();
+    const age = document.getElementById('prof-age').value.trim();
+
+    if (!name || !surname || !age) {
+        alert("Lütfen tüm alanları doldur.");
+        return;
+    }
+
+    getUserDb().collection('profile').doc('info').set({
+        name,
+        surname,
+        age,
+        createdAt: Date.now()
+    }).then(() => {
+        document.getElementById('profile-modal').classList.add('hidden');
+        initAppAfterLogin();
+    }).catch(e => alert("Hata: " + e.message));
+}
+
+function initAppAfterLogin() {
+    console.log("Initializing App Data...");
+    loadSchedule();
+    loadSettings();
+    loadSubjectsAndTopics();
+    loadGoals();
+    loadNotes();
+    // Any other initial loads?
+    // Determine start tab?
+    // Already handled in DOMContentLoaded but we might need to refresh if already loaded blank
 }
 
 const EXAM_COLLECTION = "mbsinav_exams";
@@ -126,7 +203,7 @@ let startDate = '2025-09-01'; // Default Start Date
 
 function loadSettings() {
     if (!db) return;
-    db.collection(SETTINGS_COLLECTION).doc('global').onSnapshot(doc => {
+    getUserDb().collection(SETTINGS_COLLECTION).doc('global').onSnapshot(doc => {
         if (doc.exists) {
             const data = doc.data();
             if (data.targetDate) {
@@ -191,7 +268,7 @@ function saveExamDate() {
 
     // Save to Firebase
     if (db) {
-        db.collection(SETTINGS_COLLECTION).doc('global').update({
+        getUserDb().collection(SETTINGS_COLLECTION).doc('global').update({
             targetDate: inp,
             startDate: startInp
         }).then(() => {
@@ -200,7 +277,7 @@ function saveExamDate() {
         }).catch(e => {
             console.error(e);
             // If doc doesn't exist, set it
-            db.collection(SETTINGS_COLLECTION).doc('global').set({
+            getUserDb().collection(SETTINGS_COLLECTION).doc('global').set({
                 targetDate: inp,
                 startDate: startInp
             }).then(() => {
@@ -276,7 +353,7 @@ let currentScheduleDay = 1; // 0=Sun, 1=Mon
 // Load Schedule
 function loadSchedule() {
     if (!db) return;
-    db.collection(SCHEDULE_COLLECTION).onSnapshot(snap => {
+    getUserDb().collection(SCHEDULE_COLLECTION).onSnapshot(snap => {
         fullSchedule = [];
         snap.forEach(doc => {
             fullSchedule.push({ id: doc.id, ...doc.data() });
@@ -430,7 +507,7 @@ function saveScheduleItem() {
 
     // Batch Add
     const batchPromises = daysToAdd.map(d => {
-        return db.collection(SCHEDULE_COLLECTION).add({
+        return getUserDb().collection(SCHEDULE_COLLECTION).add({
             day: d,
             time,
             subject,
@@ -450,7 +527,7 @@ function saveScheduleItem() {
 
 function deleteScheduleItem(id) {
     if (confirm("Silmek istediğine emin misin?")) {
-        db.collection(SCHEDULE_COLLECTION).doc(id).delete();
+        getUserDb().collection(SCHEDULE_COLLECTION).doc(id).delete();
     }
 }
 
@@ -877,7 +954,7 @@ function saveNetToHistory(netVal, examType) {
         timestamp: Date.now()
     };
 
-    db.collection(EXAM_COLLECTION).add(docData).then(() => {
+    getUserDb().collection(EXAM_COLLECTION).add(docData).then(() => {
         // Refresh graph
         renderHomeNetChart();
         loadExams(); // Refreshes history list
@@ -969,7 +1046,7 @@ function switchHomeSubTab(tabName) {
 function renderDashboardGoals() {
     if (!db) return;
     // Just show top 3 goals
-    db.collection(GOAL_COLLECTION).where('completed', '==', false).limit(3).get().then(snap => {
+    getUserDb().collection(GOAL_COLLECTION).where('completed', '==', false).limit(3).get().then(snap => {
         const container = document.getElementById('dashboard-goals-list');
         if (!container) return;
 
@@ -1030,7 +1107,7 @@ function addGoal() {
     if (!text) return;
 
     if (db) {
-        db.collection(GOAL_COLLECTION).add({
+        getUserDb().collection(GOAL_COLLECTION).add({
             text: text,
             targetDate: dateVal,
             completed: false,
@@ -1046,7 +1123,7 @@ function addGoal() {
 
 function loadGoals() {
     if (!db) return;
-    db.collection(GOAL_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+    getUserDb().collection(GOAL_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('goal-list');
         if (!container) return;
 
@@ -1086,12 +1163,12 @@ function loadGoals() {
 }
 
 function toggleGoal(id, newState) {
-    db.collection(GOAL_COLLECTION).doc(id).update({ completed: newState });
+    getUserDb().collection(GOAL_COLLECTION).doc(id).update({ completed: newState });
 }
 
 function deleteGoal(id) {
     if (confirm("Hedefi silmek istiyor musun?")) {
-        db.collection(GOAL_COLLECTION).doc(id).delete();
+        getUserDb().collection(GOAL_COLLECTION).doc(id).delete();
     }
 }
 
@@ -1107,7 +1184,7 @@ function addNote() {
     if (!text) return;
 
     if (db) {
-        db.collection(NOTES_COLLECTION).add({
+        getUserDb().collection(NOTES_COLLECTION).add({
             text: text,
             targetDate: dateVal,
             timestamp: Date.now()
@@ -1120,7 +1197,7 @@ function addNote() {
 
 function loadNotes() {
     if (!db) return;
-    db.collection(NOTES_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+    getUserDb().collection(NOTES_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('note-list');
         if (!container) return;
 
@@ -1150,7 +1227,7 @@ function loadNotes() {
 
 function deleteNote(id) {
     if (confirm("Notu silmek istiyor musun?")) {
-        db.collection(NOTES_COLLECTION).doc(id).delete();
+        getUserDb().collection(NOTES_COLLECTION).doc(id).delete();
     }
 }
 
@@ -1167,7 +1244,7 @@ function loadSubjectsAndTopics() {
     if (!db) return;
 
     // Load Subjects
-    db.collection(SUBJECTS_COLLECTION).orderBy('timestamp', 'asc').onSnapshot(snap => {
+    getUserDb().collection(SUBJECTS_COLLECTION).orderBy('timestamp', 'asc').onSnapshot(snap => {
         subjects = [];
         snap.forEach(doc => subjects.push({ id: doc.id, ...doc.data() }));
         // If empty (first time run?), maybe seed defaults?
@@ -1180,7 +1257,7 @@ function loadSubjectsAndTopics() {
     });
 
     // Load Topics
-    db.collection(TOPICS_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+    getUserDb().collection(TOPICS_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         topics = [];
         snap.forEach(doc => topics.push({ id: doc.id, ...doc.data() }));
 
@@ -1196,7 +1273,7 @@ function seedDefaultSubjects() {
         { name: 'Sosyal', icon: 'fas fa-globe-europe' }
     ];
     defaults.forEach(d => {
-        db.collection(SUBJECTS_COLLECTION).add({ ...d, timestamp: Date.now() });
+        getUserDb().collection(SUBJECTS_COLLECTION).add({ ...d, timestamp: Date.now() });
     });
     localStorage.setItem('mbsinav_seeded', 'true');
 }
@@ -1244,7 +1321,7 @@ function addCapsule() {
 
     if (!title || !msg || !date) { alert("Lütfen tüm alanları doldurun."); return; }
 
-    db.collection(CAPSULE_COLLECTION).add({
+    getUserDb().collection(CAPSULE_COLLECTION).add({
         title,
         message: msg,
         unlockDate: date,
@@ -1261,7 +1338,7 @@ function addCapsule() {
 function loadCapsules() {
     if (!db) return;
     const container = document.getElementById('capsule-list');
-    db.collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
+    getUserDb().collection(CAPSULE_COLLECTION).orderBy('timestamp', 'desc').get().then(snap => {
         if (snap.empty) {
             container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Henüz kapsülün yok.</div> `;
             return;
@@ -1307,7 +1384,7 @@ function addBucketItem() {
     const text = input.value.trim();
     if (!text) return;
 
-    db.collection(BUCKET_COLLECTION).add({
+    getUserDb().collection(BUCKET_COLLECTION).add({
         text,
         done: false,
         timestamp: Date.now()
@@ -1319,7 +1396,7 @@ function addBucketItem() {
 
 function loadBucketList() {
     if (!db) return;
-    db.collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
+    getUserDb().collection(BUCKET_COLLECTION).orderBy('timestamp', 'desc').onSnapshot(snap => {
         const container = document.getElementById('bucket-list');
         if (snap.empty) {
             container.innerHTML = `<div style = "text-align:center; color:#64748b; padding:20px;" > Listen boş.Ekle bi şeyler!</div> `;
@@ -1350,11 +1427,11 @@ function loadBucketList() {
 }
 
 function toggleBucket(id, state) {
-    db.collection(BUCKET_COLLECTION).doc(id).update({ done: state });
+    getUserDb().collection(BUCKET_COLLECTION).doc(id).update({ done: state });
 }
 
 function deleteBucket(id) {
-    if (confirm("Silmek istiyor musun?")) db.collection(BUCKET_COLLECTION).doc(id).delete();
+    if (confirm("Silmek istiyor musun?")) getUserDb().collection(BUCKET_COLLECTION).doc(id).delete();
 }
 
 // 1. SUBJECTS (TABS)
@@ -1406,7 +1483,7 @@ function addNewSubject() {
     const name = prompt("Yeni dersin adı ne?");
     if (!name) return;
 
-    db.collection(SUBJECTS_COLLECTION).add({
+    getUserDb().collection(SUBJECTS_COLLECTION).add({
         name: name,
         icon: 'fas fa-bookmark', // Default icon
         timestamp: Date.now()
@@ -1445,7 +1522,7 @@ function confirmDeleteSubject(id, event) {
     if (!db) return;
 
     // Delete Subject
-    db.collection(SUBJECTS_COLLECTION).doc(id).delete();
+    getUserDb().collection(SUBJECTS_COLLECTION).doc(id).delete();
 
     // Delete associated topics? Or keep them orphaned?
     // Better to keep them or delete? For simplicity, let's keep them (or user can delete manually)
@@ -1544,7 +1621,7 @@ function addNewTopic() {
     const name = prompt("Konu adı ne?");
     if (!name) return;
 
-    db.collection(TOPICS_COLLECTION).add({
+    getUserDb().collection(TOPICS_COLLECTION).add({
         name: name,
         subjectId: subjectId,
         status: 'pending', // pending, working, done
@@ -1554,7 +1631,7 @@ function addNewTopic() {
 
 function deleteTopic(id) {
     if (confirm("Bu konuyu silmek istiyor musun?")) {
-        db.collection(TOPICS_COLLECTION).doc(id).delete();
+        getUserDb().collection(TOPICS_COLLECTION).doc(id).delete();
     }
 }
 
@@ -1599,7 +1676,7 @@ function switchExamSubTab(subTab) {
 
 function loadExams() {
     if (!db) return;
-    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(10).get().then(snap => {
+    getUserDb().collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(10).get().then(snap => {
         const data = [];
         snap.forEach(doc => {
             const d = doc.data();
@@ -1697,7 +1774,7 @@ function saveQuickNet() {
     const val = parseFloat(document.getElementById('quick-net-input').value);
     if (!val) return;
 
-    db.collection(EXAM_COLLECTION).add({
+    getUserDb().collection(EXAM_COLLECTION).add({
         net: val,
         type: 'quick',
         timestamp: Date.now()
@@ -1738,7 +1815,7 @@ function calculateNet() {
     if (resDisplay) resDisplay.innerText = totalNet.toFixed(2);
 
     if (db) {
-        db.collection(EXAM_COLLECTION).add({
+        getUserDb().collection(EXAM_COLLECTION).add({
             net: totalNet,
             detail: { trD, trY, matD, matY, fenD, sosD },
             timestamp: Date.now()
@@ -1751,7 +1828,7 @@ function renderHomeNetChart() {
     if (!db) return;
     const historyContainer = document.getElementById('home-net-history-list');
 
-    db.collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(5).get().then(snap => {
+    getUserDb().collection(EXAM_COLLECTION).orderBy('timestamp', 'desc').limit(5).get().then(snap => {
         const data = [];
         if (historyContainer) historyContainer.innerHTML = '';
 
@@ -1866,14 +1943,14 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     if (typeof firebase !== 'undefined') {
-        loadSchedule(); // This also triggers dashboard update
+        // loadSchedule(); // MOVED TO AUTH OBSERVER
     }
 
     renderDaySelector();
 
     if (typeof firebase !== 'undefined') {
-        loadSettings();
-        loadSubjectsAndTopics();
+        // loadSettings(); // MOVED TO AUTH OBSERVER
+        // loadSubjectsAndTopics(); // MOVED TO AUTH OBSERVER
     }
 
     initModalLogic();

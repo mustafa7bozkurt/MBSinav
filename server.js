@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
 // --- THE BOT (Keep-Alive System) ---
 // This keeps the Render Free Tier active by pinging itself.
 // User specific URL: https://mbsinav.onrender.com
-const MY_URL = 'https://mbsinav.onrender.com';
+const MY_URL = 'https://mb-2iut.onrender.com';
 
 function startKeepAlive() {
     console.log(`[BOT] Keep-Alive system started for: ${MY_URL}`);

@@ -664,6 +664,38 @@
         </div>
     </div>
 
+    <!-- Profile Creation Modal -->
+    <div id="profile-modal" class="modal hidden"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:3000; display:flex; justify-content:center; align-items:center;">
+        <div class="modal-content"
+            style="background:#334155; padding:30px; border-radius:20px; width:85%; max-width:400px; text-align:center; border: 1px solid rgba(255,255,255,0.1);">
+            <div
+                style="width:60px; height:60px; background:#3b82f6; border-radius:50%; margin:0 auto 15px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">
+                👋
+            </div>
+            <h3 style="color:white; margin-bottom:10px;">Hoş Geldin!</h3>
+            <p style="color:#cbd5e1; font-size:0.9rem; margin-bottom:20px;">
+                Seni daha iyi tanıyabilmem için lütfen aşağıdaki bilgileri doldur. Bu bilgiler sadece <strong>bir
+                    kez</strong> girilebilir.
+            </p>
+
+            <div style="text-align:left;">
+                <label class="form-label">Adın</label>
+                <input type="text" id="prof-name" class="form-input" placeholder="Adın...">
+
+                <label class="form-label mt-10">Soyadın</label>
+                <input type="text" id="prof-surname" class="form-input" placeholder="Soyadın...">
+
+                <label class="form-label mt-10">Yaşın</label>
+                <input type="number" id="prof-age" class="form-input" placeholder="Yaşın...">
+            </div>
+
+            <button class="primary-btn mt-20" onclick="saveUserProfile()" style="font-size:1.1rem; padding:12px;">
+                Başla 🚀
+            </button>
+        </div>
+    </div>
+
     <!-- Bottom Nav -->
     <nav id="bottom-nav">
         <button class="nav-item active" onclick="switchTab('home')">
@@ -691,6 +723,7 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-auth-compat.js"></script>
 
 
     <script src="app.js?v=10.1.0"></script>
