@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "10.3.0"; // Force Update v10.3.0
+const APP_VERSION = "10.4.0"; // Force Update v10.4.0
 
 // SW Safety Check Removed to prevent loop with registration below
 

@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MBSınav</title>
-    <link rel="stylesheet" href="style.css?v=10.3.0">
+    <link rel="stylesheet" href="style.css?v=10.4.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e293b">
@@ -405,9 +405,15 @@
                 <span>Sınavdan<br>Sonra</span>
             </div>
 
-            <!-- 4. Karar Çarkı -->
+            <!-- 4. Gezilecek Yerler -->
+            <div class="social-card" onclick="alert('Gezilecek Yerler Yakında!')">
+                <i class="fas fa-map-marked-alt" style="color: #60a5fa;"></i>
+                <span>Gezilecek<br>Yerler</span>
+            </div>
+
+            <!-- 5. Karar Çarkı -->
             <div class="social-card" onclick="openSocialSubTab('wheel')">
-                <i class="fas fa-dharmachakra" style="color: #60a5fa;"></i>
+                <i class="fas fa-dharmachakra" style="color: #a78bfa;"></i>
                 <span>Karar<br>Çarkı</span>
             </div>
 
@@ -590,6 +596,55 @@
             </div>
         </div>
 
+        <!-- SUB-VIEW: Karar Çarkı -->
+        <div id="social-view-wheel" class="hidden">
+            <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
+                <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
+                    onclick="closeSocialSubTab()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h3 style="margin:0;">Karar Çarkı 🎡</h3>
+            </div>
+
+            <div class="form-section">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h4 style="margin:0;">Seçenekler (2-8)</h4>
+                    <div>
+                        <button class="secondary-btn" onclick="addWheelOption()"
+                            style="padding:5px 10px; width:auto; display:inline-block;">+</button>
+                        <button class="secondary-btn" onclick="removeWheelOption()"
+                            style="padding:5px 10px; width:auto; display:inline-block; color:#ef4444;">-</button>
+                    </div>
+                </div>
+
+                <div id="wheel-options-container"
+                    style="display:flex; flex-direction:column; gap:8px; margin-bottom:15px;">
+                    <!-- JS Injected Inputs -->
+                </div>
+
+                <button class="primary-btn" onclick="prepareWheel()">Çarkı Hazırla</button>
+            </div>
+
+            <div id="wheel-stage" class="hidden" style="text-align:center; padding-bottom:50px;">
+                <div style="position:relative; width:300px; height:300px; margin:0 auto;">
+                    <canvas id="decision-wheel-canvas" width="300" height="300"></canvas>
+                    <!-- Marker -->
+                    <div
+                        style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:15px solid transparent; border-right:15px solid transparent; border-top:25px solid white; z-index:10; filter:drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div id="wheel-result"
+                    style="margin-top:20px; font-size:1.5rem; font-weight:bold; color:#fbbf24; min-height:40px;"></div>
+
+                <button id="spin-btn" class="primary-btn" onclick="spinWheel()"
+                    style="margin-top:20px; background:linear-gradient(45deg, #f59e0b, #fbbf24); color:black; font-weight:800; font-size:1.2rem;">
+                    ÇEVİR!
+                </button>
+            </div>
+        </div>
+
         <!-- SUB-VIEW: Başarı Hikayeleri -->
         <div id="social-view-stories" class="hidden">
             <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
@@ -762,7 +817,7 @@
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-auth-compat.js"></script>
 
 
-    <script src="app.js?v=10.3.0"></script>
+    <script src="app.js?v=10.4.0"></script>
 
     </script>
     <script>
