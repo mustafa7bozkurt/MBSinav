@@ -411,10 +411,10 @@
                 <span>Gezilecek<br>Yerler</span>
             </div>
 
-            <!-- 5. O mu Bu mu? -->
-            <div class="social-card" onclick="openSocialSubTab('thisorthat')">
-                <i class="fas fa-balance-scale" style="color: #a78bfa;"></i>
-                <span>O mu Bu mu?</span>
+            <!-- 5. Uygulama Detoksu -->
+            <div class="social-card" onclick="openSocialSubTab('detox')">
+                <i class="fas fa-ban" style="color: #ef4444;"></i>
+                <span>Uygulama<br>Detoksu</span>
             </div>
 
             <!-- 6. Başarı Hikayeleri -->
@@ -522,35 +522,66 @@
             </div>
         </div>
 
-        <!-- SUB-VIEW: O mu Bu mu? -->
-        <div id="social-view-thisorthat" class="hidden">
+        <!-- SUB-VIEW: Uygulama Detoksu -->
+        <div id="social-view-detox" class="hidden">
             <div style="margin-bottom:15px; display:flex; align-items:center; gap:10px;">
                 <button class="secondary-btn" style="width:auto; padding:8px 12px; margin:0;"
                     onclick="closeSocialSubTab()">
                     <i class="fas fa-arrow-left"></i>
                 </button>
-                <h3 style="margin:0;">O mu Bu mu?</h3>
+                <h3 style="margin:0;">Uygulama Detoksu 📵</h3>
             </div>
 
-            <div id="game-container"
-                style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; min-height:300px;">
-                <button id="btn-opt-a" class="primary-btn" style="height:120px; font-size:1.5rem; background:#3b82f6;"
-                    onclick="voteThisOrThat('a')">???</button>
-                <div style="font-weight:bold; color:#cbd5e1;">VS</div>
-                <button id="btn-opt-b" class="primary-btn" style="height:120px; font-size:1.5rem; background:#ec4899;"
-                    onclick="voteThisOrThat('b')">???</button>
+            <!-- Setup View -->
+            <div id="detox-setup-view">
+                <div class="form-section">
+                    <p style="color:#cbd5e1; font-size:0.9rem; margin-bottom:20px;">
+                        Zamanını çalan bir uygulama mı var? İsmini yaz ve ne kadar süre uzak duracağını seç.
+                        Süre bitene kadar seni burada tutacağız! 🔒
+                    </p>
+                    
+                    <div class="input-grid" style="grid-template-columns: 1fr;">
+                        <label class="form-label">Uygulama Adı</label>
+                        <input type="text" id="detox-app-name" class="form-input" placeholder="Örn: Instagram, TikTok...">
+
+                        <label class="form-label" style="margin-top:10px;">Ne kadar süre?</label>
+                        <div style="display:flex; gap:10px;">
+                            <input type="number" id="detox-duration" class="form-input" placeholder="Süre" value="15">
+                            <select id="detox-unit" class="form-input" style="width:100px;">
+                                <option value="min">Dakika</option>
+                                <option value="hour">Saat</option>
+                            </select>
+                        </div>
+
+                        <button class="primary-btn" style="margin-top:20px; background:#ef4444;" onclick="startDetox()">
+                            <i class="fas fa-lock"></i> Detoksu Başlat
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div id="game-stats" class="hidden" style="text-align:center; padding:20px;">
-                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                    <span id="stat-a-label"></span>
-                    <span id="stat-b-label"></span>
+
+            <!-- Active View -->
+            <div id="detox-active-view" class="hidden" style="text-align:center; padding:20px;">
+                <div style="width:100px; height:100px; background:rgba(239, 68, 68, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+                    <i class="fas fa-mobile-alt" style="font-size:3rem; color:#ef4444;"></i>
                 </div>
-                <!-- Fake Progress Bar -->
-                <div style="height:10px; width:100%; background:#334155; border-radius:5px; overflow:hidden;">
-                    <div id="stat-bar" style="height:100%; width:50%; background:#3b82f6;"></div>
+                
+                <h2 style="color:white; margin-bottom:10px;">DİKKAT!</h2>
+                <p style="color:#cbd5e1; font-size:1.1rem; margin-bottom:30px;">
+                    <strong id="detox-target-app" style="color:#fcd34d;">--</strong> uygulamasından uzak durman gerekiyor.
+                </p>
+
+                <div id="detox-timer" style="font-size:3rem; font-weight:800; font-variant-numeric:tabular-nums; color:white; margin-bottom:40px;">
+                    00:00:00
                 </div>
-                <button class="secondary-btn" style="margin-top:20px;" onclick="nextQuestion()">Sıradaki Soru
-                    ➡️</button>
+
+                <p style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">
+                    "Sıkılmak, üretkenliğin başlangıcıdır."
+                </p>
+
+                <button class="secondary-btn" onclick="giveUpDetox()" style="border:1px solid #ef4444; color:#ef4444; background:transparent;">
+                    Pes Ediyorum 😔
+                </button>
             </div>
         </div>
 

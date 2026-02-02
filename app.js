@@ -1300,7 +1300,7 @@ function openSocialSubTab(subName) {
         if (subName === 'bucket') loadBucketList();
         if (subName === 'movies') loadMovies();
         if (subName === 'stories') loadStories();
-        if (subName === 'thisorthat') loadQuestions();
+        if (subName === 'detox') checkDetoxStatus();
     }
 }
 
@@ -2070,48 +2070,95 @@ function toggleStory(index) {
 }
 
 // 5. THIS OR THAT
-let questions = [];
-let currentQIndex = -1;
+// 5. APP DETOX LOGIC
+let detoxInterval = null;
 
-async function loadQuestions() {
-    try {
-        if (questions.length === 0) {
-            const res = await fetch('questions.json?v=' + APP_VERSION);
-            questions = await res.json();
-            // Shuffle
-            questions.sort(() => Math.random() - 0.5);
-        }
-        nextQuestion();
-    } catch (e) { console.error(e); }
+function checkDetoxStatus() {
+    const data = JSON.parse(localStorage.getItem('mbsinav_detox'));
+    if (!data) return;
+
+    const now = Date.now();
+    if (now < data.endTime) {
+        // Active
+        showDetoxActiveView(data);
+    } else {
+        // Expired but not cleared? Just clear it.
+        localStorage.removeItem('mbsinav_detox');
+    }
 }
 
-function nextQuestion() {
-    currentQIndex++;
-    if (currentQIndex >= questions.length) {
-        alert("Tüm sorular bitti! Başa dönülüyor.");
-        currentQIndex = 0;
+function startDetox() {
+    const appName = document.getElementById('detox-app-name').value.trim();
+    const durationVal = parseFloat(document.getElementById('detox-duration').value);
+    const unit = document.getElementById('detox-unit').value;
+
+    if (!appName || !durationVal) {
+        alert("Lütfen uygulama adı ve süreyi gir.");
+        return;
     }
 
-    document.getElementById('game-container').classList.remove('hidden');
-    document.getElementById('game-stats').classList.add('hidden');
+    const multiplier = unit === 'hour' ? 60 * 60 * 1000 : 60 * 1000;
+    const durationMs = durationVal * multiplier;
+    const endTime = Date.now() + durationMs;
 
-    const q = questions[currentQIndex];
-    document.getElementById('btn-opt-a').innerText = q.a;
-    document.getElementById('btn-opt-b').innerText = q.b;
+    const detoxData = {
+        appName,
+        endTime,
+        durationMs
+    };
+
+    localStorage.setItem('mbsinav_detox', JSON.stringify(detoxData));
+    showDetoxActiveView(detoxData);
 }
 
-function voteThisOrThat(option) {
-    document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('game-stats').classList.remove('hidden');
+function showDetoxActiveView(data) {
+    document.getElementById('detox-setup-view').classList.add('hidden');
+    document.getElementById('detox-active-view').classList.remove('hidden');
 
-    const q = questions[currentQIndex];
+    document.getElementById('detox-target-app').innerText = data.appName; // Update text
 
-    // Fake stats generator for fun
-    let pctA = Math.floor(Math.random() * 80) + 10; // Random % between 10-90
-    let pctB = 100 - pctA;
+    // Start Timer
+    if (detoxInterval) clearInterval(detoxInterval);
+    updateDetoxTimer(); // run once immediately
+    detoxInterval = setInterval(updateDetoxTimer, 1000);
+}
 
-    document.getElementById('stat-a-label').innerText = `${q.a} (% ${pctA})`;
-    document.getElementById('stat-b-label').innerText = `${q.b} (% ${pctB})`;
+function updateDetoxTimer() {
+    const data = JSON.parse(localStorage.getItem('mbsinav_detox'));
+    if (!data) {
+        resetDetoxView();
+        return;
+    }
 
-    document.getElementById('stat-bar').style.width = pctA + '%';
+    const now = Date.now();
+    const diff = data.endTime - now;
+
+    if (diff <= 0) {
+        // Completed!
+        clearInterval(detoxInterval);
+        localStorage.removeItem('mbsinav_detox');
+        alert("TEBRİKLER! Detoks süren doldu. 🎯");
+        resetDetoxView();
+        return;
+    }
+
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('detox-timer').innerText =
+        `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+function giveUpDetox() {
+    if (confirm("Pes etmek üzeresin! İradene yenik düşecek misin? 🥺")) {
+        localStorage.removeItem('mbsinav_detox');
+        resetDetoxView();
+    }
+}
+
+function resetDetoxView() {
+    if (detoxInterval) clearInterval(detoxInterval);
+    document.getElementById('detox-active-view').classList.add('hidden');
+    document.getElementById('detox-setup-view').classList.remove('hidden');
 }
