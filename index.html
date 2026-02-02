@@ -823,8 +823,8 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw-v10.js').then(registration => {
-                    console.log('SW v10 registered: ', registration);
+                navigator.serviceWorker.register('./sw-v11.js').then(registration => {
+                    console.log('SW v11 registered: ', registration);
                 }).catch(registrationError => {
                     console.log('SW registration failed: ', registrationError);
                 });
