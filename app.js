@@ -1,5 +1,5 @@
 // --- CONFIGURATION ---
-const APP_VERSION = "10.1.0"; // Force Update v10.1.0
+const APP_VERSION = "10.3.0"; // Force Update v10.3.0
 
 // SW Safety Check Removed to prevent loop with registration below
 
@@ -1301,7 +1301,191 @@ function openSocialSubTab(subName) {
         if (subName === 'movies') loadMovies();
         if (subName === 'stories') loadStories();
         if (subName === 'detox') checkDetoxStatus();
+        if (subName === 'wheel') initWheelFeature();
     }
+}
+
+// ... (Existing code) ...
+
+// 6. DECISION WHEEL LOGIC
+let wheelOptions = [];
+let wheelChart = null; // We might use a library or raw canvas. Raw canvas is better for zero dep.
+let wheelCtx = null;
+let currentRotation = 0;
+let isSpinning = false;
+
+function initWheelFeature() {
+    const container = document.getElementById('wheel-options-container');
+    // If empty, seed with 2 inputs
+    if (container && container.children.length === 0) {
+        addWheelOption();
+        addWheelOption();
+    }
+}
+
+function addWheelOption() {
+    const container = document.getElementById('wheel-options-container');
+    if (container.children.length >= 8) {
+        alert("En fazla 8 seçenek olabilir.");
+        return;
+    }
+
+    const count = container.children.length + 1;
+    const div = document.createElement('div');
+    div.innerHTML = `<input type="text" class="form-input wheel-opt-input" placeholder="Seçenek ${count}">`;
+    container.appendChild(div);
+}
+
+function removeWheelOption() {
+    const container = document.getElementById('wheel-options-container');
+    if (container.children.length <= 2) {
+        alert("En az 2 seçenek olmalı.");
+        return;
+    }
+    container.removeChild(container.lastElementChild);
+}
+
+function prepareWheel() {
+    // Collect Inputs
+    const inputs = document.querySelectorAll('.wheel-opt-input');
+    const validOptions = [];
+    inputs.forEach(inp => {
+        if (inp.value.trim()) validOptions.push(inp.value.trim());
+    });
+
+    if (validOptions.length < 2) {
+        alert("Lütfen en az 2 dolu seçenek gir.");
+        return;
+    }
+
+    wheelOptions = validOptions;
+
+    // Show Stage
+    document.getElementById('wheel-stage').classList.remove('hidden');
+    drawWheel();
+    document.getElementById('wheel-result').innerText = "";
+    currentRotation = 0; // Reset
+}
+
+function drawWheel() {
+    const canvas = document.getElementById('decision-wheel-canvas');
+    if (!canvas) return;
+    wheelCtx = canvas.getContext('2d');
+    const ctx = wheelCtx;
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+    const r = w / 2 - 5; // padding
+
+    ctx.clearRect(0, 0, w, h);
+
+    const len = wheelOptions.length;
+    const arc = (2 * Math.PI) / len;
+
+    // Colors
+    const colors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#6366f1', '#14b8a6'];
+
+    for (let i = 0; i < len; i++) {
+        const start = i * arc;
+        const end = start + arc;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, start, end);
+        ctx.closePath();
+
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#1e293b'; // BG color for borders
+        ctx.stroke();
+
+        // Text
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(start + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "white";
+        ctx.font = "bold 14px sans-serif";
+        ctx.fillText(wheelOptions[i], r - 10, 5);
+        ctx.restore();
+    }
+}
+
+function spinWheel() {
+    if (isSpinning) return;
+    isSpinning = true;
+    document.getElementById('spin-btn').disabled = true;
+    document.getElementById('wheel-result').innerText = "";
+
+    // Spin Logic
+    const duration = 4000; // 4s
+    const startObj = { val: currentRotation };
+    // Random extra spins (5 to 10) + Random stop angle needed
+    // We need to land on a segment.
+    // To make it random: targetRotation = currentRotation + (360 * min_spins) + random(0, 360)
+
+    const randomAngle = Math.random() * 360;
+    const totalSpin = 360 * 8 + randomAngle; // 8 full spins + random part
+    const targetRotation = currentRotation + totalSpin;
+
+    const canvas = document.getElementById('decision-wheel-canvas');
+
+    const startTime = Date.now();
+
+    function animate() {
+        const now = Date.now();
+        const elapsed = now - startTime;
+
+        if (elapsed >= duration) {
+            // End
+            isSpinning = false;
+            document.getElementById('spin-btn').disabled = false;
+            currentRotation = targetRotation % 360; // Normalize
+            canvas.style.transform = `rotate(-${targetRotation}deg)`; // CSS rotates the canvas
+
+            // Calculate Winner
+            // The marker is at TOP (270deg or -90deg in Canvas, but CSS rotate moves the canvas)
+            // Visual Top is 270 degrees in standard circle (0 is right, 90 down, 180 left, 270 top)
+            // But our draw loop starts 0 at right.
+            // When canvas rotates -TARGET deg, the canvas rotates counter-clockwise.
+            // The pointer stays at Top.
+            // Effective angle at Top = (TopAngle - (-TargetRotation)) % 360 ? 
+            // Simplified: The angle passing the needle is (TargetRotation + 270) % 360.
+            // Since we draw 0 at right (0 deg), 270 is top.
+
+            const normalizedRot = targetRotation % 360;
+            const pointerAngle = (270 + normalizedRot) % 360; // Where the pointer lands in circle coords
+
+            // Determine slice
+            const len = wheelOptions.length;
+            const arcDeg = 360 / len;
+            // Arc index = floor(angle / arcDeg)
+            // But wait, standard math:
+            // Index 0 is [0, arc]
+            // Index 1 is [arc, 2*arc]
+            // Pointer is at pointerAngle.
+            const index = Math.floor(pointerAngle / arcDeg);
+
+            const winner = wheelOptions[index];
+
+            // Confetti or highlight
+            document.getElementById('wheel-result').innerText = `✨ ${winner} ✨`;
+            // Trigger confetti (if we had it, for now just text)
+            return;
+        }
+
+        // Ease Out Cubic
+        const t = elapsed / duration;
+        const ease = 1 - Math.pow(1 - t, 3);
+        const cur = currentRotation + (totalSpin * ease);
+
+        canvas.style.transform = `rotate(-${cur}deg)`; // Rotate canvas Element
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
 
 function closeSocialSubTab() {

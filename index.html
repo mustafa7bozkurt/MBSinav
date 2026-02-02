@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MBSınav</title>
-    <link rel="stylesheet" href="style.css?v=10.1.0">
+    <link rel="stylesheet" href="style.css?v=10.3.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e293b">
@@ -405,10 +405,10 @@
                 <span>Sınavdan<br>Sonra</span>
             </div>
 
-            <!-- 4. Gezilecek Yerler -->
-            <div class="social-card" onclick="alert('Gezilecek Yerler Yakında!')">
-                <i class="fas fa-map-marked-alt" style="color: #60a5fa;"></i>
-                <span>Gezilecek<br>Yerler</span>
+            <!-- 4. Karar Çarkı -->
+            <div class="social-card" onclick="openSocialSubTab('wheel')">
+                <i class="fas fa-dharmachakra" style="color: #60a5fa;"></i>
+                <span>Karar<br>Çarkı</span>
             </div>
 
             <!-- 5. Uygulama Detoksu -->
@@ -539,10 +539,11 @@
                         Zamanını çalan bir uygulama mı var? İsmini yaz ve ne kadar süre uzak duracağını seç.
                         Süre bitene kadar seni burada tutacağız! 🔒
                     </p>
-                    
+
                     <div class="input-grid" style="grid-template-columns: 1fr;">
                         <label class="form-label">Uygulama Adı</label>
-                        <input type="text" id="detox-app-name" class="form-input" placeholder="Örn: Instagram, TikTok...">
+                        <input type="text" id="detox-app-name" class="form-input"
+                            placeholder="Örn: Instagram, TikTok...">
 
                         <label class="form-label" style="margin-top:10px;">Ne kadar süre?</label>
                         <div style="display:flex; gap:10px;">
@@ -562,16 +563,19 @@
 
             <!-- Active View -->
             <div id="detox-active-view" class="hidden" style="text-align:center; padding:20px;">
-                <div style="width:100px; height:100px; background:rgba(239, 68, 68, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+                <div
+                    style="width:100px; height:100px; background:rgba(239, 68, 68, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
                     <i class="fas fa-mobile-alt" style="font-size:3rem; color:#ef4444;"></i>
                 </div>
-                
+
                 <h2 style="color:white; margin-bottom:10px;">DİKKAT!</h2>
                 <p style="color:#cbd5e1; font-size:1.1rem; margin-bottom:30px;">
-                    <strong id="detox-target-app" style="color:#fcd34d;">--</strong> uygulamasından uzak durman gerekiyor.
+                    <strong id="detox-target-app" style="color:#fcd34d;">--</strong> uygulamasından uzak durman
+                    gerekiyor.
                 </p>
 
-                <div id="detox-timer" style="font-size:3rem; font-weight:800; font-variant-numeric:tabular-nums; color:white; margin-bottom:40px;">
+                <div id="detox-timer"
+                    style="font-size:3rem; font-weight:800; font-variant-numeric:tabular-nums; color:white; margin-bottom:40px;">
                     00:00:00
                 </div>
 
@@ -579,7 +583,8 @@
                     "Sıkılmak, üretkenliğin başlangıcıdır."
                 </p>
 
-                <button class="secondary-btn" onclick="giveUpDetox()" style="border:1px solid #ef4444; color:#ef4444; background:transparent;">
+                <button class="secondary-btn" onclick="giveUpDetox()"
+                    style="border:1px solid #ef4444; color:#ef4444; background:transparent;">
                     Pes Ediyorum 😔
                 </button>
             </div>
@@ -757,7 +762,7 @@
     <script src="https://www.gstatic.com/firebasejs/11.2.0/firebase-auth-compat.js"></script>
 
 
-    <script src="app.js?v=10.1.0"></script>
+    <script src="app.js?v=10.3.0"></script>
 
     </script>
     <script>
